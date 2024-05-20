@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link project2.RobotModel#getEvents <em>Events</em>}</li>
  *   <li>{@link project2.RobotModel#getActions <em>Actions</em>}</li>
  *   <li>{@link project2.RobotModel#getConditions <em>Conditions</em>}</li>
+ *   <li>{@link project2.RobotModel#getExpressions <em>Expressions</em>}</li>
  * </ul>
  *
  * @see project2.Project2Package#getRobotModel()
@@ -60,5 +61,17 @@ public interface RobotModel extends EObject {
 	 * @generated
 	 */
 	EList<Condition> getConditions();
+
+	/**
+	 * Returns the value of the '<em><b>Expressions</b></em>' containment reference list.
+	 * The list contents are of type {@link project2.Expression}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Expressions</em>' containment reference list.
+	 * @see project2.Project2Package#getRobotModel_Expressions()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Expression> getExpressions();
 
 } // RobotModel

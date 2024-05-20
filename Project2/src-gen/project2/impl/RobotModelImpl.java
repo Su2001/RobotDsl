@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import project2.Action;
 import project2.Condition;
 import project2.Event;
+import project2.Expression;
 import project2.Project2Package;
 import project2.RobotModel;
 
@@ -33,6 +34,7 @@ import project2.RobotModel;
  *   <li>{@link project2.impl.RobotModelImpl#getEvents <em>Events</em>}</li>
  *   <li>{@link project2.impl.RobotModelImpl#getActions <em>Actions</em>}</li>
  *   <li>{@link project2.impl.RobotModelImpl#getConditions <em>Conditions</em>}</li>
+ *   <li>{@link project2.impl.RobotModelImpl#getExpressions <em>Expressions</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,6 +69,16 @@ public class RobotModelImpl extends MinimalEObjectImpl.Container implements Robo
 	 * @ordered
 	 */
 	protected EList<Condition> conditions;
+
+	/**
+	 * The cached value of the '{@link #getExpressions() <em>Expressions</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExpressions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Expression> expressions;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -133,6 +145,20 @@ public class RobotModelImpl extends MinimalEObjectImpl.Container implements Robo
 	 * @generated
 	 */
 	@Override
+	public EList<Expression> getExpressions() {
+		if (expressions == null) {
+			expressions = new EObjectContainmentEList<Expression>(Expression.class, this,
+					Project2Package.ROBOT_MODEL__EXPRESSIONS);
+		}
+		return expressions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case Project2Package.ROBOT_MODEL__EVENTS:
@@ -141,6 +167,8 @@ public class RobotModelImpl extends MinimalEObjectImpl.Container implements Robo
 			return ((InternalEList<?>) getActions()).basicRemove(otherEnd, msgs);
 		case Project2Package.ROBOT_MODEL__CONDITIONS:
 			return ((InternalEList<?>) getConditions()).basicRemove(otherEnd, msgs);
+		case Project2Package.ROBOT_MODEL__EXPRESSIONS:
+			return ((InternalEList<?>) getExpressions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -159,6 +187,8 @@ public class RobotModelImpl extends MinimalEObjectImpl.Container implements Robo
 			return getActions();
 		case Project2Package.ROBOT_MODEL__CONDITIONS:
 			return getConditions();
+		case Project2Package.ROBOT_MODEL__EXPRESSIONS:
+			return getExpressions();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -184,6 +214,10 @@ public class RobotModelImpl extends MinimalEObjectImpl.Container implements Robo
 			getConditions().clear();
 			getConditions().addAll((Collection<? extends Condition>) newValue);
 			return;
+		case Project2Package.ROBOT_MODEL__EXPRESSIONS:
+			getExpressions().clear();
+			getExpressions().addAll((Collection<? extends Expression>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -205,6 +239,9 @@ public class RobotModelImpl extends MinimalEObjectImpl.Container implements Robo
 		case Project2Package.ROBOT_MODEL__CONDITIONS:
 			getConditions().clear();
 			return;
+		case Project2Package.ROBOT_MODEL__EXPRESSIONS:
+			getExpressions().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -223,6 +260,8 @@ public class RobotModelImpl extends MinimalEObjectImpl.Container implements Robo
 			return actions != null && !actions.isEmpty();
 		case Project2Package.ROBOT_MODEL__CONDITIONS:
 			return conditions != null && !conditions.isEmpty();
+		case Project2Package.ROBOT_MODEL__EXPRESSIONS:
+			return expressions != null && !expressions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

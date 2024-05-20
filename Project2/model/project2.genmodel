@@ -29,6 +29,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//RobotModel/events"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//RobotModel/actions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//RobotModel/conditions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//RobotModel/expressions"/>
     </genClasses>
     <genClasses ecoreClass="project2.ecore#//Action">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//Action/actionname"/>
@@ -51,6 +52,8 @@
     <genClasses ecoreClass="project2.ecore#//MotorAction">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//MotorAction/motorLeft"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//MotorAction/motorRight"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//MotorAction/right"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//MotorAction/left"/>
     </genClasses>
     <genClasses ecoreClass="project2.ecore#//SoundAction">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//SoundAction/musicsettings"/>
@@ -68,6 +71,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//MusicSetting/note"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//MusicSetting/duration"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//MusicSetting/pos"/>
+    </genClasses>
+    <genClasses ecoreClass="project2.ecore#//Expression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//Expression/operation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//Expression/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//Expression/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//Expression/right"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -4,12 +4,17 @@
 package org.xtext.example.mydsl1.validation;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.validation.Check;
+import org.xtext.example.typing.ExpressionsType;
+import org.xtext.example.typing.ExpressionsTypeProvider;
 
 import project2.Action;
 import project2.Event;
+import project2.Expression;
 import project2.LightAction;
 import project2.MotorAction;
 import project2.MusicSetting;
@@ -133,4 +138,65 @@ public class MyDslValidator extends AbstractMyDslValidator {
 		
 	}
 	
+	
+	public static final String INVALID_TYPE = "the type is invalid";
+	
+	@Check
+	public void CheckType(Expression e) {
+		String[] tempArray = {"||", "&&", "==", "!="};
+		List<String> boolOpBinary = new ArrayList<>(Arrays.asList(tempArray));
+		String[] tempArrayInt = {"+", "-", "/", "*", ">", ">=", "<","<="};
+		List<String> intOpBinary = new ArrayList<>(Arrays.asList(tempArrayInt));
+		if(boolOpBinary.contains(e.getOperation())) {
+			ExpressionsType typeLeft  = checkAgainstNull(e.getLeft(), Project2Package.eINSTANCE.getExpression_Left());
+			ExpressionsType typeRight  = checkAgainstNull(e.getRight(), Project2Package.eINSTANCE.getExpression_Right());
+			if(e.getOperation().equals("==") || e.getOperation().equals("!=")) {
+				if (typeLeft != typeRight){
+					error("should has same type", Project2Package.eINSTANCE.getExpression_Left(), INVALID_TYPE);
+					error("should has same type", Project2Package.eINSTANCE.getExpression_Right(), INVALID_TYPE);
+				}
+			}else {
+				checkAgainst(typeLeft, ExpressionsTypeProvider.boolType,Project2Package.eINSTANCE.getExpression_Left());
+				checkAgainst(typeRight, ExpressionsTypeProvider.boolType,Project2Package.eINSTANCE.getExpression_Right());
+			}
+			
+		}else if(intOpBinary.contains(e.getOperation())) {
+			ExpressionsType typeLeft  = checkAgainstNull(e.getLeft(), Project2Package.eINSTANCE.getExpression_Left());
+			ExpressionsType typeRight  = checkAgainstNull(e.getRight(), Project2Package.eINSTANCE.getExpression_Right());
+			checkAgainst(typeLeft, ExpressionsTypeProvider.intType,Project2Package.eINSTANCE.getExpression_Left());
+			checkAgainst(typeRight, ExpressionsTypeProvider.intType,Project2Package.eINSTANCE.getExpression_Right());
+		}else if(e.getOperation().equals("!")) {
+			ExpressionsType typeLeft  = checkAgainstNull(e.getLeft(), Project2Package.eINSTANCE.getExpression_Left());
+			checkAgainst(typeLeft, ExpressionsTypeProvider.boolType,Project2Package.eINSTANCE.getExpression_Left());
+		}else if(e.getOperation().equals("if")) {
+			ExpressionsType typeLeft  = checkAgainstNull(e.getLeft(), Project2Package.eINSTANCE.getExpression_Left());
+			checkAgainst(typeLeft, ExpressionsTypeProvider.boolType,Project2Package.eINSTANCE.getExpression_Left());
+		}else if(e.getOperation().equals("then")) {
+			ExpressionsType typeLeft  = checkAgainstNull(e.getLeft(), Project2Package.eINSTANCE.getExpression_Left());
+			ExpressionsType typeRight  = ExpressionsTypeProvider.typeOf(e.getRight());
+			if(typeRight != null) {
+				if (typeLeft != typeRight){
+					error("the then should has same return type as else", Project2Package.eINSTANCE.getExpression_Left(), INVALID_TYPE);
+					error("the else should has same return type as then", Project2Package.eINSTANCE.getExpression_Right(), INVALID_TYPE);
+				}
+			}
+		}
+	}
+	
+	private ExpressionsType checkAgainstNull (Expression input, EReference ref) {
+		// get type of expression
+		ExpressionsType type = ExpressionsTypeProvider.typeOf(input);
+		// create error if expression has null type (error)
+		if (type == null)
+			error ("the type is null", ref);
+		return type;
+	}
+	
+	private void checkAgainst (ExpressionsType actualType, ExpressionsType expectedType, EReference ref) {
+		if (actualType != expectedType)
+			error("expected type " + expectedType +
+				  " but was " + actualType,
+				  ref
+				  );
+	}
 }

@@ -73,6 +73,7 @@ public class RobotModelItemProvider extends ItemProviderAdapter implements IEdit
 			childrenFeatures.add(Project2Package.Literals.ROBOT_MODEL__EVENTS);
 			childrenFeatures.add(Project2Package.Literals.ROBOT_MODEL__ACTIONS);
 			childrenFeatures.add(Project2Package.Literals.ROBOT_MODEL__CONDITIONS);
+			childrenFeatures.add(Project2Package.Literals.ROBOT_MODEL__EXPRESSIONS);
 		}
 		return childrenFeatures;
 	}
@@ -137,6 +138,7 @@ public class RobotModelItemProvider extends ItemProviderAdapter implements IEdit
 		case Project2Package.ROBOT_MODEL__EVENTS:
 		case Project2Package.ROBOT_MODEL__ACTIONS:
 		case Project2Package.ROBOT_MODEL__CONDITIONS:
+		case Project2Package.ROBOT_MODEL__EXPRESSIONS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -177,6 +179,9 @@ public class RobotModelItemProvider extends ItemProviderAdapter implements IEdit
 
 		newChildDescriptors.add(createChildParameter(Project2Package.Literals.ROBOT_MODEL__CONDITIONS,
 				Project2Factory.eINSTANCE.createTap()));
+
+		newChildDescriptors.add(createChildParameter(Project2Package.Literals.ROBOT_MODEL__EXPRESSIONS,
+				Project2Factory.eINSTANCE.createExpression()));
 	}
 
 	/**

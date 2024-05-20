@@ -10,12 +10,14 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import project2.Action;
 import project2.Button;
 import project2.ButtonType;
 import project2.Condition;
 import project2.Duration;
 import project2.Event;
+import project2.Expression;
 import project2.LightAction;
 import project2.LightPos;
 import project2.MotorAction;
@@ -132,6 +134,13 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass expressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum buttonTypeEEnum = null;
 
 	/**
@@ -198,6 +207,9 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 
 		isInited = true;
 
+		// Initialize simple dependencies
+		XMLTypePackage.eINSTANCE.eClass();
+
 		// Create package meta-data objects
 		theProject2Package.createPackageContents();
 
@@ -250,6 +262,16 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 	@Override
 	public EReference getRobotModel_Conditions() {
 		return (EReference) robotModelEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getRobotModel_Expressions() {
+		return (EReference) robotModelEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -418,6 +440,26 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 	 * @generated
 	 */
 	@Override
+	public EReference getMotorAction_Right() {
+		return (EReference) motorActionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMotorAction_Left() {
+		return (EReference) motorActionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getSoundAction() {
 		return soundActionEClass;
 	}
@@ -548,6 +590,56 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 	 * @generated
 	 */
 	@Override
+	public EClass getExpression() {
+		return expressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getExpression_Operation() {
+		return (EAttribute) expressionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getExpression_Left() {
+		return (EReference) expressionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getExpression_Right() {
+		return (EReference) expressionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getExpression_Value() {
+		return (EAttribute) expressionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getButtonType() {
 		return buttonTypeEEnum;
 	}
@@ -606,6 +698,7 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 		createEReference(robotModelEClass, ROBOT_MODEL__EVENTS);
 		createEReference(robotModelEClass, ROBOT_MODEL__ACTIONS);
 		createEReference(robotModelEClass, ROBOT_MODEL__CONDITIONS);
+		createEReference(robotModelEClass, ROBOT_MODEL__EXPRESSIONS);
 
 		actionEClass = createEClass(ACTION);
 		createEAttribute(actionEClass, ACTION__ACTIONNAME);
@@ -630,6 +723,8 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 		motorActionEClass = createEClass(MOTOR_ACTION);
 		createEAttribute(motorActionEClass, MOTOR_ACTION__MOTOR_LEFT);
 		createEAttribute(motorActionEClass, MOTOR_ACTION__MOTOR_RIGHT);
+		createEReference(motorActionEClass, MOTOR_ACTION__RIGHT);
+		createEReference(motorActionEClass, MOTOR_ACTION__LEFT);
 
 		soundActionEClass = createEClass(SOUND_ACTION);
 		createEReference(soundActionEClass, SOUND_ACTION__MUSICSETTINGS);
@@ -647,6 +742,12 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 		createEAttribute(musicSettingEClass, MUSIC_SETTING__NOTE);
 		createEAttribute(musicSettingEClass, MUSIC_SETTING__DURATION);
 		createEAttribute(musicSettingEClass, MUSIC_SETTING__POS);
+
+		expressionEClass = createEClass(EXPRESSION);
+		createEAttribute(expressionEClass, EXPRESSION__OPERATION);
+		createEAttribute(expressionEClass, EXPRESSION__VALUE);
+		createEReference(expressionEClass, EXPRESSION__LEFT);
+		createEReference(expressionEClass, EXPRESSION__RIGHT);
 
 		// Create enums
 		buttonTypeEEnum = createEEnum(BUTTON_TYPE);
@@ -678,6 +779,10 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Obtain other dependent packages
+		XMLTypePackage theXMLTypePackage = (XMLTypePackage) EPackage.Registry.INSTANCE
+				.getEPackage(XMLTypePackage.eNS_URI);
+
 		// Create type parameters
 
 		// Set bounds for type parameters
@@ -702,6 +807,9 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRobotModel_Conditions(), this.getCondition(), null, "conditions", null, 0, -1,
+				RobotModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRobotModel_Expressions(), this.getExpression(), null, "expressions", null, 0, -1,
 				RobotModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -741,6 +849,12 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMotorAction_MotorRight(), ecorePackage.getEInt(), "motorRight", null, 0, 1, MotorAction.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMotorAction_Right(), this.getExpression(), null, "right", null, 0, 1, MotorAction.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMotorAction_Left(), this.getExpression(), null, "left", null, 0, 1, MotorAction.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(soundActionEClass, SoundAction.class, "SoundAction", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -772,6 +886,20 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMusicSetting_Pos(), ecorePackage.getEInt(), "pos", null, 0, 1, MusicSetting.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getExpression_Operation(), ecorePackage.getEString(), "operation", null, 0, 1, Expression.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExpression_Value(), theXMLTypePackage.getAnySimpleType(), "value", null, 0, 1,
+				Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getExpression_Left(), this.getExpression(), null, "left", null, 0, 1, Expression.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExpression_Right(), this.getExpression(), null, "right", null, 0, 1, Expression.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(buttonTypeEEnum, ButtonType.class, "ButtonType");

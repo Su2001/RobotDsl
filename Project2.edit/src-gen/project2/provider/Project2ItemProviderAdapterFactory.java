@@ -303,6 +303,29 @@ public class Project2ItemProviderAdapterFactory extends Project2AdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link project2.Expression} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExpressionItemProvider expressionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link project2.Expression}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createExpressionAdapter() {
+		if (expressionItemProvider == null) {
+			expressionItemProvider = new ExpressionItemProvider(this);
+		}
+
+		return expressionItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -427,6 +450,8 @@ public class Project2ItemProviderAdapterFactory extends Project2AdapterFactory
 			lightActionItemProvider.dispose();
 		if (musicSettingItemProvider != null)
 			musicSettingItemProvider.dispose();
+		if (expressionItemProvider != null)
+			expressionItemProvider.dispose();
 	}
 
 }

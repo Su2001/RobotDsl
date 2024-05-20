@@ -77,6 +77,8 @@ public class Project2FactoryImpl extends EFactoryImpl implements Project2Factory
 			return createLightAction();
 		case Project2Package.MUSIC_SETTING:
 			return createMusicSetting();
+		case Project2Package.EXPRESSION:
+			return createExpression();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -228,6 +230,17 @@ public class Project2FactoryImpl extends EFactoryImpl implements Project2Factory
 	public MusicSetting createMusicSetting() {
 		MusicSettingImpl musicSetting = new MusicSettingImpl();
 		return musicSetting;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Expression createExpression() {
+		ExpressionImpl expression = new ExpressionImpl();
+		return expression;
 	}
 
 	/**

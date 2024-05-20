@@ -95,13 +95,22 @@ public interface Project2Package extends EPackage {
 	int ROBOT_MODEL__CONDITIONS = 2;
 
 	/**
+	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROBOT_MODEL__EXPRESSIONS = 3;
+
+	/**
 	 * The number of structural features of the '<em>Robot Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROBOT_MODEL_FEATURE_COUNT = 3;
+	int ROBOT_MODEL_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Robot Model</em>' class.
@@ -482,13 +491,31 @@ public interface Project2Package extends EPackage {
 	int MOTOR_ACTION__MOTOR_RIGHT = ACTION_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Right</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOTOR_ACTION__RIGHT = ACTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Left</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOTOR_ACTION__LEFT = ACTION_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Motor Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MOTOR_ACTION_FEATURE_COUNT = ACTION_FEATURE_COUNT + 2;
+	int MOTOR_ACTION_FEATURE_COUNT = ACTION_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Motor Action</em>' class.
@@ -674,6 +701,70 @@ public interface Project2Package extends EPackage {
 	int MUSIC_SETTING_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link project2.impl.ExpressionImpl <em>Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see project2.impl.ExpressionImpl
+	 * @see project2.impl.Project2PackageImpl#getExpression()
+	 * @generated
+	 */
+	int EXPRESSION = 13;
+
+	/**
+	 * The feature id for the '<em><b>Operation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSION__OPERATION = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSION__VALUE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Left</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSION__LEFT = 2;
+
+	/**
+	 * The feature id for the '<em><b>Right</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSION__RIGHT = 3;
+
+	/**
+	 * The number of structural features of the '<em>Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSION_FEATURE_COUNT = 4;
+
+	/**
+	 * The number of operations of the '<em>Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSION_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link project2.ButtonType <em>Button Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -681,7 +772,7 @@ public interface Project2Package extends EPackage {
 	 * @see project2.impl.Project2PackageImpl#getButtonType()
 	 * @generated
 	 */
-	int BUTTON_TYPE = 13;
+	int BUTTON_TYPE = 14;
 
 	/**
 	 * The meta object id for the '{@link project2.LightPos <em>Light Pos</em>}' enum.
@@ -691,7 +782,7 @@ public interface Project2Package extends EPackage {
 	 * @see project2.impl.Project2PackageImpl#getLightPos()
 	 * @generated
 	 */
-	int LIGHT_POS = 14;
+	int LIGHT_POS = 15;
 
 	/**
 	 * The meta object id for the '{@link project2.Duration <em>Duration</em>}' enum.
@@ -701,7 +792,7 @@ public interface Project2Package extends EPackage {
 	 * @see project2.impl.Project2PackageImpl#getDuration()
 	 * @generated
 	 */
-	int DURATION = 15;
+	int DURATION = 16;
 
 	/**
 	 * Returns the meta object for class '{@link project2.RobotModel <em>Robot Model</em>}'.
@@ -745,6 +836,17 @@ public interface Project2Package extends EPackage {
 	 * @generated
 	 */
 	EReference getRobotModel_Conditions();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link project2.RobotModel#getExpressions <em>Expressions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Expressions</em>'.
+	 * @see project2.RobotModel#getExpressions()
+	 * @see #getRobotModel()
+	 * @generated
+	 */
+	EReference getRobotModel_Expressions();
 
 	/**
 	 * Returns the meta object for class '{@link project2.Action <em>Action</em>}'.
@@ -915,6 +1017,28 @@ public interface Project2Package extends EPackage {
 	EAttribute getMotorAction_MotorRight();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link project2.MotorAction#getRight <em>Right</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Right</em>'.
+	 * @see project2.MotorAction#getRight()
+	 * @see #getMotorAction()
+	 * @generated
+	 */
+	EReference getMotorAction_Right();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link project2.MotorAction#getLeft <em>Left</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Left</em>'.
+	 * @see project2.MotorAction#getLeft()
+	 * @see #getMotorAction()
+	 * @generated
+	 */
+	EReference getMotorAction_Left();
+
+	/**
 	 * Returns the meta object for class '{@link project2.SoundAction <em>Sound Action</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1054,6 +1178,60 @@ public interface Project2Package extends EPackage {
 	EAttribute getMusicSetting_Pos();
 
 	/**
+	 * Returns the meta object for class '{@link project2.Expression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Expression</em>'.
+	 * @see project2.Expression
+	 * @generated
+	 */
+	EClass getExpression();
+
+	/**
+	 * Returns the meta object for the attribute '{@link project2.Expression#getOperation <em>Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Operation</em>'.
+	 * @see project2.Expression#getOperation()
+	 * @see #getExpression()
+	 * @generated
+	 */
+	EAttribute getExpression_Operation();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link project2.Expression#getLeft <em>Left</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Left</em>'.
+	 * @see project2.Expression#getLeft()
+	 * @see #getExpression()
+	 * @generated
+	 */
+	EReference getExpression_Left();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link project2.Expression#getRight <em>Right</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Right</em>'.
+	 * @see project2.Expression#getRight()
+	 * @see #getExpression()
+	 * @generated
+	 */
+	EReference getExpression_Right();
+
+	/**
+	 * Returns the meta object for the attribute '{@link project2.Expression#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see project2.Expression#getValue()
+	 * @see #getExpression()
+	 * @generated
+	 */
+	EAttribute getExpression_Value();
+
+	/**
 	 * Returns the meta object for enum '{@link project2.ButtonType <em>Button Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1139,6 +1317,14 @@ public interface Project2Package extends EPackage {
 		 * @generated
 		 */
 		EReference ROBOT_MODEL__CONDITIONS = eINSTANCE.getRobotModel_Conditions();
+
+		/**
+		 * The meta object literal for the '<em><b>Expressions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ROBOT_MODEL__EXPRESSIONS = eINSTANCE.getRobotModel_Expressions();
 
 		/**
 		 * The meta object literal for the '{@link project2.impl.ActionImpl <em>Action</em>}' class.
@@ -1285,6 +1471,22 @@ public interface Project2Package extends EPackage {
 		EAttribute MOTOR_ACTION__MOTOR_RIGHT = eINSTANCE.getMotorAction_MotorRight();
 
 		/**
+		 * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MOTOR_ACTION__RIGHT = eINSTANCE.getMotorAction_Right();
+
+		/**
+		 * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MOTOR_ACTION__LEFT = eINSTANCE.getMotorAction_Left();
+
+		/**
 		 * The meta object literal for the '{@link project2.impl.SoundActionImpl <em>Sound Action</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1395,6 +1597,48 @@ public interface Project2Package extends EPackage {
 		 * @generated
 		 */
 		EAttribute MUSIC_SETTING__POS = eINSTANCE.getMusicSetting_Pos();
+
+		/**
+		 * The meta object literal for the '{@link project2.impl.ExpressionImpl <em>Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see project2.impl.ExpressionImpl
+		 * @see project2.impl.Project2PackageImpl#getExpression()
+		 * @generated
+		 */
+		EClass EXPRESSION = eINSTANCE.getExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Operation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXPRESSION__OPERATION = eINSTANCE.getExpression_Operation();
+
+		/**
+		 * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXPRESSION__LEFT = eINSTANCE.getExpression_Left();
+
+		/**
+		 * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXPRESSION__RIGHT = eINSTANCE.getExpression_Right();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXPRESSION__VALUE = eINSTANCE.getExpression_Value();
 
 		/**
 		 * The meta object literal for the '{@link project2.ButtonType <em>Button Type</em>}' enum.

@@ -6,9 +6,65 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 RobotModel returns RobotModel:
 	{RobotModel}
-		((events+=Event  )|
+		((events+=Event)|
 		('Action:' '-' actions+=Action ('-' actions+=Action)*) |
-		('Condition:' '-'  conditions+=Condition ('-' conditions+=Condition)*) )*
+		('Condition:' '-'  conditions+=Condition ('-' conditions+=Condition)*) |
+		(expressions+=Expression) )*
+;
+
+Expression returns Expression:
+	Or | If
+;
+
+Or returns Expression:
+	And ({Expression.left=current} operation="||" right=And)*;
+	
+And returns Expression:
+	Equality ({Expression.left=current} operation="&&" right=Equality)*;
+	
+Equality returns Expression:
+	Comparison (
+		{Expression.left=current} operation=("=="|"!=")
+		right=Comparison)* ;
+
+Comparison returns Expression:
+	PlusOrMinus (
+		{Expression.left=current} operation=(">="|"<="|">"|"<")
+		right=PlusOrMinus)* ;
+
+If returns Expression:
+	{Expression}
+	operation='if' left=Expression right = Then 
+;
+
+Then returns Expression:
+	{Expression}
+	operation= 'then' left=Expression right = Else
+;
+
+Else returns Expression:
+	{Expression}
+	operation='else' left=Expression
+;
+
+// left associative	
+PlusOrMinus returns Expression:
+	MultOrDiv (
+		({Expression.left=current} operation=('+'| '-'))
+		right=MultOrDiv)* ;
+
+MultOrDiv returns Expression:
+	Primary 
+		({Expression.left=current} operation=('*'|'/')
+		right=Primary)* ;
+
+Primary returns Expression:
+	'(' Expression ')' |
+	{Expression} operation="!" left=Primary |
+	Atomic;
+	
+Atomic returns Expression:
+	{Expression} (value=INT | ('TRUE' | 'FALSE'))
 ;
 
 Event returns Event:
@@ -46,7 +102,6 @@ Tap returns Tap:
 	{Tap}
 	'Tap'
 	conditionname=EString
-
 ;
 
 Action returns Action:
@@ -56,8 +111,8 @@ MotorAction returns MotorAction:
 	{MotorAction}
 	'MotorAction'
 	actionname=EString
-		('motorLeft' motorLeft=EInt)
-		('motorRight' motorRight=EInt)
+		('motorLeft' (motorLeft=EInt))?
+		('motorRight' (motorRight=EInt))?
 ;
 
 SoundAction returns SoundAction:

@@ -1,0 +1,16 @@
+/.metadata/
+Project1/
+Tp6/
+Tp7
+ld.cookassistant.cookdsl.ide/
+ld.cookassistant.cookdsl.tests/
+ld.cookassistant.cookdsl.ui.tests/
+ld.cookassistant.cookdsl.ui/
+ld.cookassistant.cookdsl/
+ld.cookassistant/
+org.xtext.example.mydsl.ide/
+org.xtext.example.mydsl.tests/
+org.xtext.example.mydsl.ui.tests/
+org.xtext.example.mydsl.ui/
+org.xtext.example.mydsl/
+org.xtext.ld.expression.ide/
