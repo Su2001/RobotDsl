@@ -46,6 +46,7 @@
     </genClasses>
     <genClasses ecoreClass="project2.ecore#//Sensor">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//Sensor/sensorPos"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//Sensor/distance"/>
     </genClasses>
     <genClasses ecoreClass="project2.ecore#//Sound"/>
     <genClasses ecoreClass="project2.ecore#//Tap"/>

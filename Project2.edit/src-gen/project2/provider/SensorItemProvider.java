@@ -45,6 +45,7 @@ public class SensorItemProvider extends ConditionItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addSensorPosPropertyDescriptor(object);
+			addDistancePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -62,6 +63,22 @@ public class SensorItemProvider extends ConditionItemProvider {
 						getString("_UI_PropertyDescriptor_description", "_UI_Sensor_sensorPos_feature",
 								"_UI_Sensor_type"),
 						Project2Package.Literals.SENSOR__SENSOR_POS, true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Distance feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDistancePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Sensor_distance_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Sensor_distance_feature",
+								"_UI_Sensor_type"),
+						Project2Package.Literals.SENSOR__DISTANCE, true, false, false,
 						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
@@ -112,6 +129,7 @@ public class SensorItemProvider extends ConditionItemProvider {
 
 		switch (notification.getFeatureID(Sensor.class)) {
 		case Project2Package.SENSOR__SENSOR_POS:
+		case Project2Package.SENSOR__DISTANCE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

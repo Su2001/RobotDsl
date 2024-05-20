@@ -16,21 +16,10 @@ public class ExpressionsTypeProvider {
 		}
 		switch (e.getOperation()) {
 			// constants
-			case "-": 
-			case "/":
-			case "*": 
-			case "+": return intType;
+			case "+","*","-","/": return intType;
 			
-			case "||":
-			case "&&":
-			case ">":
-			case ">=":
-			case "<":
-			case "<=":
-			case "==":
-			case "!=": return boolType;
-			case "else":
-			case "then": return typeOf(e.getLeft());
+			case "!=","||","&&",">",">=","<","<=","==": return boolType;
+			case "then","else": return typeOf(e.getLeft());
 		}
 		if(e.getOperation().equals("if")) {
 			ExpressionsType left = typeOf(e.getLeft());

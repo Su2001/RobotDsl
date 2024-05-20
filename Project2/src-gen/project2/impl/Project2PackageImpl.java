@@ -390,6 +390,16 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 	 * @generated
 	 */
 	@Override
+	public EAttribute getSensor_Distance() {
+		return (EAttribute) sensorEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getSound() {
 		return soundEClass;
 	}
@@ -715,6 +725,7 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 
 		sensorEClass = createEClass(SENSOR);
 		createEAttribute(sensorEClass, SENSOR__SENSOR_POS);
+		createEAttribute(sensorEClass, SENSOR__DISTANCE);
 
 		soundEClass = createEClass(SOUND);
 
@@ -837,6 +848,8 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 
 		initEClass(sensorEClass, Sensor.class, "Sensor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSensor_SensorPos(), ecorePackage.getEInt(), "sensorPos", null, 1, 1, Sensor.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSensor_Distance(), ecorePackage.getEInt(), "distance", null, 0, 1, Sensor.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(soundEClass, Sound.class, "Sound", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

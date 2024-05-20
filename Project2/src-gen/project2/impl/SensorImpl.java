@@ -20,6 +20,7 @@ import project2.Sensor;
  * </p>
  * <ul>
  *   <li>{@link project2.impl.SensorImpl#getSensorPos <em>Sensor Pos</em>}</li>
+ *   <li>{@link project2.impl.SensorImpl#getDistance <em>Distance</em>}</li>
  * </ul>
  *
  * @generated
@@ -44,6 +45,26 @@ public class SensorImpl extends ConditionImpl implements Sensor {
 	 * @ordered
 	 */
 	protected int sensorPos = SENSOR_POS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDistance() <em>Distance</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDistance()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int DISTANCE_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getDistance() <em>Distance</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDistance()
+	 * @generated
+	 * @ordered
+	 */
+	protected int distance = DISTANCE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -94,10 +115,36 @@ public class SensorImpl extends ConditionImpl implements Sensor {
 	 * @generated
 	 */
 	@Override
+	public int getDistance() {
+		return distance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setDistance(int newDistance) {
+		int oldDistance = distance;
+		distance = newDistance;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Project2Package.SENSOR__DISTANCE, oldDistance,
+					distance));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Project2Package.SENSOR__SENSOR_POS:
 			return getSensorPos();
+		case Project2Package.SENSOR__DISTANCE:
+			return getDistance();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -112,6 +159,9 @@ public class SensorImpl extends ConditionImpl implements Sensor {
 		switch (featureID) {
 		case Project2Package.SENSOR__SENSOR_POS:
 			setSensorPos((Integer) newValue);
+			return;
+		case Project2Package.SENSOR__DISTANCE:
+			setDistance((Integer) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -128,6 +178,9 @@ public class SensorImpl extends ConditionImpl implements Sensor {
 		case Project2Package.SENSOR__SENSOR_POS:
 			setSensorPos(SENSOR_POS_EDEFAULT);
 			return;
+		case Project2Package.SENSOR__DISTANCE:
+			setDistance(DISTANCE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -142,6 +195,8 @@ public class SensorImpl extends ConditionImpl implements Sensor {
 		switch (featureID) {
 		case Project2Package.SENSOR__SENSOR_POS:
 			return sensorPos != SENSOR_POS_EDEFAULT;
+		case Project2Package.SENSOR__DISTANCE:
+			return distance != DISTANCE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -159,6 +214,8 @@ public class SensorImpl extends ConditionImpl implements Sensor {
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (sensorPos: ");
 		result.append(sensorPos);
+		result.append(", distance: ");
+		result.append(distance);
 		result.append(')');
 		return result.toString();
 	}
