@@ -692,10 +692,15 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cConditionKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cConditionAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final CrossReference cConditionConditionCrossReference_3_1_0 = (CrossReference)cConditionAssignment_3_1.eContents().get(0);
-		private final RuleCall cConditionConditionEStringParserRuleCall_3_1_0_1 = (RuleCall)cConditionConditionCrossReference_3_1_0.eContents().get(1);
+		private final Keyword cConditionsKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cConditionsAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final CrossReference cConditionsConditionCrossReference_3_1_0 = (CrossReference)cConditionsAssignment_3_1.eContents().get(0);
+		private final RuleCall cConditionsConditionEStringParserRuleCall_3_1_0_1 = (RuleCall)cConditionsConditionCrossReference_3_1_0.eContents().get(1);
+		private final Group cGroup_3_2 = (Group)cGroup_3.eContents().get(2);
+		private final Keyword cAndKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
+		private final Assignment cConditionsAssignment_3_2_1 = (Assignment)cGroup_3_2.eContents().get(1);
+		private final CrossReference cConditionsConditionCrossReference_3_2_1_0 = (CrossReference)cConditionsAssignment_3_2_1.eContents().get(0);
+		private final RuleCall cConditionsConditionEStringParserRuleCall_3_2_1_0_1 = (RuleCall)cConditionsConditionCrossReference_3_2_1_0.eContents().get(1);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cActionsKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Assignment cActionsAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
@@ -711,7 +716,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//    {Event}
 		//    'Event'
 		//    name=EString
-		//        ('condition:' condition=[Condition|EString] )?
+		//        ('conditions:' conditions+=[Condition|EString] ('and' conditions+=[Condition|EString])* )?
 		//        ('actions:'  actions+=[Action|EString] ( "," actions+=[Action|EString])*  )?
 		//    ;
 		@Override public ParserRule getRule() { return rule; }
@@ -719,7 +724,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//{Event}
 		//'Event'
 		//name=EString
-		//    ('condition:' condition=[Condition|EString] )?
+		//    ('conditions:' conditions+=[Condition|EString] ('and' conditions+=[Condition|EString])* )?
 		//    ('actions:'  actions+=[Action|EString] ( "," actions+=[Action|EString])*  )?
 		public Group getGroup() { return cGroup; }
 		
@@ -735,20 +740,35 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//EString
 		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
 		
-		//('condition:' condition=[Condition|EString] )?
+		//('conditions:' conditions+=[Condition|EString] ('and' conditions+=[Condition|EString])* )?
 		public Group getGroup_3() { return cGroup_3; }
 		
-		//'condition:'
-		public Keyword getConditionKeyword_3_0() { return cConditionKeyword_3_0; }
+		//'conditions:'
+		public Keyword getConditionsKeyword_3_0() { return cConditionsKeyword_3_0; }
 		
-		//condition=[Condition|EString]
-		public Assignment getConditionAssignment_3_1() { return cConditionAssignment_3_1; }
+		//conditions+=[Condition|EString]
+		public Assignment getConditionsAssignment_3_1() { return cConditionsAssignment_3_1; }
 		
 		//[Condition|EString]
-		public CrossReference getConditionConditionCrossReference_3_1_0() { return cConditionConditionCrossReference_3_1_0; }
+		public CrossReference getConditionsConditionCrossReference_3_1_0() { return cConditionsConditionCrossReference_3_1_0; }
 		
 		//EString
-		public RuleCall getConditionConditionEStringParserRuleCall_3_1_0_1() { return cConditionConditionEStringParserRuleCall_3_1_0_1; }
+		public RuleCall getConditionsConditionEStringParserRuleCall_3_1_0_1() { return cConditionsConditionEStringParserRuleCall_3_1_0_1; }
+		
+		//('and' conditions+=[Condition|EString])*
+		public Group getGroup_3_2() { return cGroup_3_2; }
+		
+		//'and'
+		public Keyword getAndKeyword_3_2_0() { return cAndKeyword_3_2_0; }
+		
+		//conditions+=[Condition|EString]
+		public Assignment getConditionsAssignment_3_2_1() { return cConditionsAssignment_3_2_1; }
+		
+		//[Condition|EString]
+		public CrossReference getConditionsConditionCrossReference_3_2_1_0() { return cConditionsConditionCrossReference_3_2_1_0; }
+		
+		//EString
+		public RuleCall getConditionsConditionEStringParserRuleCall_3_2_1_0_1() { return cConditionsConditionEStringParserRuleCall_3_2_1_0_1; }
 		
 		//('actions:'  actions+=[Action|EString] ( "," actions+=[Action|EString])*  )?
 		public Group getGroup_4() { return cGroup_4; }
@@ -895,19 +915,24 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Keyword cSensorPosKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cSensorPosAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cSensorPosEIntParserRuleCall_4_0 = (RuleCall)cSensorPosAssignment_4.eContents().get(0);
+		private final Keyword cDistanceKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cDistanceAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cDistanceDistanceEnumRuleCall_6_0 = (RuleCall)cDistanceAssignment_6.eContents().get(0);
 		
 		//Sensor returns Sensor:
 		//    {Sensor}
 		//    'Sensor'
 		//    conditionname=EString
-		//        'sensorPos' sensorPos=EInt
+		//    'sensorPos' sensorPos=EInt
+		//    'distance' distance=Distance
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{Sensor}
 		//'Sensor'
 		//conditionname=EString
-		//    'sensorPos' sensorPos=EInt
+		//'sensorPos' sensorPos=EInt
+		//'distance' distance=Distance
 		public Group getGroup() { return cGroup; }
 		
 		//{Sensor}
@@ -930,6 +955,15 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		
 		//EInt
 		public RuleCall getSensorPosEIntParserRuleCall_4_0() { return cSensorPosEIntParserRuleCall_4_0; }
+		
+		//'distance'
+		public Keyword getDistanceKeyword_5() { return cDistanceKeyword_5; }
+		
+		//distance=Distance
+		public Assignment getDistanceAssignment_6() { return cDistanceAssignment_6; }
+		
+		//Distance
+		public RuleCall getDistanceDistanceEnumRuleCall_6_0() { return cDistanceDistanceEnumRuleCall_6_0; }
 	}
 	public class TapElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl1.MyDsl.Tap");
@@ -1223,54 +1257,60 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	public class MusicSettingElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl1.MyDsl.MusicSetting");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNoteAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNoteEIntParserRuleCall_1_0 = (RuleCall)cNoteAssignment_1.eContents().get(0);
-		private final Keyword cCommaKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cDurationAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cDurationDurationEnumRuleCall_3_0 = (RuleCall)cDurationAssignment_3.eContents().get(0);
-		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cPosAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cPosEIntParserRuleCall_5_0 = (RuleCall)cPosAssignment_5.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Action cMusicSettingAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNoteAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNoteEIntParserRuleCall_2_0 = (RuleCall)cNoteAssignment_2.eContents().get(0);
+		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cDurationAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cDurationDurationEnumRuleCall_4_0 = (RuleCall)cDurationAssignment_4.eContents().get(0);
+		private final Keyword cCommaKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cPosAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cPosEIntParserRuleCall_6_0 = (RuleCall)cPosAssignment_6.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//MusicSetting returns MusicSetting:
+		//    {MusicSetting}
 		//    '(' note=EInt ',' duration=Duration ',' pos=EInt')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
+		//{MusicSetting}
 		//'(' note=EInt ',' duration=Duration ',' pos=EInt')'
 		public Group getGroup() { return cGroup; }
 		
+		//{MusicSetting}
+		public Action getMusicSettingAction_0() { return cMusicSettingAction_0; }
+		
 		//'('
-		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
 		//note=EInt
-		public Assignment getNoteAssignment_1() { return cNoteAssignment_1; }
+		public Assignment getNoteAssignment_2() { return cNoteAssignment_2; }
 		
 		//EInt
-		public RuleCall getNoteEIntParserRuleCall_1_0() { return cNoteEIntParserRuleCall_1_0; }
+		public RuleCall getNoteEIntParserRuleCall_2_0() { return cNoteEIntParserRuleCall_2_0; }
 		
 		//','
-		public Keyword getCommaKeyword_2() { return cCommaKeyword_2; }
+		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
 		
 		//duration=Duration
-		public Assignment getDurationAssignment_3() { return cDurationAssignment_3; }
+		public Assignment getDurationAssignment_4() { return cDurationAssignment_4; }
 		
 		//Duration
-		public RuleCall getDurationDurationEnumRuleCall_3_0() { return cDurationDurationEnumRuleCall_3_0; }
+		public RuleCall getDurationDurationEnumRuleCall_4_0() { return cDurationDurationEnumRuleCall_4_0; }
 		
 		//','
-		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
+		public Keyword getCommaKeyword_5() { return cCommaKeyword_5; }
 		
 		//pos=EInt
-		public Assignment getPosAssignment_5() { return cPosAssignment_5; }
+		public Assignment getPosAssignment_6() { return cPosAssignment_6; }
 		
 		//EInt
-		public RuleCall getPosEIntParserRuleCall_5_0() { return cPosEIntParserRuleCall_5_0; }
+		public RuleCall getPosEIntParserRuleCall_6_0() { return cPosEIntParserRuleCall_6_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_6() { return cRightParenthesisKeyword_6; }
+		public Keyword getRightParenthesisKeyword_7() { return cRightParenthesisKeyword_7; }
 	}
 	public class EIntElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl1.MyDsl.EInt");
@@ -1375,6 +1415,34 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//'BOT'
 		public Keyword getBOTBOTKeyword_1_0() { return cBOTBOTKeyword_1_0; }
 	}
+	public class DistanceElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl1.MyDsl.Distance");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cFAREnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cFARFARKeyword_0_0 = (Keyword)cFAREnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cCLOSEEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cCLOSECLOSEKeyword_1_0 = (Keyword)cCLOSEEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum Distance returns Distance:
+		//    FAR = 'FAR' | CLOSE = 'CLOSE'
+		//;
+		public EnumRule getRule() { return rule; }
+		
+		//FAR = 'FAR' | CLOSE = 'CLOSE'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//FAR = 'FAR'
+		public EnumLiteralDeclaration getFAREnumLiteralDeclaration_0() { return cFAREnumLiteralDeclaration_0; }
+		
+		//'FAR'
+		public Keyword getFARFARKeyword_0_0() { return cFARFARKeyword_0_0; }
+		
+		//CLOSE = 'CLOSE'
+		public EnumLiteralDeclaration getCLOSEEnumLiteralDeclaration_1() { return cCLOSEEnumLiteralDeclaration_1; }
+		
+		//'CLOSE'
+		public Keyword getCLOSECLOSEKeyword_1_0() { return cCLOSECLOSEKeyword_1_0; }
+	}
 	public class ButtonTypeElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl1.MyDsl.ButtonType");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -1455,6 +1523,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	private final EStringElements pEString;
 	private final DurationElements eDuration;
 	private final LightPosElements eLightPos;
+	private final DistanceElements eDistance;
 	private final ButtonTypeElements eButtonType;
 	
 	private final Grammar grammar;
@@ -1494,6 +1563,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		this.pEString = new EStringElements();
 		this.eDuration = new DurationElements();
 		this.eLightPos = new LightPosElements();
+		this.eDistance = new DistanceElements();
 		this.eButtonType = new ButtonTypeElements();
 	}
 	
@@ -1682,7 +1752,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//    {Event}
 	//    'Event'
 	//    name=EString
-	//        ('condition:' condition=[Condition|EString] )?
+	//        ('conditions:' conditions+=[Condition|EString] ('and' conditions+=[Condition|EString])* )?
 	//        ('actions:'  actions+=[Action|EString] ( "," actions+=[Action|EString])*  )?
 	//    ;
 	public EventElements getEventAccess() {
@@ -1734,7 +1804,8 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//    {Sensor}
 	//    'Sensor'
 	//    conditionname=EString
-	//        'sensorPos' sensorPos=EInt
+	//    'sensorPos' sensorPos=EInt
+	//    'distance' distance=Distance
 	//;
 	public SensorElements getSensorAccess() {
 		return pSensor;
@@ -1814,6 +1885,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	}
 	
 	//MusicSetting returns MusicSetting:
+	//    {MusicSetting}
 	//    '(' note=EInt ',' duration=Duration ',' pos=EInt')'
 	//;
 	public MusicSettingElements getMusicSettingAccess() {
@@ -1864,6 +1936,17 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	
 	public EnumRule getLightPosRule() {
 		return getLightPosAccess().getRule();
+	}
+	
+	//enum Distance returns Distance:
+	//    FAR = 'FAR' | CLOSE = 'CLOSE'
+	//;
+	public DistanceElements getDistanceAccess() {
+		return eDistance;
+	}
+	
+	public EnumRule getDistanceRule() {
+		return getDistanceAccess().getRule();
 	}
 	
 	//enum ButtonType returns ButtonType:

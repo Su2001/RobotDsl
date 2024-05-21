@@ -3,8 +3,8 @@
  */
 package org.xtext.example.mydsl1.generator;
 
+import com.google.common.base.Objects;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -13,11 +13,12 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import project2.Action;
 import project2.Button;
+import project2.ButtonType;
 import project2.Condition;
+import project2.Distance;
 import project2.Duration;
 import project2.Event;
 import project2.LightAction;
@@ -25,6 +26,7 @@ import project2.LightPos;
 import project2.MotorAction;
 import project2.MusicSetting;
 import project2.RobotModel;
+import project2.Sensor;
 import project2.Sound;
 import project2.SoundAction;
 import project2.Tap;
@@ -52,16 +54,16 @@ public class MyDslGenerator extends AbstractGenerator {
       ArrayList<Event> buttonlist = new ArrayList<Event>();
       EList<Event> _events = model.getEvents();
       for (final Event a : _events) {
-        Condition _condition = a.getCondition();
-        if ((_condition instanceof Tap)) {
+        Condition _get = a.getConditions().get(0);
+        if ((_get instanceof Tap)) {
           taplist.add(a);
         } else {
-          Condition _condition_1 = a.getCondition();
-          if ((_condition_1 instanceof Sound)) {
+          Condition _get_1 = a.getConditions().get(0);
+          if ((_get_1 instanceof Sound)) {
             soundlist.add(a);
           } else {
-            Condition _condition_2 = a.getCondition();
-            if ((_condition_2 instanceof Button)) {
+            Condition _get_2 = a.getConditions().get(0);
+            if ((_get_2 instanceof Button)) {
               buttonlist.add(a);
             } else {
               proxlist.add(a);
@@ -196,8 +198,21 @@ public class MyDslGenerator extends AbstractGenerator {
         if (_greaterThan_2) {
           _builder.append("onevent prox");
           _builder.newLine();
-          _builder.append("\t");
-          _builder.newLine();
+          {
+            for(final Event prox : proxlist) {
+              String _processConditionSensor = this.processConditionSensor(prox.getConditions(), prox.getActions());
+              _builder.append(_processConditionSensor);
+              _builder.newLineIfNotEmpty();
+              _builder.append("\t");
+              _builder.append("emit pair_run ");
+              int _plusPlus_2 = counter++;
+              _builder.append(_plusPlus_2, "\t");
+              _builder.newLineIfNotEmpty();
+              _builder.append("\t");
+              _builder.append("end");
+              _builder.newLine();
+            }
+          }
         }
       }
       {
@@ -206,8 +221,21 @@ public class MyDslGenerator extends AbstractGenerator {
         if (_greaterThan_3) {
           _builder.append("onevent buttons");
           _builder.newLine();
-          _builder.append("\t");
-          _builder.newLine();
+          {
+            for(final Event but : buttonlist) {
+              String _processConditionButton = this.processConditionButton(but.getConditions(), but.getActions());
+              _builder.append(_processConditionButton);
+              _builder.newLineIfNotEmpty();
+              _builder.append("\t");
+              _builder.append("emit pair_run ");
+              int _plusPlus_3 = counter++;
+              _builder.append(_plusPlus_3, "\t");
+              _builder.newLineIfNotEmpty();
+              _builder.append("\t");
+              _builder.append("end");
+              _builder.newLine();
+            }
+          }
         }
       }
       _xblockexpression = _builder;
@@ -215,9 +243,141 @@ public class MyDslGenerator extends AbstractGenerator {
     return _xblockexpression;
   }
 
+  public String processConditionSensor(final List<Condition> lc, final List<Action> la) {
+    int count = lc.size();
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\t");
+    _builder.append("when ");
+    {
+      for(final Condition c : lc) {
+        {
+          if ((c instanceof Sensor)) {
+            {
+              int _sensorPos = ((Sensor)c).getSensorPos();
+              boolean _lessEqualsThan = (_sensorPos <= 7);
+              if (_lessEqualsThan) {
+                _builder.append("prox.horizontal[");
+                int _sensorPos_1 = ((Sensor)c).getSensorPos();
+                int _minus = (_sensorPos_1 - 1);
+                _builder.append(_minus, "\t");
+                _builder.append("] ");
+                {
+                  Distance _distance = ((Sensor)c).getDistance();
+                  boolean _equals = Objects.equal(_distance, Integer.valueOf(0));
+                  if (_equals) {
+                    _builder.append(" <= 1000 ");
+                  } else {
+                    _builder.append(" >= 2000 ");
+                  }
+                }
+              } else {
+                _builder.append("prox.ground.delta[");
+                int _sensorPos_2 = ((Sensor)c).getSensorPos();
+                int _modulo = (_sensorPos_2 % 8);
+                _builder.append(_modulo, "\t");
+                _builder.append("]\t");
+                {
+                  Distance _distance_1 = ((Sensor)c).getDistance();
+                  boolean _equals_1 = Objects.equal(_distance_1, Integer.valueOf(0));
+                  if (_equals_1) {
+                    _builder.append("<= 400 ");
+                  } else {
+                    _builder.append(">= 450\t");
+                  }
+                }
+              }
+            }
+          }
+        }
+        {
+          int _minusMinus = count--;
+          boolean _greaterThan = (_minusMinus > 1);
+          if (_greaterThan) {
+            _builder.append(" and ");
+          }
+        }
+      }
+    }
+    _builder.append(" do");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t\t");
+    {
+      for(final Action a : la) {
+        String _processAction = this.processAction(a);
+        _builder.append(_processAction, "\t\t\t");
+        _builder.append(" ");
+      }
+    }
+    _builder.newLineIfNotEmpty();
+    return _builder.toString();
+  }
+
+  public String processConditionButton(final List<Condition> lc, final List<Action> la) {
+    int count = lc.size();
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\t");
+    _builder.append("when ");
+    {
+      for(final Condition c : lc) {
+        {
+          if ((c instanceof Button)) {
+            _builder.append("button.");
+            {
+              ButtonType _button = ((Button)c).getButton();
+              boolean _equals = Objects.equal(_button, Integer.valueOf(0));
+              if (_equals) {
+                _builder.append("forward ");
+              } else {
+                ButtonType _button_1 = ((Button)c).getButton();
+                boolean _equals_1 = Objects.equal(_button_1, Integer.valueOf(1));
+                if (_equals_1) {
+                  _builder.append("backward ");
+                } else {
+                  ButtonType _button_2 = ((Button)c).getButton();
+                  boolean _equals_2 = Objects.equal(_button_2, Integer.valueOf(2));
+                  if (_equals_2) {
+                    _builder.append("left ");
+                  } else {
+                    ButtonType _button_3 = ((Button)c).getButton();
+                    boolean _equals_3 = Objects.equal(_button_3, Integer.valueOf(3));
+                    if (_equals_3) {
+                      _builder.append("right ");
+                    } else {
+                      _builder.append("center ");
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        _builder.append("== 1");
+        {
+          int _minusMinus = count--;
+          boolean _greaterThan = (_minusMinus > 1);
+          if (_greaterThan) {
+            _builder.append(" and ");
+          }
+        }
+      }
+    }
+    _builder.append(" do");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t\t");
+    {
+      for(final Action a : la) {
+        String _processAction = this.processAction(a);
+        _builder.append(_processAction, "\t\t\t");
+        _builder.append(" ");
+      }
+    }
+    _builder.newLineIfNotEmpty();
+    return _builder.toString();
+  }
+
   public String processAction(final Action a) {
-    List<Integer> note = Collections.<Integer>unmodifiableList(CollectionLiterals.<Integer>newArrayList(Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0)));
-    List<Integer> duration = Collections.<Integer>unmodifiableList(CollectionLiterals.<Integer>newArrayList(Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0)));
+    final int[] note = { 0, 0, 0, 0, 0, 0 };
+    final int[] duration = { 0, 0, 0, 0, 0, 0 };
     int pos = 1;
     if ((a instanceof SoundAction)) {
       EList<MusicSetting> _musicsettings = ((SoundAction)a).getMusicsettings();
@@ -228,32 +388,32 @@ public class MyDslGenerator extends AbstractGenerator {
           if (_equals) {
             int _pos = m.getPos();
             int _minus = (_pos - 1);
-            note.set(_minus, Integer.valueOf(262));
+            note[_minus] = 262;
           } else {
             int _note_1 = m.getNote();
             boolean _equals_1 = (_note_1 == 2);
             if (_equals_1) {
               int _pos_1 = m.getPos();
               int _minus_1 = (_pos_1 - 1);
-              note.set(_minus_1, Integer.valueOf(311));
+              note[_minus_1] = 311;
             } else {
               int _note_2 = m.getNote();
               boolean _equals_2 = (_note_2 == 3);
               if (_equals_2) {
                 int _pos_2 = m.getPos();
                 int _minus_2 = (_pos_2 - 1);
-                note.set(_minus_2, Integer.valueOf(370));
+                note[_minus_2] = 370;
               } else {
                 int _note_3 = m.getNote();
                 boolean _equals_3 = (_note_3 == 4);
                 if (_equals_3) {
                   int _pos_3 = m.getPos();
                   int _minus_3 = (_pos_3 - 1);
-                  note.set(_minus_3, Integer.valueOf(440));
+                  note[_minus_3] = 440;
                 } else {
                   int _pos_4 = m.getPos();
                   int _minus_4 = (_pos_4 - 1);
-                  note.set(_minus_4, Integer.valueOf(524));
+                  note[_minus_4] = 524;
                 }
               }
             }
@@ -264,23 +424,23 @@ public class MyDslGenerator extends AbstractGenerator {
               case MEDIUM:
                 int _pos_5 = m.getPos();
                 int _minus_5 = (_pos_5 - 1);
-                duration.set(_minus_5, Integer.valueOf(7));
+                duration[_minus_5] = 7;
                 break;
               case LONG:
                 int _pos_6 = m.getPos();
                 int _minus_6 = (_pos_6 - 1);
-                duration.set(_minus_6, Integer.valueOf(14));
+                duration[_minus_6] = 14;
                 break;
               default:
                 int _pos_7 = m.getPos();
                 int _minus_7 = (_pos_7 - 1);
-                duration.set(_minus_7, Integer.valueOf(0));
+                duration[_minus_7] = 0;
                 break;
             }
           } else {
             int _pos_7 = m.getPos();
             int _minus_7 = (_pos_7 - 1);
-            duration.set(_minus_7, Integer.valueOf(0));
+            duration[_minus_7] = 0;
           }
         }
       }
@@ -303,53 +463,49 @@ public class MyDslGenerator extends AbstractGenerator {
       if ((a instanceof SoundAction)) {
         _builder.newLineIfNotEmpty();
         _builder.append("call math.copy(notes[0:5], [");
-        Integer _get = note.get(0);
+        int _get = note[0];
         _builder.append(_get);
         _builder.append(", ");
-        Integer _get_1 = note.get(1);
+        int _get_1 = note[1];
         _builder.append(_get_1);
         _builder.append(", ");
-        Integer _get_2 = note.get(2);
+        int _get_2 = note[2];
         _builder.append(_get_2);
         _builder.append(", ");
-        Integer _get_3 = note.get(3);
+        int _get_3 = note[3];
         _builder.append(_get_3);
         _builder.append(", ");
-        Integer _get_4 = note.get(4);
+        int _get_4 = note[4];
         _builder.append(_get_4);
         _builder.append(", ");
-        Integer _get_5 = note.get(5);
+        int _get_5 = note[5];
         _builder.append(_get_5);
         _builder.append("])");
         _builder.newLineIfNotEmpty();
-        _builder.append("\t");
         _builder.append("call math.copy(durations[0:5], [");
-        Integer _get_6 = duration.get(0);
-        _builder.append(_get_6, "\t");
+        int _get_6 = duration[0];
+        _builder.append(_get_6);
         _builder.append(", ");
-        Integer _get_7 = duration.get(1);
-        _builder.append(_get_7, "\t");
+        int _get_7 = duration[1];
+        _builder.append(_get_7);
         _builder.append(", ");
-        Integer _get_8 = duration.get(2);
-        _builder.append(_get_8, "\t");
+        int _get_8 = duration[2];
+        _builder.append(_get_8);
         _builder.append(", ");
-        Integer _get_9 = duration.get(3);
-        _builder.append(_get_9, "\t");
+        int _get_9 = duration[3];
+        _builder.append(_get_9);
         _builder.append(", ");
-        Integer _get_10 = duration.get(4);
-        _builder.append(_get_10, "\t");
+        int _get_10 = duration[4];
+        _builder.append(_get_10);
         _builder.append(", ");
-        Integer _get_11 = duration.get(5);
-        _builder.append(_get_11, "\t");
+        int _get_11 = duration[5];
+        _builder.append(_get_11);
         _builder.append("])");
         _builder.newLineIfNotEmpty();
-        _builder.append("\t");
         _builder.append("note_index = 1");
         _builder.newLine();
-        _builder.append("\t");
         _builder.append("note_count = 6");
         _builder.newLine();
-        _builder.append("\t");
         _builder.append("call sound.freq(notes[0], durations[0])");
         _builder.newLine();
       }

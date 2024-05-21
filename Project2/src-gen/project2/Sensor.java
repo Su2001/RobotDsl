@@ -44,24 +44,27 @@ public interface Sensor extends Condition {
 
 	/**
 	 * Returns the value of the '<em><b>Distance</b></em>' attribute.
+	 * The literals are from the enumeration {@link project2.Distance}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Distance</em>' attribute.
-	 * @see #setDistance(int)
+	 * @see project2.Distance
+	 * @see #setDistance(Distance)
 	 * @see project2.Project2Package#getSensor_Distance()
 	 * @model
 	 * @generated
 	 */
-	int getDistance();
+	Distance getDistance();
 
 	/**
 	 * Sets the value of the '{@link project2.Sensor#getDistance <em>Distance</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Distance</em>' attribute.
+	 * @see project2.Distance
 	 * @see #getDistance()
 	 * @generated
 	 */
-	void setDistance(int value);
+	void setDistance(Distance value);
 
 } // Sensor

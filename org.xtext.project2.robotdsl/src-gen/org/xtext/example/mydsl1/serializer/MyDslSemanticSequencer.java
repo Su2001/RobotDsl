@@ -216,7 +216,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Event returns Event
 	 *
 	 * Constraint:
-	 *     (name=EString condition=[Condition|EString]? (actions+=[Action|EString] actions+=[Action|EString]*)?)
+	 *     (name=EString (conditions+=[Condition|EString] conditions+=[Condition|EString]*)? (actions+=[Action|EString] actions+=[Action|EString]*)?)
 	 * </pre>
 	 */
 	protected void sequence_Event(ISerializationContext context, Event semanticObject) {
@@ -299,9 +299,9 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, Project2Package.Literals.MUSIC_SETTING__POS));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getMusicSettingAccess().getNoteEIntParserRuleCall_1_0(), semanticObject.getNote());
-		feeder.accept(grammarAccess.getMusicSettingAccess().getDurationDurationEnumRuleCall_3_0(), semanticObject.getDuration());
-		feeder.accept(grammarAccess.getMusicSettingAccess().getPosEIntParserRuleCall_5_0(), semanticObject.getPos());
+		feeder.accept(grammarAccess.getMusicSettingAccess().getNoteEIntParserRuleCall_2_0(), semanticObject.getNote());
+		feeder.accept(grammarAccess.getMusicSettingAccess().getDurationDurationEnumRuleCall_4_0(), semanticObject.getDuration());
+		feeder.accept(grammarAccess.getMusicSettingAccess().getPosEIntParserRuleCall_6_0(), semanticObject.getPos());
 		feeder.finish();
 	}
 	
@@ -327,7 +327,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Sensor returns Sensor
 	 *
 	 * Constraint:
-	 *     (conditionname=EString sensorPos=EInt)
+	 *     (conditionname=EString sensorPos=EInt distance=Distance)
 	 * </pre>
 	 */
 	protected void sequence_Sensor(ISerializationContext context, Sensor semanticObject) {
@@ -336,10 +336,13 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, Project2Package.Literals.CONDITION__CONDITIONNAME));
 			if (transientValues.isValueTransient(semanticObject, Project2Package.Literals.SENSOR__SENSOR_POS) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, Project2Package.Literals.SENSOR__SENSOR_POS));
+			if (transientValues.isValueTransient(semanticObject, Project2Package.Literals.SENSOR__DISTANCE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, Project2Package.Literals.SENSOR__DISTANCE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getSensorAccess().getConditionnameEStringParserRuleCall_2_0(), semanticObject.getConditionname());
 		feeder.accept(grammarAccess.getSensorAccess().getSensorPosEIntParserRuleCall_4_0(), semanticObject.getSensorPos());
+		feeder.accept(grammarAccess.getSensorAccess().getDistanceDistanceEnumRuleCall_6_0(), semanticObject.getDistance());
 		feeder.finish();
 	}
 	

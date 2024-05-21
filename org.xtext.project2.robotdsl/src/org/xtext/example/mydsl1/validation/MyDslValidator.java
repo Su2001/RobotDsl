@@ -13,13 +13,18 @@ import org.xtext.example.typing.ExpressionsType;
 import org.xtext.example.typing.ExpressionsTypeProvider;
 
 import project2.Action;
+import project2.Button;
+import project2.Condition;
 import project2.Event;
 import project2.Expression;
 import project2.LightAction;
 import project2.MotorAction;
 import project2.MusicSetting;
 import project2.Project2Package;
+import project2.Sensor;
+import project2.Sound;
 import project2.SoundAction;
+import project2.Tap;
 
 /**
  * This class contains custom validation rules. 
@@ -41,7 +46,7 @@ public class MyDslValidator extends AbstractMyDslValidator {
 				pos = 1;
 			}
 			if(flags[pos]) {
-				error("cant add two same type",
+				error("cant add two same action type",
 						event,
 						Project2Package.eINSTANCE.getEvent_Actions(),
 						SAME_ACTION_TYPE);
@@ -70,6 +75,54 @@ public class MyDslValidator extends AbstractMyDslValidator {
 					Project2Package.eINSTANCE.getMotorAction_MotorRight(),
 					INVALID_SPEED);
 		}
+		
+	}
+	
+	public static final String INVALID_SENSOR_POS = "the sensor position is invalid";
+	
+	@Check
+	public void checkSensor(Sensor s) {
+		int max = 9,
+			min = 1;
+		
+		if(s.getSensorPos() < min || s.getSensorPos() > max) {
+			error("the sensor position can only between " + min +" to " + max,
+					s,
+					Project2Package.eINSTANCE.getSensor_SensorPos(),
+					INVALID_SENSOR_POS);
+		}
+	}
+	
+	public static final String INVALID_CONDITION = "the contidion cant ";
+	
+	@Check
+	public void checkCondition(Event e) {
+		if(e.getConditions().size()>1) {
+			if( (e.getConditions().get(0) instanceof Tap || e.getConditions().get(0) instanceof Sound)) {
+				error("this condition can only be singular",
+						e,
+						Project2Package.eINSTANCE.getEvent_Conditions(),
+						INVALID_CONDITION);
+			}else {
+				Condition c = e.getConditions().get(0);
+				for(int i = 1; i < e.getConditions().size(); i++) {
+					if(c instanceof Button && !(e.getConditions().get(i) instanceof Button)) {
+						error("this condition can only assing with same type of condition",
+								e,
+								Project2Package.eINSTANCE.getEvent_Conditions(),
+								INVALID_CONDITION);
+					}else if(c instanceof Sensor &&!(e.getConditions().get(i) instanceof Sensor)) {
+						error("this condition can only assing with same type of condition",
+								e,
+								Project2Package.eINSTANCE.getEvent_Conditions(),
+								INVALID_CONDITION);
+					}
+				}
+			}	
+		}
+		
+		
+		
 		
 	}
 	

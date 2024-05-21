@@ -15,7 +15,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="actionname" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Event" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Condition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conditions" upperBound="-1"
+        eType="#//Condition"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
         eType="#//Action"/>
   </eClassifiers>
@@ -29,7 +30,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Sensor" eSuperTypes="#//Condition">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sensorPos" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" eType="#//Distance"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Sound" eSuperTypes="#//Condition"/>
   <eClassifiers xsi:type="ecore:EClass" name="Tap" eSuperTypes="#//Condition"/>
@@ -82,5 +83,9 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Distance">
+    <eLiterals name="CLOSE"/>
+    <eLiterals name="FAR" value="1"/>
   </eClassifiers>
 </ecore:EPackage>

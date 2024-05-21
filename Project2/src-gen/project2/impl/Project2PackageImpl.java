@@ -15,6 +15,7 @@ import project2.Action;
 import project2.Button;
 import project2.ButtonType;
 import project2.Condition;
+import project2.Distance;
 import project2.Duration;
 import project2.Event;
 import project2.Expression;
@@ -156,6 +157,13 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 	 * @generated
 	 */
 	private EEnum durationEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum distanceEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -310,7 +318,7 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 	 * @generated
 	 */
 	@Override
-	public EReference getEvent_Condition() {
+	public EReference getEvent_Conditions() {
 		return (EReference) eventEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -680,6 +688,16 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 	 * @generated
 	 */
 	@Override
+	public EEnum getDistance() {
+		return distanceEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Project2Factory getProject2Factory() {
 		return (Project2Factory) getEFactoryInstance();
 	}
@@ -714,7 +732,7 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 		createEAttribute(actionEClass, ACTION__ACTIONNAME);
 
 		eventEClass = createEClass(EVENT);
-		createEReference(eventEClass, EVENT__CONDITION);
+		createEReference(eventEClass, EVENT__CONDITIONS);
 		createEReference(eventEClass, EVENT__ACTIONS);
 
 		conditionEClass = createEClass(CONDITION);
@@ -764,6 +782,7 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 		buttonTypeEEnum = createEEnum(BUTTON_TYPE);
 		lightPosEEnum = createEEnum(LIGHT_POS);
 		durationEEnum = createEEnum(DURATION);
+		distanceEEnum = createEEnum(DISTANCE);
 	}
 
 	/**
@@ -829,7 +848,7 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEvent_Condition(), this.getCondition(), null, "condition", null, 0, 1, Event.class,
+		initEReference(getEvent_Conditions(), this.getCondition(), null, "conditions", null, 0, -1, Event.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEvent_Actions(), this.getAction(), null, "actions", null, 0, -1, Event.class, !IS_TRANSIENT,
@@ -849,8 +868,8 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 		initEClass(sensorEClass, Sensor.class, "Sensor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSensor_SensorPos(), ecorePackage.getEInt(), "sensorPos", null, 1, 1, Sensor.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSensor_Distance(), ecorePackage.getEInt(), "distance", null, 0, 1, Sensor.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSensor_Distance(), this.getDistance(), "distance", null, 0, 1, Sensor.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(soundEClass, Sound.class, "Sound", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -930,6 +949,10 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 		addEEnumLiteral(durationEEnum, Duration.NONE);
 		addEEnumLiteral(durationEEnum, Duration.MEDIUM);
 		addEEnumLiteral(durationEEnum, Duration.LONG);
+
+		initEEnum(distanceEEnum, Distance.class, "Distance");
+		addEEnumLiteral(distanceEEnum, Distance.CLOSE);
+		addEEnumLiteral(distanceEEnum, Distance.FAR);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -98,6 +98,8 @@ public class Project2FactoryImpl extends EFactoryImpl implements Project2Factory
 			return createLightPosFromString(eDataType, initialValue);
 		case Project2Package.DURATION:
 			return createDurationFromString(eDataType, initialValue);
+		case Project2Package.DISTANCE:
+			return createDistanceFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -117,6 +119,8 @@ public class Project2FactoryImpl extends EFactoryImpl implements Project2Factory
 			return convertLightPosToString(eDataType, instanceValue);
 		case Project2Package.DURATION:
 			return convertDurationToString(eDataType, instanceValue);
+		case Project2Package.DISTANCE:
+			return convertDistanceToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -306,6 +310,28 @@ public class Project2FactoryImpl extends EFactoryImpl implements Project2Factory
 	 * @generated
 	 */
 	public String convertDurationToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Distance createDistanceFromString(EDataType eDataType, String initialValue) {
+		Distance result = Distance.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDistanceToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

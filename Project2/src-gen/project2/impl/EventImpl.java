@@ -3,12 +3,9 @@
 package project2.impl;
 
 import java.util.Collection;
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import project2.Action;
@@ -24,7 +21,7 @@ import project2.Project2Package;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link project2.impl.EventImpl#getCondition <em>Condition</em>}</li>
+ *   <li>{@link project2.impl.EventImpl#getConditions <em>Conditions</em>}</li>
  *   <li>{@link project2.impl.EventImpl#getActions <em>Actions</em>}</li>
  * </ul>
  *
@@ -32,14 +29,14 @@ import project2.Project2Package;
  */
 public class EventImpl extends NamedElementImpl implements Event {
 	/**
-	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' reference.
+	 * The cached value of the '{@link #getConditions() <em>Conditions</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCondition()
+	 * @see #getConditions()
 	 * @generated
 	 * @ordered
 	 */
-	protected Condition condition;
+	protected EList<Condition> conditions;
 
 	/**
 	 * The cached value of the '{@link #getActions() <em>Actions</em>}' reference list.
@@ -76,40 +73,11 @@ public class EventImpl extends NamedElementImpl implements Event {
 	 * @generated
 	 */
 	@Override
-	public Condition getCondition() {
-		if (condition != null && condition.eIsProxy()) {
-			InternalEObject oldCondition = (InternalEObject) condition;
-			condition = (Condition) eResolveProxy(oldCondition);
-			if (condition != oldCondition) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Project2Package.EVENT__CONDITION,
-							oldCondition, condition));
-			}
+	public EList<Condition> getConditions() {
+		if (conditions == null) {
+			conditions = new EObjectResolvingEList<Condition>(Condition.class, this, Project2Package.EVENT__CONDITIONS);
 		}
-		return condition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Condition basicGetCondition() {
-		return condition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setCondition(Condition newCondition) {
-		Condition oldCondition = condition;
-		condition = newCondition;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Project2Package.EVENT__CONDITION, oldCondition,
-					condition));
+		return conditions;
 	}
 
 	/**
@@ -133,10 +101,8 @@ public class EventImpl extends NamedElementImpl implements Event {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case Project2Package.EVENT__CONDITION:
-			if (resolve)
-				return getCondition();
-			return basicGetCondition();
+		case Project2Package.EVENT__CONDITIONS:
+			return getConditions();
 		case Project2Package.EVENT__ACTIONS:
 			return getActions();
 		}
@@ -152,8 +118,9 @@ public class EventImpl extends NamedElementImpl implements Event {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case Project2Package.EVENT__CONDITION:
-			setCondition((Condition) newValue);
+		case Project2Package.EVENT__CONDITIONS:
+			getConditions().clear();
+			getConditions().addAll((Collection<? extends Condition>) newValue);
 			return;
 		case Project2Package.EVENT__ACTIONS:
 			getActions().clear();
@@ -171,8 +138,8 @@ public class EventImpl extends NamedElementImpl implements Event {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case Project2Package.EVENT__CONDITION:
-			setCondition((Condition) null);
+		case Project2Package.EVENT__CONDITIONS:
+			getConditions().clear();
 			return;
 		case Project2Package.EVENT__ACTIONS:
 			getActions().clear();
@@ -189,8 +156,8 @@ public class EventImpl extends NamedElementImpl implements Event {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case Project2Package.EVENT__CONDITION:
-			return condition != null;
+		case Project2Package.EVENT__CONDITIONS:
+			return conditions != null && !conditions.isEmpty();
 		case Project2Package.EVENT__ACTIONS:
 			return actions != null && !actions.isEmpty();
 		}

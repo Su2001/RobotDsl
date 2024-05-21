@@ -45,6 +45,7 @@ public class MyDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
 			builder.put(grammarAccess.getDurationAccess().getAlternatives(), "rule__Duration__Alternatives");
 			builder.put(grammarAccess.getLightPosAccess().getAlternatives(), "rule__LightPos__Alternatives");
+			builder.put(grammarAccess.getDistanceAccess().getAlternatives(), "rule__Distance__Alternatives");
 			builder.put(grammarAccess.getButtonTypeAccess().getAlternatives(), "rule__ButtonType__Alternatives");
 			builder.put(grammarAccess.getRobotModelAccess().getGroup(), "rule__RobotModel__Group__0");
 			builder.put(grammarAccess.getRobotModelAccess().getGroup_1_1(), "rule__RobotModel__Group_1_1__0");
@@ -72,6 +73,7 @@ public class MyDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAtomicAccess().getGroup(), "rule__Atomic__Group__0");
 			builder.put(grammarAccess.getEventAccess().getGroup(), "rule__Event__Group__0");
 			builder.put(grammarAccess.getEventAccess().getGroup_3(), "rule__Event__Group_3__0");
+			builder.put(grammarAccess.getEventAccess().getGroup_3_2(), "rule__Event__Group_3_2__0");
 			builder.put(grammarAccess.getEventAccess().getGroup_4(), "rule__Event__Group_4__0");
 			builder.put(grammarAccess.getEventAccess().getGroup_4_2(), "rule__Event__Group_4_2__0");
 			builder.put(grammarAccess.getSoundAccess().getGroup(), "rule__Sound__Group__0");
@@ -120,7 +122,8 @@ public class MyDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getPrimaryAccess().getLeftAssignment_1_2(), "rule__Primary__LeftAssignment_1_2");
 			builder.put(grammarAccess.getAtomicAccess().getValueAssignment_1_0(), "rule__Atomic__ValueAssignment_1_0");
 			builder.put(grammarAccess.getEventAccess().getNameAssignment_2(), "rule__Event__NameAssignment_2");
-			builder.put(grammarAccess.getEventAccess().getConditionAssignment_3_1(), "rule__Event__ConditionAssignment_3_1");
+			builder.put(grammarAccess.getEventAccess().getConditionsAssignment_3_1(), "rule__Event__ConditionsAssignment_3_1");
+			builder.put(grammarAccess.getEventAccess().getConditionsAssignment_3_2_1(), "rule__Event__ConditionsAssignment_3_2_1");
 			builder.put(grammarAccess.getEventAccess().getActionsAssignment_4_1(), "rule__Event__ActionsAssignment_4_1");
 			builder.put(grammarAccess.getEventAccess().getActionsAssignment_4_2_1(), "rule__Event__ActionsAssignment_4_2_1");
 			builder.put(grammarAccess.getSoundAccess().getConditionnameAssignment_2(), "rule__Sound__ConditionnameAssignment_2");
@@ -128,6 +131,7 @@ public class MyDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getButtonAccess().getButtonAssignment_4(), "rule__Button__ButtonAssignment_4");
 			builder.put(grammarAccess.getSensorAccess().getConditionnameAssignment_2(), "rule__Sensor__ConditionnameAssignment_2");
 			builder.put(grammarAccess.getSensorAccess().getSensorPosAssignment_4(), "rule__Sensor__SensorPosAssignment_4");
+			builder.put(grammarAccess.getSensorAccess().getDistanceAssignment_6(), "rule__Sensor__DistanceAssignment_6");
 			builder.put(grammarAccess.getTapAccess().getConditionnameAssignment_2(), "rule__Tap__ConditionnameAssignment_2");
 			builder.put(grammarAccess.getMotorActionAccess().getActionnameAssignment_2(), "rule__MotorAction__ActionnameAssignment_2");
 			builder.put(grammarAccess.getMotorActionAccess().getMotorLeftAssignment_3_1(), "rule__MotorAction__MotorLeftAssignment_3_1");
@@ -140,9 +144,9 @@ public class MyDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getLightActionAccess().getRedAssignment_5_1(), "rule__LightAction__RedAssignment_5_1");
 			builder.put(grammarAccess.getLightActionAccess().getGreenAssignment_6_1(), "rule__LightAction__GreenAssignment_6_1");
 			builder.put(grammarAccess.getLightActionAccess().getBlueAssignment_7_1(), "rule__LightAction__BlueAssignment_7_1");
-			builder.put(grammarAccess.getMusicSettingAccess().getNoteAssignment_1(), "rule__MusicSetting__NoteAssignment_1");
-			builder.put(grammarAccess.getMusicSettingAccess().getDurationAssignment_3(), "rule__MusicSetting__DurationAssignment_3");
-			builder.put(grammarAccess.getMusicSettingAccess().getPosAssignment_5(), "rule__MusicSetting__PosAssignment_5");
+			builder.put(grammarAccess.getMusicSettingAccess().getNoteAssignment_2(), "rule__MusicSetting__NoteAssignment_2");
+			builder.put(grammarAccess.getMusicSettingAccess().getDurationAssignment_4(), "rule__MusicSetting__DurationAssignment_4");
+			builder.put(grammarAccess.getMusicSettingAccess().getPosAssignment_6(), "rule__MusicSetting__PosAssignment_6");
 		}
 	}
 	

@@ -79,7 +79,7 @@ public class SensorItemProvider extends ConditionItemProvider {
 						getString("_UI_PropertyDescriptor_description", "_UI_Sensor_distance_feature",
 								"_UI_Sensor_type"),
 						Project2Package.Literals.SENSOR__DISTANCE, true, false, false,
-						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**

@@ -1173,9 +1173,9 @@ ruleEvent returns [EObject current=null]
 			)
 		)
 		(
-			otherlv_3='condition:'
+			otherlv_3='conditions:'
 			{
-				newLeafNode(otherlv_3, grammarAccess.getEventAccess().getConditionKeyword_3_0());
+				newLeafNode(otherlv_3, grammarAccess.getEventAccess().getConditionsKeyword_3_0());
 			}
 			(
 				(
@@ -1185,7 +1185,7 @@ ruleEvent returns [EObject current=null]
 						}
 					}
 					{
-						newCompositeNode(grammarAccess.getEventAccess().getConditionConditionCrossReference_3_1_0());
+						newCompositeNode(grammarAccess.getEventAccess().getConditionsConditionCrossReference_3_1_0());
 					}
 					ruleEString
 					{
@@ -1193,11 +1193,33 @@ ruleEvent returns [EObject current=null]
 					}
 				)
 			)
+			(
+				otherlv_5='and'
+				{
+					newLeafNode(otherlv_5, grammarAccess.getEventAccess().getAndKeyword_3_2_0());
+				}
+				(
+					(
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getEventRule());
+							}
+						}
+						{
+							newCompositeNode(grammarAccess.getEventAccess().getConditionsConditionCrossReference_3_2_1_0());
+						}
+						ruleEString
+						{
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+			)*
 		)?
 		(
-			otherlv_5='actions:'
+			otherlv_7='actions:'
 			{
-				newLeafNode(otherlv_5, grammarAccess.getEventAccess().getActionsKeyword_4_0());
+				newLeafNode(otherlv_7, grammarAccess.getEventAccess().getActionsKeyword_4_0());
 			}
 			(
 				(
@@ -1216,9 +1238,9 @@ ruleEvent returns [EObject current=null]
 				)
 			)
 			(
-				otherlv_7=','
+				otherlv_9=','
 				{
-					newLeafNode(otherlv_7, grammarAccess.getEventAccess().getCommaKeyword_4_2_0());
+					newLeafNode(otherlv_9, grammarAccess.getEventAccess().getCommaKeyword_4_2_0());
 				}
 				(
 					(
@@ -1481,6 +1503,29 @@ ruleSensor returns [EObject current=null]
 						"sensorPos",
 						lv_sensorPos_4_0,
 						"org.xtext.example.mydsl1.MyDsl.EInt");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_5='distance'
+		{
+			newLeafNode(otherlv_5, grammarAccess.getSensorAccess().getDistanceKeyword_5());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getSensorAccess().getDistanceDistanceEnumRuleCall_6_0());
+				}
+				lv_distance_6_0=ruleDistance
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getSensorRule());
+					}
+					set(
+						$current,
+						"distance",
+						lv_distance_6_0,
+						"org.xtext.example.mydsl1.MyDsl.Distance");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -1943,16 +1988,23 @@ ruleMusicSetting returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='('
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getMusicSettingAccess().getMusicSettingAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='('
 		{
-			newLeafNode(otherlv_0, grammarAccess.getMusicSettingAccess().getLeftParenthesisKeyword_0());
+			newLeafNode(otherlv_1, grammarAccess.getMusicSettingAccess().getLeftParenthesisKeyword_1());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getMusicSettingAccess().getNoteEIntParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getMusicSettingAccess().getNoteEIntParserRuleCall_2_0());
 				}
-				lv_note_1_0=ruleEInt
+				lv_note_2_0=ruleEInt
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getMusicSettingRule());
@@ -1960,22 +2012,22 @@ ruleMusicSetting returns [EObject current=null]
 					set(
 						$current,
 						"note",
-						lv_note_1_0,
+						lv_note_2_0,
 						"org.xtext.example.mydsl1.MyDsl.EInt");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_2=','
+		otherlv_3=','
 		{
-			newLeafNode(otherlv_2, grammarAccess.getMusicSettingAccess().getCommaKeyword_2());
+			newLeafNode(otherlv_3, grammarAccess.getMusicSettingAccess().getCommaKeyword_3());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getMusicSettingAccess().getDurationDurationEnumRuleCall_3_0());
+					newCompositeNode(grammarAccess.getMusicSettingAccess().getDurationDurationEnumRuleCall_4_0());
 				}
-				lv_duration_3_0=ruleDuration
+				lv_duration_4_0=ruleDuration
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getMusicSettingRule());
@@ -1983,22 +2035,22 @@ ruleMusicSetting returns [EObject current=null]
 					set(
 						$current,
 						"duration",
-						lv_duration_3_0,
+						lv_duration_4_0,
 						"org.xtext.example.mydsl1.MyDsl.Duration");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_4=','
+		otherlv_5=','
 		{
-			newLeafNode(otherlv_4, grammarAccess.getMusicSettingAccess().getCommaKeyword_4());
+			newLeafNode(otherlv_5, grammarAccess.getMusicSettingAccess().getCommaKeyword_5());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getMusicSettingAccess().getPosEIntParserRuleCall_5_0());
+					newCompositeNode(grammarAccess.getMusicSettingAccess().getPosEIntParserRuleCall_6_0());
 				}
-				lv_pos_5_0=ruleEInt
+				lv_pos_6_0=ruleEInt
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getMusicSettingRule());
@@ -2006,15 +2058,15 @@ ruleMusicSetting returns [EObject current=null]
 					set(
 						$current,
 						"pos",
-						lv_pos_5_0,
+						lv_pos_6_0,
 						"org.xtext.example.mydsl1.MyDsl.EInt");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_6=')'
+		otherlv_7=')'
 		{
-			newLeafNode(otherlv_6, grammarAccess.getMusicSettingAccess().getRightParenthesisKeyword_6());
+			newLeafNode(otherlv_7, grammarAccess.getMusicSettingAccess().getRightParenthesisKeyword_7());
 		}
 	)
 ;
@@ -2143,6 +2195,33 @@ ruleLightPos returns [Enumerator current=null]
 			{
 				$current = grammarAccess.getLightPosAccess().getBOTEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_1, grammarAccess.getLightPosAccess().getBOTEnumLiteralDeclaration_1());
+			}
+		)
+	)
+;
+
+// Rule Distance
+ruleDistance returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='FAR'
+			{
+				$current = grammarAccess.getDistanceAccess().getFAREnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getDistanceAccess().getFAREnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1='CLOSE'
+			{
+				$current = grammarAccess.getDistanceAccess().getCLOSEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getDistanceAccess().getCLOSEEnumLiteralDeclaration_1());
 			}
 		)
 	)

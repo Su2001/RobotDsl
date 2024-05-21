@@ -19,6 +19,8 @@ import project2.SoundAction
 import project2.MusicSetting
 import project2.LightAction
 import project2.MotorAction
+import project2.Condition
+import java.util.List
 
 /**
  * Generates code from your model files on save.
@@ -38,11 +40,11 @@ class MyDslGenerator extends AbstractGenerator {
 		var proxlist = new ArrayList<Event>()
 		var buttonlist = new ArrayList<Event>()
 		for(Event a : model.getEvents){
-			if(a.getCondition instanceof Tap){
+			if(a.getConditions.get(0) instanceof Tap){
 				taplist.add(a)
-			}else if(a.getCondition instanceof Sound){
+			}else if(a.getConditions.get(0) instanceof Sound){
 				soundlist.add(a)
-			}else if(a.getCondition instanceof Button){
+			}else if(a.getConditions.get(0) instanceof Button){
 				buttonlist.add(a)
 			}else{
 				proxlist.add(a)
@@ -101,18 +103,40 @@ class MyDslGenerator extends AbstractGenerator {
 		«ENDIF»
 		«IF proxlist.size > 0»
 				onevent prox
-					
+				«FOR prox : proxlist»
+				«processConditionSensor(prox.getConditions, prox.getActions)»
+					emit pair_run «counter++»
+					end
+				«ENDFOR»	
 				«ENDIF»
 		«IF buttonlist.size > 0»
-						onevent buttons
-							
+				onevent buttons
+				«FOR but : buttonlist»
+								«processConditionButton(but.getConditions, but.getActions)»
+									emit pair_run «counter++»
+									end
+								«ENDFOR»			
 						«ENDIF»
 		'''
 	}
 	
+	def processConditionSensor(List<Condition> lc, List<Action> la){
+		var count = lc.size
+		return '''	when «FOR c : lc»«IF c instanceof Sensor »«IF c.getSensorPos <= 7 »prox.horizontal[«c.getSensorPos-1»] «IF c.getDistance == 0 » <= 1000 «ELSE» >= 2000 «ENDIF»«ELSE»prox.ground.delta[«c.getSensorPos%8»]	«IF c.getDistance == 0 »<= 400 «ELSE»>= 450	«ENDIF»«ENDIF»«ENDIF»«IF count-- > 1» and «ENDIF»«ENDFOR» do
+			«FOR a : la»«processAction(a)» «ENDFOR»
+			'''
+	}
+	
+	def processConditionButton(List<Condition> lc, List<Action> la){
+		var count = lc.size
+		return '''	when «FOR c : lc»«IF c instanceof Button »button.«IF c.getButton == 0 »forward «ELSEIF c.getButton == 1 »backward «ELSEIF c.getButton == 2»left «ELSEIF c.getButton == 3»right «ELSE»center «ENDIF»«ENDIF»== 1«IF count-- > 1» and «ENDIF»«ENDFOR» do
+			«FOR a : la»«processAction(a)» «ENDFOR»
+			'''
+	}
+	
 	def processAction(Action a){
-		var note = #[0, 0, 0, 0, 0, 0]
-		var duration = #[0, 0, 0, 0, 0, 0]
+		val int[] note = #[0, 0, 0, 0, 0, 0]
+		val int[] duration = #[0, 0, 0, 0, 0, 0]
 		var pos = 1
 		if(a instanceof SoundAction){
 			
@@ -147,23 +171,23 @@ class MyDslGenerator extends AbstractGenerator {
 		}
 		return '''«IF a instanceof SoundAction»
 				call math.copy(notes[0:5], [«note.get(0)», «note.get(1)», «note.get(2)», «note.get(3)», «note.get(4)», «note.get(5)»])
-					call math.copy(durations[0:5], [«duration.get(0)», «duration.get(1)», «duration.get(2)», «duration.get(3)», «duration.get(4)», «duration.get(5)»])
-					note_index = 1
-					note_count = 6
-					call sound.freq(notes[0], durations[0])
+				call math.copy(durations[0:5], [«duration.get(0)», «duration.get(1)», «duration.get(2)», «duration.get(3)», «duration.get(4)», «duration.get(5)»])
+				note_index = 1
+				note_count = 6
+				call sound.freq(notes[0], durations[0])
 				«ENDIF»
 				«IF a instanceof LightAction»
-					«IF pos == 1»	
-					call leds.top(«a.getRed» , «a.getGreen», «a.getBlue»)
-					«ENDIF»
-					«IF pos == 2»	
-					call leds.bottom.left(«a.getRed» , «a.getGreen», «a.getBlue»)
-					call leds.bottom.right(«a.getRed» , «a.getGreen», «a.getBlue»)
-					«ENDIF»
+				«IF pos == 1»	
+				call leds.top(«a.getRed» , «a.getGreen», «a.getBlue»)
+				«ENDIF»
+				«IF pos == 2»	
+				call leds.bottom.left(«a.getRed» , «a.getGreen», «a.getBlue»)
+				call leds.bottom.right(«a.getRed» , «a.getGreen», «a.getBlue»)
+				«ENDIF»
 				«ENDIF»
 				«IF a instanceof MotorAction»
-					motor.left.target = «a.getMotorLeft»
-					motor.right.target = «a.getMotorRight»
+				motor.left.target = «a.getMotorLeft»
+				motor.right.target = «a.getMotorRight»
 				«ENDIF»
 				'''
 	}

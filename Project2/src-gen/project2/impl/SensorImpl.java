@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import project2.Distance;
 import project2.Project2Package;
 import project2.Sensor;
 
@@ -54,7 +55,7 @@ public class SensorImpl extends ConditionImpl implements Sensor {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int DISTANCE_EDEFAULT = 0;
+	protected static final Distance DISTANCE_EDEFAULT = Distance.CLOSE;
 
 	/**
 	 * The cached value of the '{@link #getDistance() <em>Distance</em>}' attribute.
@@ -64,7 +65,7 @@ public class SensorImpl extends ConditionImpl implements Sensor {
 	 * @generated
 	 * @ordered
 	 */
-	protected int distance = DISTANCE_EDEFAULT;
+	protected Distance distance = DISTANCE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -115,7 +116,7 @@ public class SensorImpl extends ConditionImpl implements Sensor {
 	 * @generated
 	 */
 	@Override
-	public int getDistance() {
+	public Distance getDistance() {
 		return distance;
 	}
 
@@ -125,9 +126,9 @@ public class SensorImpl extends ConditionImpl implements Sensor {
 	 * @generated
 	 */
 	@Override
-	public void setDistance(int newDistance) {
-		int oldDistance = distance;
-		distance = newDistance;
+	public void setDistance(Distance newDistance) {
+		Distance oldDistance = distance;
+		distance = newDistance == null ? DISTANCE_EDEFAULT : newDistance;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, Project2Package.SENSOR__DISTANCE, oldDistance,
 					distance));
@@ -161,7 +162,7 @@ public class SensorImpl extends ConditionImpl implements Sensor {
 			setSensorPos((Integer) newValue);
 			return;
 		case Project2Package.SENSOR__DISTANCE:
-			setDistance((Integer) newValue);
+			setDistance((Distance) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);

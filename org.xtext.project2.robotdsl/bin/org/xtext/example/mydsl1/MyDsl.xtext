@@ -71,7 +71,7 @@ Event returns Event:
 	{Event}
 	'Event'
 	name=EString
-		('condition:' condition=[Condition|EString] )?
+		('conditions:' conditions+=[Condition|EString] ('and' conditions+=[Condition|EString])* )?
 		('actions:'  actions+=[Action|EString] ( "," actions+=[Action|EString])*  )?
 	;
 	
@@ -95,7 +95,8 @@ Sensor returns Sensor:
 	{Sensor}
 	'Sensor'
 	conditionname=EString
-		'sensorPos' sensorPos=EInt
+	'sensorPos' sensorPos=EInt
+	'distance' distance=Distance
 ; 
 
 Tap returns Tap:
@@ -133,6 +134,7 @@ LightAction returns LightAction:
 ;
 
 MusicSetting returns MusicSetting:
+	{MusicSetting}
 	'(' note=EInt ',' duration=Duration ',' pos=EInt')'
 ;
 
@@ -148,6 +150,10 @@ enum Duration returns Duration:
 
 enum LightPos returns LightPos:
 	TOP = 'TOP' | BOT = 'BOT'
+;
+
+enum Distance returns Distance:
+	FAR = 'FAR' | CLOSE = 'CLOSE'
 ;
 
 enum ButtonType returns ButtonType:

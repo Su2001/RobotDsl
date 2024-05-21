@@ -215,13 +215,13 @@ public interface Project2Package extends EPackage {
 	int EVENT__NAME = NAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Condition</b></em>' reference.
+	 * The feature id for the '<em><b>Conditions</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT__CONDITION = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int EVENT__CONDITIONS = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Actions</b></em>' reference list.
@@ -804,6 +804,16 @@ public interface Project2Package extends EPackage {
 	int DURATION = 16;
 
 	/**
+	 * The meta object id for the '{@link project2.Distance <em>Distance</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see project2.Distance
+	 * @see project2.impl.Project2PackageImpl#getDistance()
+	 * @generated
+	 */
+	int DISTANCE = 17;
+
+	/**
 	 * Returns the meta object for class '{@link project2.RobotModel <em>Robot Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -889,15 +899,15 @@ public interface Project2Package extends EPackage {
 	EClass getEvent();
 
 	/**
-	 * Returns the meta object for the reference '{@link project2.Event#getCondition <em>Condition</em>}'.
+	 * Returns the meta object for the reference list '{@link project2.Event#getConditions <em>Conditions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Condition</em>'.
-	 * @see project2.Event#getCondition()
+	 * @return the meta object for the reference list '<em>Conditions</em>'.
+	 * @see project2.Event#getConditions()
 	 * @see #getEvent()
 	 * @generated
 	 */
-	EReference getEvent_Condition();
+	EReference getEvent_Conditions();
 
 	/**
 	 * Returns the meta object for the reference list '{@link project2.Event#getActions <em>Actions</em>}'.
@@ -1282,6 +1292,16 @@ public interface Project2Package extends EPackage {
 	EEnum getDuration();
 
 	/**
+	 * Returns the meta object for enum '{@link project2.Distance <em>Distance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Distance</em>'.
+	 * @see project2.Distance
+	 * @generated
+	 */
+	EEnum getDistance();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1375,12 +1395,12 @@ public interface Project2Package extends EPackage {
 		EClass EVENT = eINSTANCE.getEvent();
 
 		/**
-		 * The meta object literal for the '<em><b>Condition</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Conditions</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EVENT__CONDITION = eINSTANCE.getEvent_Condition();
+		EReference EVENT__CONDITIONS = eINSTANCE.getEvent_Conditions();
 
 		/**
 		 * The meta object literal for the '<em><b>Actions</b></em>' reference list feature.
@@ -1697,6 +1717,16 @@ public interface Project2Package extends EPackage {
 		 * @generated
 		 */
 		EEnum DURATION = eINSTANCE.getDuration();
+
+		/**
+		 * The meta object literal for the '{@link project2.Distance <em>Distance</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see project2.Distance
+		 * @see project2.impl.Project2PackageImpl#getDistance()
+		 * @generated
+		 */
+		EEnum DISTANCE = eINSTANCE.getDistance();
 
 	}
 
