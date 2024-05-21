@@ -57,6 +57,7 @@ public class ExpressionItemProvider extends ItemProviderAdapter implements IEdit
 
 			addOperationPropertyDescriptor(object);
 			addValuePropertyDescriptor(object);
+			addBoolPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -90,6 +91,22 @@ public class ExpressionItemProvider extends ItemProviderAdapter implements IEdit
 						getString("_UI_PropertyDescriptor_description", "_UI_Expression_value_feature",
 								"_UI_Expression_type"),
 						Project2Package.Literals.EXPRESSION__VALUE, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Bool feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBoolPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Expression_bool_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Expression_bool_feature",
+								"_UI_Expression_type"),
+						Project2Package.Literals.EXPRESSION__BOOL, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -172,6 +189,7 @@ public class ExpressionItemProvider extends ItemProviderAdapter implements IEdit
 		switch (notification.getFeatureID(Expression.class)) {
 		case Project2Package.EXPRESSION__OPERATION:
 		case Project2Package.EXPRESSION__VALUE:
+		case Project2Package.EXPRESSION__BOOL:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case Project2Package.EXPRESSION__LEFT:

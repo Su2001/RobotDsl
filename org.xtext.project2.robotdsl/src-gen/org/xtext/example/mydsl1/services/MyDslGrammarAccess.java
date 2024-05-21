@@ -650,39 +650,43 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Action cExpressionAction_0 = (Action)cGroup.eContents().get(0);
 		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
 		private final Assignment cValueAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
-		private final RuleCall cValueINTTerminalRuleCall_1_0_0 = (RuleCall)cValueAssignment_1_0.eContents().get(0);
-		private final Alternatives cAlternatives_1_1 = (Alternatives)cAlternatives_1.eContents().get(1);
-		private final Keyword cTRUEKeyword_1_1_0 = (Keyword)cAlternatives_1_1.eContents().get(0);
-		private final Keyword cFALSEKeyword_1_1_1 = (Keyword)cAlternatives_1_1.eContents().get(1);
+		private final RuleCall cValueEIntParserRuleCall_1_0_0 = (RuleCall)cValueAssignment_1_0.eContents().get(0);
+		private final Assignment cBoolAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
+		private final Alternatives cBoolAlternatives_1_1_0 = (Alternatives)cBoolAssignment_1_1.eContents().get(0);
+		private final Keyword cBoolTRUEKeyword_1_1_0_0 = (Keyword)cBoolAlternatives_1_1_0.eContents().get(0);
+		private final Keyword cBoolFALSEKeyword_1_1_0_1 = (Keyword)cBoolAlternatives_1_1_0.eContents().get(1);
 		
 		//Atomic returns Expression:
-		//    {Expression} (value=INT | ('TRUE' | 'FALSE'))
+		//    {Expression} (value=EInt | bool= ('TRUE' | 'FALSE'))
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Expression} (value=INT | ('TRUE' | 'FALSE'))
+		//{Expression} (value=EInt | bool= ('TRUE' | 'FALSE'))
 		public Group getGroup() { return cGroup; }
 		
 		//{Expression}
 		public Action getExpressionAction_0() { return cExpressionAction_0; }
 		
-		//(value=INT | ('TRUE' | 'FALSE'))
+		//(value=EInt | bool= ('TRUE' | 'FALSE'))
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 		
-		//value=INT
+		//value=EInt
 		public Assignment getValueAssignment_1_0() { return cValueAssignment_1_0; }
 		
-		//INT
-		public RuleCall getValueINTTerminalRuleCall_1_0_0() { return cValueINTTerminalRuleCall_1_0_0; }
+		//EInt
+		public RuleCall getValueEIntParserRuleCall_1_0_0() { return cValueEIntParserRuleCall_1_0_0; }
+		
+		//bool= ('TRUE' | 'FALSE')
+		public Assignment getBoolAssignment_1_1() { return cBoolAssignment_1_1; }
 		
 		//('TRUE' | 'FALSE')
-		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
+		public Alternatives getBoolAlternatives_1_1_0() { return cBoolAlternatives_1_1_0; }
 		
 		//'TRUE'
-		public Keyword getTRUEKeyword_1_1_0() { return cTRUEKeyword_1_1_0; }
+		public Keyword getBoolTRUEKeyword_1_1_0_0() { return cBoolTRUEKeyword_1_1_0_0; }
 		
 		//'FALSE'
-		public Keyword getFALSEKeyword_1_1_1() { return cFALSEKeyword_1_1_1; }
+		public Keyword getBoolFALSEKeyword_1_1_0_1() { return cBoolFALSEKeyword_1_1_0_1; }
 	}
 	public class EventElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl1.MyDsl.Event");
@@ -1029,27 +1033,27 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final RuleCall cActionnameEStringParserRuleCall_2_0 = (RuleCall)cActionnameAssignment_2.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cMotorLeftKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cMotorLeftAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cMotorLeftEIntParserRuleCall_3_1_0 = (RuleCall)cMotorLeftAssignment_3_1.eContents().get(0);
+		private final Assignment cLeftAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cLeftExpressionParserRuleCall_3_1_0 = (RuleCall)cLeftAssignment_3_1.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cMotorRightKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cMotorRightAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cMotorRightEIntParserRuleCall_4_1_0 = (RuleCall)cMotorRightAssignment_4_1.eContents().get(0);
+		private final Assignment cRightAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cRightExpressionParserRuleCall_4_1_0 = (RuleCall)cRightAssignment_4_1.eContents().get(0);
 		
 		//MotorAction returns MotorAction:
 		//    {MotorAction}
 		//    'MotorAction'
 		//    actionname=EString
-		//        ('motorLeft' (motorLeft=EInt))?
-		//        ('motorRight' (motorRight=EInt))?
+		//        ('motorLeft' (left=Expression))?
+		//        ('motorRight' (right=Expression))?
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{MotorAction}
 		//'MotorAction'
 		//actionname=EString
-		//    ('motorLeft' (motorLeft=EInt))?
-		//    ('motorRight' (motorRight=EInt))?
+		//    ('motorLeft' (left=Expression))?
+		//    ('motorRight' (right=Expression))?
 		public Group getGroup() { return cGroup; }
 		
 		//{MotorAction}
@@ -1064,29 +1068,29 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//EString
 		public RuleCall getActionnameEStringParserRuleCall_2_0() { return cActionnameEStringParserRuleCall_2_0; }
 		
-		//('motorLeft' (motorLeft=EInt))?
+		//('motorLeft' (left=Expression))?
 		public Group getGroup_3() { return cGroup_3; }
 		
 		//'motorLeft'
 		public Keyword getMotorLeftKeyword_3_0() { return cMotorLeftKeyword_3_0; }
 		
-		//(motorLeft=EInt)
-		public Assignment getMotorLeftAssignment_3_1() { return cMotorLeftAssignment_3_1; }
+		//(left=Expression)
+		public Assignment getLeftAssignment_3_1() { return cLeftAssignment_3_1; }
 		
-		//EInt
-		public RuleCall getMotorLeftEIntParserRuleCall_3_1_0() { return cMotorLeftEIntParserRuleCall_3_1_0; }
+		//Expression
+		public RuleCall getLeftExpressionParserRuleCall_3_1_0() { return cLeftExpressionParserRuleCall_3_1_0; }
 		
-		//('motorRight' (motorRight=EInt))?
+		//('motorRight' (right=Expression))?
 		public Group getGroup_4() { return cGroup_4; }
 		
 		//'motorRight'
 		public Keyword getMotorRightKeyword_4_0() { return cMotorRightKeyword_4_0; }
 		
-		//(motorRight=EInt)
-		public Assignment getMotorRightAssignment_4_1() { return cMotorRightAssignment_4_1; }
+		//(right=Expression)
+		public Assignment getRightAssignment_4_1() { return cRightAssignment_4_1; }
 		
-		//EInt
-		public RuleCall getMotorRightEIntParserRuleCall_4_1_0() { return cMotorRightEIntParserRuleCall_4_1_0; }
+		//Expression
+		public RuleCall getRightExpressionParserRuleCall_4_1_0() { return cRightExpressionParserRuleCall_4_1_0; }
 	}
 	public class SoundActionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl1.MyDsl.SoundAction");
@@ -1738,7 +1742,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	}
 	
 	//Atomic returns Expression:
-	//    {Expression} (value=INT | ('TRUE' | 'FALSE'))
+	//    {Expression} (value=EInt | bool= ('TRUE' | 'FALSE'))
 	//;
 	public AtomicElements getAtomicAccess() {
 		return pAtomic;
@@ -1842,8 +1846,8 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//    {MotorAction}
 	//    'MotorAction'
 	//    actionname=EString
-	//        ('motorLeft' (motorLeft=EInt))?
-	//        ('motorRight' (motorRight=EInt))?
+	//        ('motorLeft' (left=Expression))?
+	//        ('motorRight' (right=Expression))?
 	//;
 	public MotorActionElements getMotorActionAccess() {
 		return pMotorAction;

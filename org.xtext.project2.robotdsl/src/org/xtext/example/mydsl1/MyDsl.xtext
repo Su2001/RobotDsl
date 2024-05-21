@@ -64,7 +64,7 @@ Primary returns Expression:
 	Atomic;
 	
 Atomic returns Expression:
-	{Expression} (value=INT | ('TRUE' | 'FALSE'))
+	{Expression} (value=EInt | bool= ('TRUE' | 'FALSE'))
 ;
 
 Event returns Event:
@@ -112,8 +112,8 @@ MotorAction returns MotorAction:
 	{MotorAction}
 	'MotorAction'
 	actionname=EString
-		('motorLeft' (motorLeft=EInt))?
-		('motorRight' (motorRight=EInt))?
+		('motorLeft' (left=Expression))?
+		('motorRight' (right=Expression))?
 ;
 
 SoundAction returns SoundAction:

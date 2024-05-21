@@ -756,13 +756,22 @@ public interface Project2Package extends EPackage {
 	int EXPRESSION__RIGHT = 3;
 
 	/**
+	 * The feature id for the '<em><b>Bool</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSION__BOOL = 4;
+
+	/**
 	 * The number of structural features of the '<em>Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXPRESSION_FEATURE_COUNT = 4;
+	int EXPRESSION_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Expression</em>' class.
@@ -1251,6 +1260,17 @@ public interface Project2Package extends EPackage {
 	EReference getExpression_Right();
 
 	/**
+	 * Returns the meta object for the attribute '{@link project2.Expression#getBool <em>Bool</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Bool</em>'.
+	 * @see project2.Expression#getBool()
+	 * @see #getExpression()
+	 * @generated
+	 */
+	EAttribute getExpression_Bool();
+
+	/**
 	 * Returns the meta object for the attribute '{@link project2.Expression#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1679,6 +1699,14 @@ public interface Project2Package extends EPackage {
 		 * @generated
 		 */
 		EReference EXPRESSION__RIGHT = eINSTANCE.getExpression_Right();
+
+		/**
+		 * The meta object literal for the '<em><b>Bool</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXPRESSION__BOOL = eINSTANCE.getExpression_Bool();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.

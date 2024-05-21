@@ -82,6 +82,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//Expression/value"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//Expression/left"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//Expression/right"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//Expression/bool"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

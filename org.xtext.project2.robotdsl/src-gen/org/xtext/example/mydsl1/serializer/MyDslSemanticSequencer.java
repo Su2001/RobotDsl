@@ -140,8 +140,10 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *         (left=PlusOrMinus_Expression_1_0_0 (operation='+' | operation='-') right=MultOrDiv) | 
 	 *         (left=MultOrDiv_Expression_1_0 (operation='*' | operation='/') right=Primary) | 
 	 *         (operation='!' left=Primary) | 
-	 *         value=INT
-	 *     )?
+	 *         value=EInt | 
+	 *         bool='TRUE' | 
+	 *         bool='FALSE'
+	 *     )
 	 * </pre>
 	 */
 	protected void sequence_And_Atomic_Comparison_Equality_If_MultOrDiv_Or_PlusOrMinus_Primary(ISerializationContext context, Expression semanticObject) {
@@ -155,7 +157,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Atomic returns Expression
 	 *
 	 * Constraint:
-	 *     value=INT?
+	 *     (value=EInt | bool='TRUE' | bool='FALSE')
 	 * </pre>
 	 */
 	protected void sequence_Atomic(ISerializationContext context, Expression semanticObject) {
@@ -272,7 +274,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     MotorAction returns MotorAction
 	 *
 	 * Constraint:
-	 *     (actionname=EString motorLeft=EInt? motorRight=EInt?)
+	 *     (actionname=EString left=Expression? right=Expression?)
 	 * </pre>
 	 */
 	protected void sequence_MotorAction(ISerializationContext context, MotorAction semanticObject) {

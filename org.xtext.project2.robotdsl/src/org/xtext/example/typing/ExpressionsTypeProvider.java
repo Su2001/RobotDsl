@@ -8,11 +8,10 @@ public class ExpressionsTypeProvider {
 	
 	public static ExpressionsType typeOf(Expression e) {
 		if(e.getValue()!=null) {
-			if(e.getValue().equals("TRUE") || e.getValue().equals("FALSE")) {
-				return boolType;
-			}else {
-				return intType;
-			}
+			return intType;
+		}
+		if(e.getBool() != null) {
+			return boolType;
 		}
 		switch (e.getOperation()) {
 			// constants

@@ -1094,33 +1094,50 @@ ruleAtomic returns [EObject current=null]
 		(
 			(
 				(
-					lv_value_1_0=RULE_INT
 					{
-						newLeafNode(lv_value_1_0, grammarAccess.getAtomicAccess().getValueINTTerminalRuleCall_1_0_0());
+						newCompositeNode(grammarAccess.getAtomicAccess().getValueEIntParserRuleCall_1_0_0());
 					}
+					lv_value_1_0=ruleEInt
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getAtomicRule());
+							$current = createModelElementForParent(grammarAccess.getAtomicRule());
 						}
-						setWithLastConsumed(
+						set(
 							$current,
 							"value",
 							lv_value_1_0,
-							"org.eclipse.xtext.common.Terminals.INT");
+							"org.xtext.example.mydsl1.MyDsl.EInt");
+						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 			    |
 			(
-				otherlv_2='TRUE'
-				{
-					newLeafNode(otherlv_2, grammarAccess.getAtomicAccess().getTRUEKeyword_1_1_0());
-				}
-				    |
-				otherlv_3='FALSE'
-				{
-					newLeafNode(otherlv_3, grammarAccess.getAtomicAccess().getFALSEKeyword_1_1_1());
-				}
+				(
+					(
+						lv_bool_2_1='TRUE'
+						{
+							newLeafNode(lv_bool_2_1, grammarAccess.getAtomicAccess().getBoolTRUEKeyword_1_1_0_0());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getAtomicRule());
+							}
+							setWithLastConsumed($current, "bool", lv_bool_2_1, null);
+						}
+						    |
+						lv_bool_2_2='FALSE'
+						{
+							newLeafNode(lv_bool_2_2, grammarAccess.getAtomicAccess().getBoolFALSEKeyword_1_1_0_1());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getAtomicRule());
+							}
+							setWithLastConsumed($current, "bool", lv_bool_2_2, null);
+						}
+					)
+				)
 			)
 		)
 	)
@@ -1681,18 +1698,18 @@ ruleMotorAction returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getMotorActionAccess().getMotorLeftEIntParserRuleCall_3_1_0());
+						newCompositeNode(grammarAccess.getMotorActionAccess().getLeftExpressionParserRuleCall_3_1_0());
 					}
-					lv_motorLeft_4_0=ruleEInt
+					lv_left_4_0=ruleExpression
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getMotorActionRule());
 						}
 						set(
 							$current,
-							"motorLeft",
-							lv_motorLeft_4_0,
-							"org.xtext.example.mydsl1.MyDsl.EInt");
+							"left",
+							lv_left_4_0,
+							"org.xtext.example.mydsl1.MyDsl.Expression");
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -1706,18 +1723,18 @@ ruleMotorAction returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getMotorActionAccess().getMotorRightEIntParserRuleCall_4_1_0());
+						newCompositeNode(grammarAccess.getMotorActionAccess().getRightExpressionParserRuleCall_4_1_0());
 					}
-					lv_motorRight_6_0=ruleEInt
+					lv_right_6_0=ruleExpression
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getMotorActionRule());
 						}
 						set(
 							$current,
-							"motorRight",
-							lv_motorRight_6_0,
-							"org.xtext.example.mydsl1.MyDsl.EInt");
+							"right",
+							lv_right_6_0,
+							"org.xtext.example.mydsl1.MyDsl.Expression");
 						afterParserOrEnumRuleCall();
 					}
 				)

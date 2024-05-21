@@ -39,7 +39,7 @@ public class MyDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMultOrDivAccess().getOperationAlternatives_1_1_0(), "rule__MultOrDiv__OperationAlternatives_1_1_0");
 			builder.put(grammarAccess.getPrimaryAccess().getAlternatives(), "rule__Primary__Alternatives");
 			builder.put(grammarAccess.getAtomicAccess().getAlternatives_1(), "rule__Atomic__Alternatives_1");
-			builder.put(grammarAccess.getAtomicAccess().getAlternatives_1_1(), "rule__Atomic__Alternatives_1_1");
+			builder.put(grammarAccess.getAtomicAccess().getBoolAlternatives_1_1_0(), "rule__Atomic__BoolAlternatives_1_1_0");
 			builder.put(grammarAccess.getConditionAccess().getAlternatives(), "rule__Condition__Alternatives");
 			builder.put(grammarAccess.getActionAccess().getAlternatives(), "rule__Action__Alternatives");
 			builder.put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
@@ -121,6 +121,7 @@ public class MyDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getPrimaryAccess().getOperationAssignment_1_1(), "rule__Primary__OperationAssignment_1_1");
 			builder.put(grammarAccess.getPrimaryAccess().getLeftAssignment_1_2(), "rule__Primary__LeftAssignment_1_2");
 			builder.put(grammarAccess.getAtomicAccess().getValueAssignment_1_0(), "rule__Atomic__ValueAssignment_1_0");
+			builder.put(grammarAccess.getAtomicAccess().getBoolAssignment_1_1(), "rule__Atomic__BoolAssignment_1_1");
 			builder.put(grammarAccess.getEventAccess().getNameAssignment_2(), "rule__Event__NameAssignment_2");
 			builder.put(grammarAccess.getEventAccess().getConditionsAssignment_3_1(), "rule__Event__ConditionsAssignment_3_1");
 			builder.put(grammarAccess.getEventAccess().getConditionsAssignment_3_2_1(), "rule__Event__ConditionsAssignment_3_2_1");
@@ -134,8 +135,8 @@ public class MyDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSensorAccess().getDistanceAssignment_6(), "rule__Sensor__DistanceAssignment_6");
 			builder.put(grammarAccess.getTapAccess().getConditionnameAssignment_2(), "rule__Tap__ConditionnameAssignment_2");
 			builder.put(grammarAccess.getMotorActionAccess().getActionnameAssignment_2(), "rule__MotorAction__ActionnameAssignment_2");
-			builder.put(grammarAccess.getMotorActionAccess().getMotorLeftAssignment_3_1(), "rule__MotorAction__MotorLeftAssignment_3_1");
-			builder.put(grammarAccess.getMotorActionAccess().getMotorRightAssignment_4_1(), "rule__MotorAction__MotorRightAssignment_4_1");
+			builder.put(grammarAccess.getMotorActionAccess().getLeftAssignment_3_1(), "rule__MotorAction__LeftAssignment_3_1");
+			builder.put(grammarAccess.getMotorActionAccess().getRightAssignment_4_1(), "rule__MotorAction__RightAssignment_4_1");
 			builder.put(grammarAccess.getSoundActionAccess().getActionnameAssignment_2(), "rule__SoundAction__ActionnameAssignment_2");
 			builder.put(grammarAccess.getSoundActionAccess().getMusicsettingsAssignment_3_1(), "rule__SoundAction__MusicsettingsAssignment_3_1");
 			builder.put(grammarAccess.getSoundActionAccess().getMusicsettingsAssignment_3_2_1(), "rule__SoundAction__MusicsettingsAssignment_3_2_1");

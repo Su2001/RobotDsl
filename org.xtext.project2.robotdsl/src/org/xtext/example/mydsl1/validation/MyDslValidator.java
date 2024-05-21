@@ -21,6 +21,7 @@ import project2.LightAction;
 import project2.MotorAction;
 import project2.MusicSetting;
 import project2.Project2Package;
+import project2.RobotModel;
 import project2.Sensor;
 import project2.Sound;
 import project2.SoundAction;
@@ -56,13 +57,103 @@ public class MyDslValidator extends AbstractMyDslValidator {
 		}
 	}
 	
+	public static final String SAME_NAME = "Can't be same name";
+
+	@Check
+	public void checkNames(RobotModel rm) {
+		for(Action a : rm.getActions()) {
+			for(Condition c : rm.getConditions()) {
+				if(a.getActionname().equals(c.getConditionname())) {
+					error("cant declare instances with same name",
+							a,
+							Project2Package.eINSTANCE.getAction_Actionname(),
+							SAME_NAME);
+					error("cant declare instances with same name",
+							c,
+							Project2Package.eINSTANCE.getCondition_Conditionname(),
+							SAME_NAME);
+				}
+			}
+			for(Event e : rm.getEvents()) {
+				if(a.getActionname().equals(e.getName())) {
+					error("cant declare instances with same name",
+							a,
+							Project2Package.eINSTANCE.getAction_Actionname(),
+							SAME_NAME);
+					error("cant declare instances with same name",
+							e,
+							Project2Package.eINSTANCE.getNamedElement_Name(),
+							SAME_NAME);
+				}
+			}
+			for(Action tempa : rm.getActions()) {
+				if(a != tempa && a.getActionname().equals(tempa.getActionname())) {
+					error("cant declare instances with same name",
+							a,
+							Project2Package.eINSTANCE.getAction_Actionname(),
+							SAME_NAME);
+					error("cant declare instances with same name",
+							tempa,
+							Project2Package.eINSTANCE.getAction_Actionname(),
+							SAME_NAME);
+				}
+			}
+		}
+		for(Event e : rm.getEvents()) {
+			for(Condition c : rm.getConditions()) {
+				if(c.getConditionname().equals(e.getName())) {
+					error("cant declare instances with same name",
+							c,
+							Project2Package.eINSTANCE.getCondition_Conditionname(),
+							SAME_NAME);
+					error("cant declare instances with same name",
+							e,
+							Project2Package.eINSTANCE.getNamedElement_Name(),
+							SAME_NAME);
+				}
+				for(Event tempe : rm.getEvents()) {
+					if(tempe!= e && tempe.getName().equals(e.getName())) {
+						error("cant declare instances with same name",
+								tempe,
+								Project2Package.eINSTANCE.getNamedElement_Name(),
+								SAME_NAME);
+						error("cant declare instances with same name",
+								e,
+								Project2Package.eINSTANCE.getNamedElement_Name(),
+								SAME_NAME);
+					}
+				}
+			}	
+		}
+		
+		for(Condition c : rm.getConditions()) {
+			for(Condition tempc : rm.getConditions()) {
+				if(tempc != c &&tempc.getConditionname().equals(c.getConditionname())) {
+					error("cant declare instances with same name",
+							c,
+							Project2Package.eINSTANCE.getCondition_Conditionname(),
+							SAME_NAME);
+					error("cant declare instances with same name",
+							tempc,
+							Project2Package.eINSTANCE.getCondition_Conditionname(),
+							SAME_NAME);
+				}
+			}
+		}	
+	}
+	
 	public static final String INVALID_SPEED = "the speed exceed the limit";
 	
 	@Check
 	public void checkMotorSpeed(MotorAction ma) {
 		int max = 500,
 			min = -500;
-		
+		if(ma.getRight()!=null) {
+			checkAgainst(checkAgainstNull(ma.getRight(),Project2Package.eINSTANCE.getMotorAction_Right()), ExpressionsTypeProvider.intType,Project2Package.eINSTANCE.getMotorAction_Right());
+		}
+		if(ma.getLeft()!=null) {
+			checkAgainst(checkAgainstNull(ma.getLeft(),Project2Package.eINSTANCE.getMotorAction_Left()), ExpressionsTypeProvider.intType,Project2Package.eINSTANCE.getMotorAction_Left());
+		}
 		if(ma.getMotorLeft() < min || ma.getMotorLeft() > max) {
 			error("the motor speed can only between " + min +" to " + max,
 					ma,

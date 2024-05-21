@@ -648,6 +648,16 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 	 * @generated
 	 */
 	@Override
+	public EAttribute getExpression_Bool() {
+		return (EAttribute) expressionEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EAttribute getExpression_Value() {
 		return (EAttribute) expressionEClass.getEStructuralFeatures().get(1);
 	}
@@ -777,6 +787,7 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 		createEAttribute(expressionEClass, EXPRESSION__VALUE);
 		createEReference(expressionEClass, EXPRESSION__LEFT);
 		createEReference(expressionEClass, EXPRESSION__RIGHT);
+		createEAttribute(expressionEClass, EXPRESSION__BOOL);
 
 		// Create enums
 		buttonTypeEEnum = createEEnum(BUTTON_TYPE);
@@ -932,6 +943,8 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 		initEReference(getExpression_Right(), this.getExpression(), null, "right", null, 0, 1, Expression.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExpression_Bool(), ecorePackage.getEString(), "bool", null, 0, 1, Expression.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(buttonTypeEEnum, ButtonType.class, "ButtonType");

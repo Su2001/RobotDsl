@@ -26,6 +26,7 @@ import project2.Project2Package;
  *   <li>{@link project2.impl.ExpressionImpl#getValue <em>Value</em>}</li>
  *   <li>{@link project2.impl.ExpressionImpl#getLeft <em>Left</em>}</li>
  *   <li>{@link project2.impl.ExpressionImpl#getRight <em>Right</em>}</li>
+ *   <li>{@link project2.impl.ExpressionImpl#getBool <em>Bool</em>}</li>
  * </ul>
  *
  * @generated
@@ -90,6 +91,26 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
 	 * @ordered
 	 */
 	protected Expression right;
+
+	/**
+	 * The default value of the '{@link #getBool() <em>Bool</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBool()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String BOOL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBool() <em>Bool</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBool()
+	 * @generated
+	 * @ordered
+	 */
+	protected String bool = BOOL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -243,6 +264,29 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
 	 * @generated
 	 */
 	@Override
+	public String getBool() {
+		return bool;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setBool(String newBool) {
+		String oldBool = bool;
+		bool = newBool;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Project2Package.EXPRESSION__BOOL, oldBool, bool));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case Project2Package.EXPRESSION__LEFT:
@@ -292,6 +336,8 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
 			return getLeft();
 		case Project2Package.EXPRESSION__RIGHT:
 			return getRight();
+		case Project2Package.EXPRESSION__BOOL:
+			return getBool();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -315,6 +361,9 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
 			return;
 		case Project2Package.EXPRESSION__RIGHT:
 			setRight((Expression) newValue);
+			return;
+		case Project2Package.EXPRESSION__BOOL:
+			setBool((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -340,6 +389,9 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
 		case Project2Package.EXPRESSION__RIGHT:
 			setRight((Expression) null);
 			return;
+		case Project2Package.EXPRESSION__BOOL:
+			setBool(BOOL_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -360,6 +412,8 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
 			return left != null;
 		case Project2Package.EXPRESSION__RIGHT:
 			return right != null;
+		case Project2Package.EXPRESSION__BOOL:
+			return BOOL_EDEFAULT == null ? bool != null : !BOOL_EDEFAULT.equals(bool);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -379,6 +433,8 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
 		result.append(operation);
 		result.append(", value: ");
 		result.append(value);
+		result.append(", bool: ");
+		result.append(bool);
 		result.append(')');
 		return result.toString();
 	}
