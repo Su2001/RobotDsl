@@ -12260,7 +12260,7 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
             // InternalMyDsl.g:3932:1: ( rule__MotorAction__Group_3__0__Impl rule__MotorAction__Group_3__1 )
             // InternalMyDsl.g:3933:2: rule__MotorAction__Group_3__0__Impl rule__MotorAction__Group_3__1
             {
-            pushFollow(FOLLOW_3);
+            pushFollow(FOLLOW_39);
             rule__MotorAction__Group_3__0__Impl();
 
             state._fsp--;
@@ -12359,31 +12359,31 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MotorAction__Group_3__1__Impl"
-    // InternalMyDsl.g:3966:1: rule__MotorAction__Group_3__1__Impl : ( ( rule__MotorAction__LeftAssignment_3_1 ) ) ;
+    // InternalMyDsl.g:3966:1: rule__MotorAction__Group_3__1__Impl : ( ( rule__MotorAction__MotorLeftAssignment_3_1 ) ) ;
     public final void rule__MotorAction__Group_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMyDsl.g:3970:1: ( ( ( rule__MotorAction__LeftAssignment_3_1 ) ) )
-            // InternalMyDsl.g:3971:1: ( ( rule__MotorAction__LeftAssignment_3_1 ) )
+            // InternalMyDsl.g:3970:1: ( ( ( rule__MotorAction__MotorLeftAssignment_3_1 ) ) )
+            // InternalMyDsl.g:3971:1: ( ( rule__MotorAction__MotorLeftAssignment_3_1 ) )
             {
-            // InternalMyDsl.g:3971:1: ( ( rule__MotorAction__LeftAssignment_3_1 ) )
-            // InternalMyDsl.g:3972:2: ( rule__MotorAction__LeftAssignment_3_1 )
+            // InternalMyDsl.g:3971:1: ( ( rule__MotorAction__MotorLeftAssignment_3_1 ) )
+            // InternalMyDsl.g:3972:2: ( rule__MotorAction__MotorLeftAssignment_3_1 )
             {
-             before(grammarAccess.getMotorActionAccess().getLeftAssignment_3_1()); 
-            // InternalMyDsl.g:3973:2: ( rule__MotorAction__LeftAssignment_3_1 )
-            // InternalMyDsl.g:3973:3: rule__MotorAction__LeftAssignment_3_1
+             before(grammarAccess.getMotorActionAccess().getMotorLeftAssignment_3_1()); 
+            // InternalMyDsl.g:3973:2: ( rule__MotorAction__MotorLeftAssignment_3_1 )
+            // InternalMyDsl.g:3973:3: rule__MotorAction__MotorLeftAssignment_3_1
             {
             pushFollow(FOLLOW_2);
-            rule__MotorAction__LeftAssignment_3_1();
+            rule__MotorAction__MotorLeftAssignment_3_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getMotorActionAccess().getLeftAssignment_3_1()); 
+             after(grammarAccess.getMotorActionAccess().getMotorLeftAssignment_3_1()); 
 
             }
 
@@ -12415,7 +12415,7 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
             // InternalMyDsl.g:3986:1: ( rule__MotorAction__Group_4__0__Impl rule__MotorAction__Group_4__1 )
             // InternalMyDsl.g:3987:2: rule__MotorAction__Group_4__0__Impl rule__MotorAction__Group_4__1
             {
-            pushFollow(FOLLOW_3);
+            pushFollow(FOLLOW_39);
             rule__MotorAction__Group_4__0__Impl();
 
             state._fsp--;
@@ -12514,31 +12514,31 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MotorAction__Group_4__1__Impl"
-    // InternalMyDsl.g:4020:1: rule__MotorAction__Group_4__1__Impl : ( ( rule__MotorAction__RightAssignment_4_1 ) ) ;
+    // InternalMyDsl.g:4020:1: rule__MotorAction__Group_4__1__Impl : ( ( rule__MotorAction__MotorRightAssignment_4_1 ) ) ;
     public final void rule__MotorAction__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMyDsl.g:4024:1: ( ( ( rule__MotorAction__RightAssignment_4_1 ) ) )
-            // InternalMyDsl.g:4025:1: ( ( rule__MotorAction__RightAssignment_4_1 ) )
+            // InternalMyDsl.g:4024:1: ( ( ( rule__MotorAction__MotorRightAssignment_4_1 ) ) )
+            // InternalMyDsl.g:4025:1: ( ( rule__MotorAction__MotorRightAssignment_4_1 ) )
             {
-            // InternalMyDsl.g:4025:1: ( ( rule__MotorAction__RightAssignment_4_1 ) )
-            // InternalMyDsl.g:4026:2: ( rule__MotorAction__RightAssignment_4_1 )
+            // InternalMyDsl.g:4025:1: ( ( rule__MotorAction__MotorRightAssignment_4_1 ) )
+            // InternalMyDsl.g:4026:2: ( rule__MotorAction__MotorRightAssignment_4_1 )
             {
-             before(grammarAccess.getMotorActionAccess().getRightAssignment_4_1()); 
-            // InternalMyDsl.g:4027:2: ( rule__MotorAction__RightAssignment_4_1 )
-            // InternalMyDsl.g:4027:3: rule__MotorAction__RightAssignment_4_1
+             before(grammarAccess.getMotorActionAccess().getMotorRightAssignment_4_1()); 
+            // InternalMyDsl.g:4027:2: ( rule__MotorAction__MotorRightAssignment_4_1 )
+            // InternalMyDsl.g:4027:3: rule__MotorAction__MotorRightAssignment_4_1
             {
             pushFollow(FOLLOW_2);
-            rule__MotorAction__RightAssignment_4_1();
+            rule__MotorAction__MotorRightAssignment_4_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getMotorActionAccess().getRightAssignment_4_1()); 
+             after(grammarAccess.getMotorActionAccess().getMotorRightAssignment_4_1()); 
 
             }
 
@@ -17078,26 +17078,26 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__MotorAction__ActionnameAssignment_2"
 
 
-    // $ANTLR start "rule__MotorAction__LeftAssignment_3_1"
-    // InternalMyDsl.g:5612:1: rule__MotorAction__LeftAssignment_3_1 : ( ruleExpression ) ;
-    public final void rule__MotorAction__LeftAssignment_3_1() throws RecognitionException {
+    // $ANTLR start "rule__MotorAction__MotorLeftAssignment_3_1"
+    // InternalMyDsl.g:5612:1: rule__MotorAction__MotorLeftAssignment_3_1 : ( ruleEInt ) ;
+    public final void rule__MotorAction__MotorLeftAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMyDsl.g:5616:1: ( ( ruleExpression ) )
-            // InternalMyDsl.g:5617:2: ( ruleExpression )
+            // InternalMyDsl.g:5616:1: ( ( ruleEInt ) )
+            // InternalMyDsl.g:5617:2: ( ruleEInt )
             {
-            // InternalMyDsl.g:5617:2: ( ruleExpression )
-            // InternalMyDsl.g:5618:3: ruleExpression
+            // InternalMyDsl.g:5617:2: ( ruleEInt )
+            // InternalMyDsl.g:5618:3: ruleEInt
             {
-             before(grammarAccess.getMotorActionAccess().getLeftExpressionParserRuleCall_3_1_0()); 
+             before(grammarAccess.getMotorActionAccess().getMotorLeftEIntParserRuleCall_3_1_0()); 
             pushFollow(FOLLOW_2);
-            ruleExpression();
+            ruleEInt();
 
             state._fsp--;
 
-             after(grammarAccess.getMotorActionAccess().getLeftExpressionParserRuleCall_3_1_0()); 
+             after(grammarAccess.getMotorActionAccess().getMotorLeftEIntParserRuleCall_3_1_0()); 
 
             }
 
@@ -17116,29 +17116,29 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__MotorAction__LeftAssignment_3_1"
+    // $ANTLR end "rule__MotorAction__MotorLeftAssignment_3_1"
 
 
-    // $ANTLR start "rule__MotorAction__RightAssignment_4_1"
-    // InternalMyDsl.g:5627:1: rule__MotorAction__RightAssignment_4_1 : ( ruleExpression ) ;
-    public final void rule__MotorAction__RightAssignment_4_1() throws RecognitionException {
+    // $ANTLR start "rule__MotorAction__MotorRightAssignment_4_1"
+    // InternalMyDsl.g:5627:1: rule__MotorAction__MotorRightAssignment_4_1 : ( ruleEInt ) ;
+    public final void rule__MotorAction__MotorRightAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalMyDsl.g:5631:1: ( ( ruleExpression ) )
-            // InternalMyDsl.g:5632:2: ( ruleExpression )
+            // InternalMyDsl.g:5631:1: ( ( ruleEInt ) )
+            // InternalMyDsl.g:5632:2: ( ruleEInt )
             {
-            // InternalMyDsl.g:5632:2: ( ruleExpression )
-            // InternalMyDsl.g:5633:3: ruleExpression
+            // InternalMyDsl.g:5632:2: ( ruleEInt )
+            // InternalMyDsl.g:5633:3: ruleEInt
             {
-             before(grammarAccess.getMotorActionAccess().getRightExpressionParserRuleCall_4_1_0()); 
+             before(grammarAccess.getMotorActionAccess().getMotorRightEIntParserRuleCall_4_1_0()); 
             pushFollow(FOLLOW_2);
-            ruleExpression();
+            ruleEInt();
 
             state._fsp--;
 
-             after(grammarAccess.getMotorActionAccess().getRightExpressionParserRuleCall_4_1_0()); 
+             after(grammarAccess.getMotorActionAccess().getMotorRightEIntParserRuleCall_4_1_0()); 
 
             }
 
@@ -17157,7 +17157,7 @@ public class InternalMyDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__MotorAction__RightAssignment_4_1"
+    // $ANTLR end "rule__MotorAction__MotorRightAssignment_4_1"
 
 
     // $ANTLR start "rule__SoundAction__ActionnameAssignment_2"

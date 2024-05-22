@@ -112,8 +112,8 @@ MotorAction returns MotorAction:
 	{MotorAction}
 	'MotorAction'
 	actionname=EString
-		('motorLeft' (left=Expression))?
-		('motorRight' (right=Expression))?
+		('motorLeft' (motorLeft=EInt))?
+		('motorRight' (motorRight=EInt))?
 ;
 
 SoundAction returns SoundAction:

@@ -3,7 +3,6 @@
  */
 package org.xtext.example.mydsl1.generator;
 
-import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
@@ -157,11 +156,6 @@ public class MyDslGenerator extends AbstractGenerator {
                   _builder.newLineIfNotEmpty();
                 }
               }
-              _builder.append("\t");
-              _builder.append("emit pair_run ");
-              int _plusPlus = counter++;
-              _builder.append(_plusPlus, "\t");
-              _builder.newLineIfNotEmpty();
             }
           }
         }
@@ -183,11 +177,6 @@ public class MyDslGenerator extends AbstractGenerator {
                   _builder.newLineIfNotEmpty();
                 }
               }
-              _builder.append("\t");
-              _builder.append("emit pair_run ");
-              int _plusPlus_1 = counter++;
-              _builder.append(_plusPlus_1, "\t");
-              _builder.newLineIfNotEmpty();
             }
           }
         }
@@ -202,11 +191,6 @@ public class MyDslGenerator extends AbstractGenerator {
             for(final Event prox : proxlist) {
               String _processConditionSensor = this.processConditionSensor(prox.getConditions(), prox.getActions());
               _builder.append(_processConditionSensor);
-              _builder.newLineIfNotEmpty();
-              _builder.append("\t");
-              _builder.append("emit pair_run ");
-              int _plusPlus_2 = counter++;
-              _builder.append(_plusPlus_2, "\t");
               _builder.newLineIfNotEmpty();
               _builder.append("\t");
               _builder.append("end");
@@ -225,11 +209,6 @@ public class MyDslGenerator extends AbstractGenerator {
             for(final Event but : buttonlist) {
               String _processConditionButton = this.processConditionButton(but.getConditions(), but.getActions());
               _builder.append(_processConditionButton);
-              _builder.newLineIfNotEmpty();
-              _builder.append("\t");
-              _builder.append("emit pair_run ");
-              int _plusPlus_3 = counter++;
-              _builder.append(_plusPlus_3, "\t");
               _builder.newLineIfNotEmpty();
               _builder.append("\t");
               _builder.append("end");
@@ -262,8 +241,8 @@ public class MyDslGenerator extends AbstractGenerator {
                 _builder.append(_minus, "\t");
                 _builder.append("] ");
                 {
-                  Distance _distance = ((Sensor)c).getDistance();
-                  boolean _equals = Objects.equal(_distance, Integer.valueOf(0));
+                  int _processDistance = this.processDistance(((Sensor)c));
+                  boolean _equals = (_processDistance == 0);
                   if (_equals) {
                     _builder.append(" <= 1000 ");
                   } else {
@@ -277,8 +256,8 @@ public class MyDslGenerator extends AbstractGenerator {
                 _builder.append(_modulo, "\t");
                 _builder.append("]\t");
                 {
-                  Distance _distance_1 = ((Sensor)c).getDistance();
-                  boolean _equals_1 = Objects.equal(_distance_1, Integer.valueOf(0));
+                  int _processDistance_1 = this.processDistance(((Sensor)c));
+                  boolean _equals_1 = (_processDistance_1 == 0);
                   if (_equals_1) {
                     _builder.append("<= 400 ");
                   } else {
@@ -323,23 +302,23 @@ public class MyDslGenerator extends AbstractGenerator {
           if ((c instanceof Button)) {
             _builder.append("button.");
             {
-              ButtonType _button = ((Button)c).getButton();
-              boolean _equals = Objects.equal(_button, Integer.valueOf(0));
+              int _processButton = this.processButton(((Button)c));
+              boolean _equals = (_processButton == 0);
               if (_equals) {
                 _builder.append("forward ");
               } else {
-                ButtonType _button_1 = ((Button)c).getButton();
-                boolean _equals_1 = Objects.equal(_button_1, Integer.valueOf(1));
+                int _processButton_1 = this.processButton(((Button)c));
+                boolean _equals_1 = (_processButton_1 == 1);
                 if (_equals_1) {
                   _builder.append("backward ");
                 } else {
-                  ButtonType _button_2 = ((Button)c).getButton();
-                  boolean _equals_2 = Objects.equal(_button_2, Integer.valueOf(2));
+                  int _processButton_2 = this.processButton(((Button)c));
+                  boolean _equals_2 = (_processButton_2 == 2);
                   if (_equals_2) {
                     _builder.append("left ");
                   } else {
-                    ButtonType _button_3 = ((Button)c).getButton();
-                    boolean _equals_3 = Objects.equal(_button_3, Integer.valueOf(3));
+                    int _processButton_3 = this.processButton(((Button)c));
+                    boolean _equals_3 = (_processButton_3 == 3);
                     if (_equals_3) {
                       _builder.append("right ");
                     } else {
@@ -373,6 +352,41 @@ public class MyDslGenerator extends AbstractGenerator {
     }
     _builder.newLineIfNotEmpty();
     return _builder.toString();
+  }
+
+  public int processDistance(final Sensor s) {
+    Distance _distance = s.getDistance();
+    if (_distance != null) {
+      switch (_distance) {
+        case CLOSE:
+          return 0;
+        default:
+          return 1;
+      }
+    } else {
+      return 1;
+    }
+  }
+
+  public int processButton(final Button b) {
+    ButtonType _button = b.getButton();
+    if (_button != null) {
+      switch (_button) {
+        case FORWARD:
+          return 0;
+        case BACKWARD:
+          return 1;
+        case LEFT:
+          return 2;
+        case RIGHT:
+          return 3;
+        case CENTER:
+          return 4;
+        default:
+          break;
+      }
+    }
+    return 0;
   }
 
   public String processAction(final Action a) {

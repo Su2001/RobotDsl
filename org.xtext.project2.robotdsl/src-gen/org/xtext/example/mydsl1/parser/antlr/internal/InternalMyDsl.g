@@ -1698,18 +1698,18 @@ ruleMotorAction returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getMotorActionAccess().getLeftExpressionParserRuleCall_3_1_0());
+						newCompositeNode(grammarAccess.getMotorActionAccess().getMotorLeftEIntParserRuleCall_3_1_0());
 					}
-					lv_left_4_0=ruleExpression
+					lv_motorLeft_4_0=ruleEInt
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getMotorActionRule());
 						}
 						set(
 							$current,
-							"left",
-							lv_left_4_0,
-							"org.xtext.example.mydsl1.MyDsl.Expression");
+							"motorLeft",
+							lv_motorLeft_4_0,
+							"org.xtext.example.mydsl1.MyDsl.EInt");
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -1723,18 +1723,18 @@ ruleMotorAction returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getMotorActionAccess().getRightExpressionParserRuleCall_4_1_0());
+						newCompositeNode(grammarAccess.getMotorActionAccess().getMotorRightEIntParserRuleCall_4_1_0());
 					}
-					lv_right_6_0=ruleExpression
+					lv_motorRight_6_0=ruleEInt
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getMotorActionRule());
 						}
 						set(
 							$current,
-							"right",
-							lv_right_6_0,
-							"org.xtext.example.mydsl1.MyDsl.Expression");
+							"motorRight",
+							lv_motorRight_6_0,
+							"org.xtext.example.mydsl1.MyDsl.EInt");
 						afterParserOrEnumRuleCall();
 					}
 				)

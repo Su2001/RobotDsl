@@ -3,7 +3,20 @@
  */
 package org.xtext.example.mydsl1.ui.quickfix;
 
+import java.util.ArrayList;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.ui.editor.model.edit.IModificationContext;
+import org.eclipse.xtext.ui.editor.model.edit.ISemanticModification;
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
+import org.eclipse.xtext.ui.editor.quickfix.Fix;
+import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
+import org.eclipse.xtext.validation.Issue;
+import org.xtext.example.mydsl1.validation.MyDslValidator;
+
+import project2.Condition;
+import project2.Event;
+import project2.Sensor;
 
 /**
  * Custom quickfixes.
@@ -12,15 +25,104 @@ import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
  */
 public class MyDslQuickfixProvider extends DefaultQuickfixProvider {
 
-//	@Fix(MyDslValidator.INVALID_NAME)
-//	public void capitalizeName(final Issue issue, IssueResolutionAcceptor acceptor) {
-//		acceptor.accept(issue, "Capitalize name", "Capitalize the name.", "upcase.png", new IModification() {
-//			public void apply(IModificationContext context) throws BadLocationException {
-//				IXtextDocument xtextDocument = context.getXtextDocument();
-//				String firstLetter = xtextDocument.get(issue.getOffset(), 1);
-//				xtextDocument.replace(issue.getOffset(), 1, firstLetter.toUpperCase());
-//			}
-//		});
-//	}
+	@Fix(MyDslValidator.INVALID_SINGULAR_CONDITION)
+	public void fixInvalidCondition(final Issue issue, IssueResolutionAcceptor accpetor) {
+		accpetor.accept(issue, "Remove invalid condition", "Remove invalid condition", null, 
+				new ISemanticModification() {
+					
+					@Override
+					public void apply(EObject element, IModificationContext context) throws Exception {
+						Event event = (Event) element;
+						event.getConditions().remove(1);
+						
+					}
+				});
+	}
+	
+	@Fix(MyDslValidator.INVALID_SENSOR_POS)
+	public void fixSensorPos(final Issue issue, IssueResolutionAcceptor accpetor) {
+		accpetor.accept(issue, "Fix Position error by 1", "Fix Position error by 1", null,
+				new ISemanticModification() {
+					
+					@Override
+					public void apply(EObject element, IModificationContext context) throws Exception {
+						Sensor sensor = (Sensor) element;
+						sensor.setSensorPos(1);
+					}
+				});
+		accpetor.accept(issue, "Fix Position error by 2", "Fix Position error by 2", null,
+				new ISemanticModification() {
+					
+					@Override
+					public void apply(EObject element, IModificationContext context) throws Exception {
+						Sensor sensor = (Sensor) element;
+						sensor.setSensorPos(2);
+					}
+				});
+		accpetor.accept(issue, "Fix Position error by 3", "Fix Position error by 3", null,
+				new ISemanticModification() {
+					
+					@Override
+					public void apply(EObject element, IModificationContext context) throws Exception {
+						Sensor sensor = (Sensor) element;
+						sensor.setSensorPos(3);
+					}
+				});
+		accpetor.accept(issue, "Fix Position error by 4", "Fix Position error by 4", null,
+				new ISemanticModification() {
+					
+					@Override
+					public void apply(EObject element, IModificationContext context) throws Exception {
+						Sensor sensor = (Sensor) element;
+						sensor.setSensorPos(4);
+					}
+				});
+		accpetor.accept(issue, "Fix Position error by 5", "Fix Position error by 5", null,
+				new ISemanticModification() {
+					
+					@Override
+					public void apply(EObject element, IModificationContext context) throws Exception {
+						Sensor sensor = (Sensor) element;
+						sensor.setSensorPos(5);
+					}
+				});
+		accpetor.accept(issue, "Fix Position error by 6", "Fix Position error by 6", null,
+				new ISemanticModification() {
+					
+					@Override
+					public void apply(EObject element, IModificationContext context) throws Exception {
+						Sensor sensor = (Sensor) element;
+						sensor.setSensorPos(6);
+					}
+				});
+		accpetor.accept(issue, "Fix Position error by 7", "Fix Position error by 7", null,
+				new ISemanticModification() {
+					
+					@Override
+					public void apply(EObject element, IModificationContext context) throws Exception {
+						Sensor sensor = (Sensor) element;
+						sensor.setSensorPos(7);
+					}
+				});
+		accpetor.accept(issue, "Fix Position error by 8", "Fix Position error by 8", null,
+				new ISemanticModification() {
+					
+					@Override
+					public void apply(EObject element, IModificationContext context) throws Exception {
+						Sensor sensor = (Sensor) element;
+						sensor.setSensorPos(8);
+					}
+				});
+		accpetor.accept(issue, "Fix Position error by 9", "Fix Position error by 9", null,
+				new ISemanticModification() {
+					
+					@Override
+					public void apply(EObject element, IModificationContext context) throws Exception {
+						Sensor sensor = (Sensor) element;
+						sensor.setSensorPos(9);
+					}
+				});
+	}
+	
 
 }

@@ -3,10 +3,146 @@
  */
 package org.xtext.example.mydsl1.ui.contentassist;
 
+import java.util.Iterator;
+import java.util.List;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.CrossReference;
+import org.eclipse.xtext.GrammarUtil;
+import org.eclipse.xtext.RuleCall;
+import org.eclipse.xtext.resource.IEObjectDescription;
+import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
+import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
+
+import project2.Action;
+import project2.Button;
+import project2.Condition;
+import project2.Event;
+import project2.RobotModel;
+import project2.Sensor;
 
 /**
  * See https://www.eclipse.org/Xtext/documentation/310_eclipse_support.html#content-assist
  * on how to customize the content assistant.
  */
 public class MyDslProposalProvider extends AbstractMyDslProposalProvider {
+	@Override
+	public void completeEvent_Conditions(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		
+				// get all candidates for auto-complete in the scope
+				RobotModel rmodel = (RobotModel) model.eContainer();
+				Event e = (Event) model;
+				if (e.getConditions().size() == 0) {
+					for(Condition c:rmodel.getConditions()) {
+						acceptor.accept(createCompletionProposal(c.getConditionname(), c.getConditionname(), null, context));
+					}
+				}else {
+					if (e.getConditions().get(0) instanceof Button) {
+						for(Condition c:rmodel.getConditions()) {
+							if (c instanceof Button && !e.getConditions().contains(c)) {
+								acceptor.accept(createCompletionProposal(c.getConditionname(), c.getConditionname(), null, context));
+							}
+						}
+					}else if (e.getConditions().get(0) instanceof Sensor) {
+						for(Condition c:rmodel.getConditions()) {
+							if (c instanceof Sensor && !e.getConditions().contains(c)) {
+								acceptor.accept(createCompletionProposal(c.getConditionname(), c.getConditionname(), null, context));
+							}
+						}
+					}
+				}
+					
+	}
+	
+	@Override
+	public void completeEvent_Actions(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		// get all candidates for auto-complete in the scope
+		RobotModel rmodel = (RobotModel) model.eContainer();
+		Event e = (Event) model;
+		if (e.getActions().size() == 0) {
+			for(Action ac:rmodel.getActions()) {
+				acceptor.accept(createCompletionProposal(ac.getActionname(),ac.getActionname(), null, context));
+			}
+		}else {
+			for(Action ac:rmodel.getActions()) {
+				if (!e.getActions().contains(ac) && containsType(e.getActions(), ac)) {
+					acceptor.accept(createCompletionProposal(ac.getActionname(),ac.getActionname(), null, context));
+				}
+				
+			}
+		}
+	}
+	
+	@Override
+	public void completeButton_Button(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("FORWARD","FORWARD", null, context));
+		acceptor.accept(createCompletionProposal("BACKWARD","BACKWARD", null, context));
+		acceptor.accept(createCompletionProposal("LEFT","LEFT", null, context));
+		acceptor.accept(createCompletionProposal("RIGHT","RIGHT", null, context));
+		acceptor.accept(createCompletionProposal("CENTER","CENTER", null, context));
+	}
+	
+	@Override
+	public void completeSensor_Distance(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("CLOSE","CLOSE", null, context));
+		acceptor.accept(createCompletionProposal("FAR","FAR", null, context));
+	}
+	
+	@Override
+	public void completeSensor_SensorPos(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("1","sensor front most left", null, context));
+		acceptor.accept(createCompletionProposal("2","sensor front left", null, context));
+		acceptor.accept(createCompletionProposal("3","sensor front center", null, context));
+		acceptor.accept(createCompletionProposal("4","sensor front right", null, context));
+		acceptor.accept(createCompletionProposal("5","sensor front most right", null, context));
+		acceptor.accept(createCompletionProposal("6","sensor back left", null, context));
+		acceptor.accept(createCompletionProposal("7","sensor back right", null, context));
+		acceptor.accept(createCompletionProposal("8","sensor bottom left", null, context));
+		acceptor.accept(createCompletionProposal("9","sensor bottom right", null, context));
+	}
+	
+	@Override
+	public void completeLightAction_Pos(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("TOP","TOP", null, context));
+		acceptor.accept(createCompletionProposal("BOT","BOT", null, context));
+	}
+	
+	@Override
+	public void completeMusicSetting_Note(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("1","note1", null, context));
+		acceptor.accept(createCompletionProposal("2","note2", null, context));
+		acceptor.accept(createCompletionProposal("3","note3", null, context));
+		acceptor.accept(createCompletionProposal("4","note4", null, context));
+		acceptor.accept(createCompletionProposal("5","note5", null, context));
+	}
+	
+	@Override
+	public void completeMusicSetting_Duration(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("NONE","none duration", null, context));
+		acceptor.accept(createCompletionProposal("MEDIUM","medium duration", null, context));
+		acceptor.accept(createCompletionProposal("LONG","long duration", null, context));
+	}
+	
+	@Override
+	public void completeMusicSetting_Pos(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("1","1", null, context));
+		acceptor.accept(createCompletionProposal("2","2", null, context));
+		acceptor.accept(createCompletionProposal("3","3", null, context));
+		acceptor.accept(createCompletionProposal("4","4", null, context));
+		acceptor.accept(createCompletionProposal("5","5", null, context));
+		acceptor.accept(createCompletionProposal("6","6", null, context));
+	}
+	
+	
+	private boolean containsType(List<Action> la, Action a) {
+		for (Action action : la) {
+			if (action.getClass().equals(a.getClass())) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

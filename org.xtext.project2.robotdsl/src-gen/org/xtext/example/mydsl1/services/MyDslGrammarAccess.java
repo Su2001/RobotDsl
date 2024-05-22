@@ -1033,27 +1033,27 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final RuleCall cActionnameEStringParserRuleCall_2_0 = (RuleCall)cActionnameAssignment_2.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cMotorLeftKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cLeftAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cLeftExpressionParserRuleCall_3_1_0 = (RuleCall)cLeftAssignment_3_1.eContents().get(0);
+		private final Assignment cMotorLeftAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cMotorLeftEIntParserRuleCall_3_1_0 = (RuleCall)cMotorLeftAssignment_3_1.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cMotorRightKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cRightAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cRightExpressionParserRuleCall_4_1_0 = (RuleCall)cRightAssignment_4_1.eContents().get(0);
+		private final Assignment cMotorRightAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cMotorRightEIntParserRuleCall_4_1_0 = (RuleCall)cMotorRightAssignment_4_1.eContents().get(0);
 		
 		//MotorAction returns MotorAction:
 		//    {MotorAction}
 		//    'MotorAction'
 		//    actionname=EString
-		//        ('motorLeft' (left=Expression))?
-		//        ('motorRight' (right=Expression))?
+		//        ('motorLeft' (motorLeft=EInt))?
+		//        ('motorRight' (motorRight=EInt))?
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{MotorAction}
 		//'MotorAction'
 		//actionname=EString
-		//    ('motorLeft' (left=Expression))?
-		//    ('motorRight' (right=Expression))?
+		//    ('motorLeft' (motorLeft=EInt))?
+		//    ('motorRight' (motorRight=EInt))?
 		public Group getGroup() { return cGroup; }
 		
 		//{MotorAction}
@@ -1068,29 +1068,29 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//EString
 		public RuleCall getActionnameEStringParserRuleCall_2_0() { return cActionnameEStringParserRuleCall_2_0; }
 		
-		//('motorLeft' (left=Expression))?
+		//('motorLeft' (motorLeft=EInt))?
 		public Group getGroup_3() { return cGroup_3; }
 		
 		//'motorLeft'
 		public Keyword getMotorLeftKeyword_3_0() { return cMotorLeftKeyword_3_0; }
 		
-		//(left=Expression)
-		public Assignment getLeftAssignment_3_1() { return cLeftAssignment_3_1; }
+		//(motorLeft=EInt)
+		public Assignment getMotorLeftAssignment_3_1() { return cMotorLeftAssignment_3_1; }
 		
-		//Expression
-		public RuleCall getLeftExpressionParserRuleCall_3_1_0() { return cLeftExpressionParserRuleCall_3_1_0; }
+		//EInt
+		public RuleCall getMotorLeftEIntParserRuleCall_3_1_0() { return cMotorLeftEIntParserRuleCall_3_1_0; }
 		
-		//('motorRight' (right=Expression))?
+		//('motorRight' (motorRight=EInt))?
 		public Group getGroup_4() { return cGroup_4; }
 		
 		//'motorRight'
 		public Keyword getMotorRightKeyword_4_0() { return cMotorRightKeyword_4_0; }
 		
-		//(right=Expression)
-		public Assignment getRightAssignment_4_1() { return cRightAssignment_4_1; }
+		//(motorRight=EInt)
+		public Assignment getMotorRightAssignment_4_1() { return cMotorRightAssignment_4_1; }
 		
-		//Expression
-		public RuleCall getRightExpressionParserRuleCall_4_1_0() { return cRightExpressionParserRuleCall_4_1_0; }
+		//EInt
+		public RuleCall getMotorRightEIntParserRuleCall_4_1_0() { return cMotorRightEIntParserRuleCall_4_1_0; }
 	}
 	public class SoundActionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl1.MyDsl.SoundAction");
@@ -1846,8 +1846,8 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//    {MotorAction}
 	//    'MotorAction'
 	//    actionname=EString
-	//        ('motorLeft' (left=Expression))?
-	//        ('motorRight' (right=Expression))?
+	//        ('motorLeft' (motorLeft=EInt))?
+	//        ('motorRight' (motorRight=EInt))?
 	//;
 	public MotorActionElements getMotorActionAccess() {
 		return pMotorAction;

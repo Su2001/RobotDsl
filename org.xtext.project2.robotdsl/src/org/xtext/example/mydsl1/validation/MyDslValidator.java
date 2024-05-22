@@ -185,6 +185,7 @@ public class MyDslValidator extends AbstractMyDslValidator {
 	}
 	
 	public static final String INVALID_CONDITION = "the contidion cant ";
+	public static final String INVALID_SINGULAR_CONDITION = "the contidion cant ";
 	
 	@Check
 	public void checkCondition(Event e) {
@@ -193,7 +194,7 @@ public class MyDslValidator extends AbstractMyDslValidator {
 				error("this condition can only be singular",
 						e,
 						Project2Package.eINSTANCE.getEvent_Conditions(),
-						INVALID_CONDITION);
+						INVALID_SINGULAR_CONDITION);
 			}else {
 				Condition c = e.getConditions().get(0);
 				for(int i = 1; i < e.getConditions().size(); i++) {

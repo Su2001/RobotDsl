@@ -274,7 +274,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     MotorAction returns MotorAction
 	 *
 	 * Constraint:
-	 *     (actionname=EString left=Expression? right=Expression?)
+	 *     (actionname=EString motorLeft=EInt? motorRight=EInt?)
 	 * </pre>
 	 */
 	protected void sequence_MotorAction(ISerializationContext context, MotorAction semanticObject) {

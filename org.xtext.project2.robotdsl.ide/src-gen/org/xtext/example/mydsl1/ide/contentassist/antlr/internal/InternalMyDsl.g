@@ -3969,9 +3969,9 @@ rule__MotorAction__Group_3__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getMotorActionAccess().getLeftAssignment_3_1()); }
-	(rule__MotorAction__LeftAssignment_3_1)
-	{ after(grammarAccess.getMotorActionAccess().getLeftAssignment_3_1()); }
+	{ before(grammarAccess.getMotorActionAccess().getMotorLeftAssignment_3_1()); }
+	(rule__MotorAction__MotorLeftAssignment_3_1)
+	{ after(grammarAccess.getMotorActionAccess().getMotorLeftAssignment_3_1()); }
 )
 ;
 finally {
@@ -4023,9 +4023,9 @@ rule__MotorAction__Group_4__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getMotorActionAccess().getRightAssignment_4_1()); }
-	(rule__MotorAction__RightAssignment_4_1)
-	{ after(grammarAccess.getMotorActionAccess().getRightAssignment_4_1()); }
+	{ before(grammarAccess.getMotorActionAccess().getMotorRightAssignment_4_1()); }
+	(rule__MotorAction__MotorRightAssignment_4_1)
+	{ after(grammarAccess.getMotorActionAccess().getMotorRightAssignment_4_1()); }
 )
 ;
 finally {
@@ -5609,30 +5609,30 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__MotorAction__LeftAssignment_3_1
+rule__MotorAction__MotorLeftAssignment_3_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getMotorActionAccess().getLeftExpressionParserRuleCall_3_1_0()); }
-		ruleExpression
-		{ after(grammarAccess.getMotorActionAccess().getLeftExpressionParserRuleCall_3_1_0()); }
+		{ before(grammarAccess.getMotorActionAccess().getMotorLeftEIntParserRuleCall_3_1_0()); }
+		ruleEInt
+		{ after(grammarAccess.getMotorActionAccess().getMotorLeftEIntParserRuleCall_3_1_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__MotorAction__RightAssignment_4_1
+rule__MotorAction__MotorRightAssignment_4_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getMotorActionAccess().getRightExpressionParserRuleCall_4_1_0()); }
-		ruleExpression
-		{ after(grammarAccess.getMotorActionAccess().getRightExpressionParserRuleCall_4_1_0()); }
+		{ before(grammarAccess.getMotorActionAccess().getMotorRightEIntParserRuleCall_4_1_0()); }
+		ruleEInt
+		{ after(grammarAccess.getMotorActionAccess().getMotorRightEIntParserRuleCall_4_1_0()); }
 	)
 ;
 finally {

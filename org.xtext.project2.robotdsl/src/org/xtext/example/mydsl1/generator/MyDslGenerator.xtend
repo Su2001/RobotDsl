@@ -89,7 +89,6 @@ class MyDslGenerator extends AbstractGenerator {
 				«FOR a : e.getActions»
 					«processAction(a)»
 				«ENDFOR»
-				emit pair_run «counter++»
 			«ENDFOR»
 		«ENDIF»
 		«IF soundlist.size > 0»
@@ -98,14 +97,12 @@ class MyDslGenerator extends AbstractGenerator {
 				«FOR a : e.getActions»
 					«processAction(a)»
 				«ENDFOR»
-				emit pair_run «counter++»
 			«ENDFOR»
 		«ENDIF»
 		«IF proxlist.size > 0»
 				onevent prox
 				«FOR prox : proxlist»
 				«processConditionSensor(prox.getConditions, prox.getActions)»
-					emit pair_run «counter++»
 					end
 				«ENDFOR»	
 				«ENDIF»
@@ -113,7 +110,6 @@ class MyDslGenerator extends AbstractGenerator {
 				onevent buttons
 				«FOR but : buttonlist»
 								«processConditionButton(but.getConditions, but.getActions)»
-									emit pair_run «counter++»
 									end
 								«ENDFOR»			
 						«ENDIF»
@@ -122,16 +118,39 @@ class MyDslGenerator extends AbstractGenerator {
 	
 	def processConditionSensor(List<Condition> lc, List<Action> la){
 		var count = lc.size
-		return '''	when «FOR c : lc»«IF c instanceof Sensor »«IF c.getSensorPos <= 7 »prox.horizontal[«c.getSensorPos-1»] «IF c.getDistance == 0 » <= 1000 «ELSE» >= 2000 «ENDIF»«ELSE»prox.ground.delta[«c.getSensorPos%8»]	«IF c.getDistance == 0 »<= 400 «ELSE»>= 450	«ENDIF»«ENDIF»«ENDIF»«IF count-- > 1» and «ENDIF»«ENDFOR» do
+		return '''	when «FOR c : lc»«IF c instanceof Sensor »«IF c.getSensorPos <= 7 »prox.horizontal[«c.getSensorPos-1»] «IF processDistance(c) == 0 » <= 1000 «ELSE» >= 2000 «ENDIF»«ELSE»prox.ground.delta[«c.getSensorPos%8»]	«IF processDistance(c) == 0 »<= 400 «ELSE»>= 450	«ENDIF»«ENDIF»«ENDIF»«IF count-- > 1» and «ENDIF»«ENDFOR» do
 			«FOR a : la»«processAction(a)» «ENDFOR»
 			'''
 	}
 	
 	def processConditionButton(List<Condition> lc, List<Action> la){
 		var count = lc.size
-		return '''	when «FOR c : lc»«IF c instanceof Button »button.«IF c.getButton == 0 »forward «ELSEIF c.getButton == 1 »backward «ELSEIF c.getButton == 2»left «ELSEIF c.getButton == 3»right «ELSE»center «ENDIF»«ENDIF»== 1«IF count-- > 1» and «ENDIF»«ENDFOR» do
+
+		return '''	when «FOR c : lc»«IF c instanceof Button »button.«IF processButton(c) == 0»forward «ELSEIF processButton(c) == 1 »backward «ELSEIF processButton(c) == 2»left «ELSEIF processButton(c) == 3»right «ELSE»center «ENDIF»«ENDIF»== 1«IF count-- > 1» and «ENDIF»«ENDFOR» do
 			«FOR a : la»«processAction(a)» «ENDFOR»
 			'''
+	}
+	
+	def processDistance(Sensor s){
+		switch s.distance{
+			case CLOSE: return 0
+			default: {
+				return 1
+			}
+			
+		}
+		
+	}
+	
+	def processButton(Button b){
+		switch b.button{
+			case FORWARD: return 0
+			case BACKWARD: return 1
+			case LEFT: return 2
+			case RIGHT: return 3
+			case CENTER: return 4
+		}
+		
 	}
 	
 	def processAction(Action a){
