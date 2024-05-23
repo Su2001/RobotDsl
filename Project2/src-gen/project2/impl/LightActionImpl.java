@@ -4,10 +4,13 @@ package project2.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import project2.Expression;
 import project2.LightAction;
 import project2.LightPos;
 import project2.Project2Package;
@@ -24,6 +27,9 @@ import project2.Project2Package;
  *   <li>{@link project2.impl.LightActionImpl#getGreen <em>Green</em>}</li>
  *   <li>{@link project2.impl.LightActionImpl#getBlue <em>Blue</em>}</li>
  *   <li>{@link project2.impl.LightActionImpl#getPos <em>Pos</em>}</li>
+ *   <li>{@link project2.impl.LightActionImpl#getRedEx <em>Red Ex</em>}</li>
+ *   <li>{@link project2.impl.LightActionImpl#getBlueEx <em>Blue Ex</em>}</li>
+ *   <li>{@link project2.impl.LightActionImpl#getGreenEx <em>Green Ex</em>}</li>
  * </ul>
  *
  * @generated
@@ -108,6 +114,36 @@ public class LightActionImpl extends ActionImpl implements LightAction {
 	 * @ordered
 	 */
 	protected LightPos pos = POS_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getRedEx() <em>Red Ex</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedEx()
+	 * @generated
+	 * @ordered
+	 */
+	protected Expression redEx;
+
+	/**
+	 * The cached value of the '{@link #getBlueEx() <em>Blue Ex</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBlueEx()
+	 * @generated
+	 * @ordered
+	 */
+	protected Expression blueEx;
+
+	/**
+	 * The cached value of the '{@link #getGreenEx() <em>Green Ex</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGreenEx()
+	 * @generated
+	 * @ordered
+	 */
+	protected Expression greenEx;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -227,6 +263,180 @@ public class LightActionImpl extends ActionImpl implements LightAction {
 	 * @generated
 	 */
 	@Override
+	public Expression getRedEx() {
+		return redEx;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetRedEx(Expression newRedEx, NotificationChain msgs) {
+		Expression oldRedEx = redEx;
+		redEx = newRedEx;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Project2Package.LIGHT_ACTION__RED_EX, oldRedEx, newRedEx);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setRedEx(Expression newRedEx) {
+		if (newRedEx != redEx) {
+			NotificationChain msgs = null;
+			if (redEx != null)
+				msgs = ((InternalEObject) redEx).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - Project2Package.LIGHT_ACTION__RED_EX, null, msgs);
+			if (newRedEx != null)
+				msgs = ((InternalEObject) newRedEx).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - Project2Package.LIGHT_ACTION__RED_EX, null, msgs);
+			msgs = basicSetRedEx(newRedEx, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Project2Package.LIGHT_ACTION__RED_EX, newRedEx,
+					newRedEx));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Expression getBlueEx() {
+		return blueEx;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetBlueEx(Expression newBlueEx, NotificationChain msgs) {
+		Expression oldBlueEx = blueEx;
+		blueEx = newBlueEx;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Project2Package.LIGHT_ACTION__BLUE_EX, oldBlueEx, newBlueEx);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setBlueEx(Expression newBlueEx) {
+		if (newBlueEx != blueEx) {
+			NotificationChain msgs = null;
+			if (blueEx != null)
+				msgs = ((InternalEObject) blueEx).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - Project2Package.LIGHT_ACTION__BLUE_EX, null, msgs);
+			if (newBlueEx != null)
+				msgs = ((InternalEObject) newBlueEx).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - Project2Package.LIGHT_ACTION__BLUE_EX, null, msgs);
+			msgs = basicSetBlueEx(newBlueEx, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Project2Package.LIGHT_ACTION__BLUE_EX, newBlueEx,
+					newBlueEx));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Expression getGreenEx() {
+		return greenEx;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetGreenEx(Expression newGreenEx, NotificationChain msgs) {
+		Expression oldGreenEx = greenEx;
+		greenEx = newGreenEx;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Project2Package.LIGHT_ACTION__GREEN_EX, oldGreenEx, newGreenEx);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setGreenEx(Expression newGreenEx) {
+		if (newGreenEx != greenEx) {
+			NotificationChain msgs = null;
+			if (greenEx != null)
+				msgs = ((InternalEObject) greenEx).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - Project2Package.LIGHT_ACTION__GREEN_EX, null, msgs);
+			if (newGreenEx != null)
+				msgs = ((InternalEObject) newGreenEx).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - Project2Package.LIGHT_ACTION__GREEN_EX, null, msgs);
+			msgs = basicSetGreenEx(newGreenEx, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Project2Package.LIGHT_ACTION__GREEN_EX, newGreenEx,
+					newGreenEx));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case Project2Package.LIGHT_ACTION__RED_EX:
+			return basicSetRedEx(null, msgs);
+		case Project2Package.LIGHT_ACTION__BLUE_EX:
+			return basicSetBlueEx(null, msgs);
+		case Project2Package.LIGHT_ACTION__GREEN_EX:
+			return basicSetGreenEx(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Project2Package.LIGHT_ACTION__RED:
@@ -237,6 +447,12 @@ public class LightActionImpl extends ActionImpl implements LightAction {
 			return getBlue();
 		case Project2Package.LIGHT_ACTION__POS:
 			return getPos();
+		case Project2Package.LIGHT_ACTION__RED_EX:
+			return getRedEx();
+		case Project2Package.LIGHT_ACTION__BLUE_EX:
+			return getBlueEx();
+		case Project2Package.LIGHT_ACTION__GREEN_EX:
+			return getGreenEx();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -260,6 +476,15 @@ public class LightActionImpl extends ActionImpl implements LightAction {
 			return;
 		case Project2Package.LIGHT_ACTION__POS:
 			setPos((LightPos) newValue);
+			return;
+		case Project2Package.LIGHT_ACTION__RED_EX:
+			setRedEx((Expression) newValue);
+			return;
+		case Project2Package.LIGHT_ACTION__BLUE_EX:
+			setBlueEx((Expression) newValue);
+			return;
+		case Project2Package.LIGHT_ACTION__GREEN_EX:
+			setGreenEx((Expression) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -285,6 +510,15 @@ public class LightActionImpl extends ActionImpl implements LightAction {
 		case Project2Package.LIGHT_ACTION__POS:
 			setPos(POS_EDEFAULT);
 			return;
+		case Project2Package.LIGHT_ACTION__RED_EX:
+			setRedEx((Expression) null);
+			return;
+		case Project2Package.LIGHT_ACTION__BLUE_EX:
+			setBlueEx((Expression) null);
+			return;
+		case Project2Package.LIGHT_ACTION__GREEN_EX:
+			setGreenEx((Expression) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -305,6 +539,12 @@ public class LightActionImpl extends ActionImpl implements LightAction {
 			return blue != BLUE_EDEFAULT;
 		case Project2Package.LIGHT_ACTION__POS:
 			return pos != POS_EDEFAULT;
+		case Project2Package.LIGHT_ACTION__RED_EX:
+			return redEx != null;
+		case Project2Package.LIGHT_ACTION__BLUE_EX:
+			return blueEx != null;
+		case Project2Package.LIGHT_ACTION__GREEN_EX:
+			return greenEx != null;
 		}
 		return super.eIsSet(featureID);
 	}

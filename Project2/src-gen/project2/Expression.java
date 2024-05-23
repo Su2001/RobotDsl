@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link project2.Expression#getValue <em>Value</em>}</li>
  *   <li>{@link project2.Expression#getLeft <em>Left</em>}</li>
  *   <li>{@link project2.Expression#getRight <em>Right</em>}</li>
- *   <li>{@link project2.Expression#getBool <em>Bool</em>}</li>
  * </ul>
  *
  * @see project2.Project2Package#getExpression()
@@ -90,28 +89,6 @@ public interface Expression extends EObject {
 	 * @generated
 	 */
 	void setRight(Expression value);
-
-	/**
-	 * Returns the value of the '<em><b>Bool</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Bool</em>' attribute.
-	 * @see #setBool(String)
-	 * @see project2.Project2Package#getExpression_Bool()
-	 * @model
-	 * @generated
-	 */
-	String getBool();
-
-	/**
-	 * Sets the value of the '{@link project2.Expression#getBool <em>Bool</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Bool</em>' attribute.
-	 * @see #getBool()
-	 * @generated
-	 */
-	void setBool(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.

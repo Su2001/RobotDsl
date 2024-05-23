@@ -4,11 +4,14 @@ package project2.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import project2.Distance;
+import project2.Expression;
 import project2.Project2Package;
 import project2.Sensor;
 
@@ -22,6 +25,7 @@ import project2.Sensor;
  * <ul>
  *   <li>{@link project2.impl.SensorImpl#getSensorPos <em>Sensor Pos</em>}</li>
  *   <li>{@link project2.impl.SensorImpl#getDistance <em>Distance</em>}</li>
+ *   <li>{@link project2.impl.SensorImpl#getPosEx <em>Pos Ex</em>}</li>
  * </ul>
  *
  * @generated
@@ -66,6 +70,16 @@ public class SensorImpl extends ConditionImpl implements Sensor {
 	 * @ordered
 	 */
 	protected Distance distance = DISTANCE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getPosEx() <em>Pos Ex</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPosEx()
+	 * @generated
+	 * @ordered
+	 */
+	protected Expression posEx;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -140,12 +154,79 @@ public class SensorImpl extends ConditionImpl implements Sensor {
 	 * @generated
 	 */
 	@Override
+	public Expression getPosEx() {
+		return posEx;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetPosEx(Expression newPosEx, NotificationChain msgs) {
+		Expression oldPosEx = posEx;
+		posEx = newPosEx;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Project2Package.SENSOR__POS_EX, oldPosEx, newPosEx);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setPosEx(Expression newPosEx) {
+		if (newPosEx != posEx) {
+			NotificationChain msgs = null;
+			if (posEx != null)
+				msgs = ((InternalEObject) posEx).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - Project2Package.SENSOR__POS_EX, null, msgs);
+			if (newPosEx != null)
+				msgs = ((InternalEObject) newPosEx).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - Project2Package.SENSOR__POS_EX, null, msgs);
+			msgs = basicSetPosEx(newPosEx, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Project2Package.SENSOR__POS_EX, newPosEx, newPosEx));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case Project2Package.SENSOR__POS_EX:
+			return basicSetPosEx(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Project2Package.SENSOR__SENSOR_POS:
 			return getSensorPos();
 		case Project2Package.SENSOR__DISTANCE:
 			return getDistance();
+		case Project2Package.SENSOR__POS_EX:
+			return getPosEx();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -163,6 +244,9 @@ public class SensorImpl extends ConditionImpl implements Sensor {
 			return;
 		case Project2Package.SENSOR__DISTANCE:
 			setDistance((Distance) newValue);
+			return;
+		case Project2Package.SENSOR__POS_EX:
+			setPosEx((Expression) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -182,6 +266,9 @@ public class SensorImpl extends ConditionImpl implements Sensor {
 		case Project2Package.SENSOR__DISTANCE:
 			setDistance(DISTANCE_EDEFAULT);
 			return;
+		case Project2Package.SENSOR__POS_EX:
+			setPosEx((Expression) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -198,6 +285,8 @@ public class SensorImpl extends ConditionImpl implements Sensor {
 			return sensorPos != SENSOR_POS_EDEFAULT;
 		case Project2Package.SENSOR__DISTANCE:
 			return distance != DISTANCE_EDEFAULT;
+		case Project2Package.SENSOR__POS_EX:
+			return posEx != null;
 		}
 		return super.eIsSet(featureID);
 	}

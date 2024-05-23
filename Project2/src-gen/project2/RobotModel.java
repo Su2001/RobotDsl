@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link project2.RobotModel#getActions <em>Actions</em>}</li>
  *   <li>{@link project2.RobotModel#getConditions <em>Conditions</em>}</li>
  *   <li>{@link project2.RobotModel#getExpressions <em>Expressions</em>}</li>
+ *   <li>{@link project2.RobotModel#getInit <em>Init</em>}</li>
  * </ul>
  *
  * @see project2.Project2Package#getRobotModel()
@@ -73,5 +74,27 @@ public interface RobotModel extends EObject {
 	 * @generated
 	 */
 	EList<Expression> getExpressions();
+
+	/**
+	 * Returns the value of the '<em><b>Init</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Init</em>' attribute.
+	 * @see #setInit(int)
+	 * @see project2.Project2Package#getRobotModel_Init()
+	 * @model
+	 * @generated
+	 */
+	int getInit();
+
+	/**
+	 * Sets the value of the '{@link project2.RobotModel#getInit <em>Init</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Init</em>' attribute.
+	 * @see #getInit()
+	 * @generated
+	 */
+	void setInit(int value);
 
 } // RobotModel

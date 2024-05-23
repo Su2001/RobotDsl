@@ -4,6 +4,8 @@
 package org.xtext.example.mydsl1;
 
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.scoping.IScopeProvider;
+import org.xtext.example.mydsl1.scoping.MyDslScopeProvider;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -13,4 +15,5 @@ public class MyDslRuntimeModule extends AbstractMyDslRuntimeModule {
 	public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider(){
 		return MyRobotDSLQNP.class;
 	}
+	
 }

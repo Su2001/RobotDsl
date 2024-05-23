@@ -3,6 +3,17 @@
  */
 package org.xtext.example.mydsl1.scoping;
 
+import java.util.Collections;
+import java.util.stream.Collectors;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.Scopes;
+
+import project2.Button;
+import project2.Condition;
+import project2.RobotModel;
 
 /**
  * This class contains custom scoping description.
@@ -11,5 +22,6 @@ package org.xtext.example.mydsl1.scoping;
  * on how and when to use it.
  */
 public class MyDslScopeProvider extends AbstractMyDslScopeProvider {
-
+	
+	
 }

@@ -4,16 +4,14 @@
 package org.xtext.example.mydsl1.validation;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
 
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.validation.Check;
-import org.xtext.example.typing.ExpressionsType;
-import org.xtext.example.typing.ExpressionsTypeProvider;
 
 import project2.Action;
 import project2.Button;
+import project2.ButtonType;
 import project2.Condition;
 import project2.Event;
 import project2.Expression;
@@ -33,6 +31,7 @@ import project2.Tap;
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 public class MyDslValidator extends AbstractMyDslValidator {
+	
 	
 	public static final String SAME_ACTION_TYPE = "Can't add two same actions";
 
@@ -142,30 +141,46 @@ public class MyDslValidator extends AbstractMyDslValidator {
 		}	
 	}
 	
+	public static final String SAME_BUTTON_TYPE = "Can't be same name";
+	
+	@Check
+	public void processEventsCondition(Button e) {
+		RobotModel r= (RobotModel)e.eContainer();
+		for (Condition c : r.getConditions()) {
+			if (e != c && c instanceof Button) {
+				if (((Button)c).getButton() == e.getButton()) {
+					error("already defined the button type",
+							e,
+							Project2Package.eINSTANCE.getButton_Button(),
+							SAME_BUTTON_TYPE);
+				}
+			}
+		}
+	}
+	
 	public static final String INVALID_SPEED = "the speed exceed the limit";
 	
 	@Check
 	public void checkMotorSpeed(MotorAction ma) {
 		int max = 500,
 			min = -500;
-		if(ma.getRight()!=null) {
-			checkAgainst(checkAgainstNull(ma.getRight(),Project2Package.eINSTANCE.getMotorAction_Right()), ExpressionsTypeProvider.intType,Project2Package.eINSTANCE.getMotorAction_Right());
+		if (ma.getRight()!=null && ma.getLeft()!=null) {
+			ma.setMotorLeft(processExpression(ma.getLeft()));
+			ma.setMotorRight(processExpression(ma.getRight()));
+			if(ma.getMotorLeft() < min || ma.getMotorLeft() > max) {
+				error("the motor speed can only between " + min +" to " + max + " and now it is " + ma.getMotorLeft(),
+						ma,
+						Project2Package.eINSTANCE.getMotorAction_Left(),
+						INVALID_SPEED);
+			}
+			if(ma.getMotorRight() < min || ma.getMotorRight() > max) {
+				error("the motor speed can only between " + min +" to " + max + " and now it is " + ma.getMotorRight(),
+						ma,
+						Project2Package.eINSTANCE.getMotorAction_Right(),
+						INVALID_SPEED);
+			}
 		}
-		if(ma.getLeft()!=null) {
-			checkAgainst(checkAgainstNull(ma.getLeft(),Project2Package.eINSTANCE.getMotorAction_Left()), ExpressionsTypeProvider.intType,Project2Package.eINSTANCE.getMotorAction_Left());
-		}
-		if(ma.getMotorLeft() < min || ma.getMotorLeft() > max) {
-			error("the motor speed can only between " + min +" to " + max,
-					ma,
-					Project2Package.eINSTANCE.getMotorAction_MotorLeft(),
-					INVALID_SPEED);
-		}
-		if(ma.getMotorRight() < min || ma.getMotorRight() > max) {
-			error("the motor speed can only between " + min +" to " + max,
-					ma,
-					Project2Package.eINSTANCE.getMotorAction_MotorRight(),
-					INVALID_SPEED);
-		}
+		
 		
 	}
 	
@@ -175,12 +190,14 @@ public class MyDslValidator extends AbstractMyDslValidator {
 	public void checkSensor(Sensor s) {
 		int max = 9,
 			min = 1;
-		
-		if(s.getSensorPos() < min || s.getSensorPos() > max) {
-			error("the sensor position can only between " + min +" to " + max,
-					s,
-					Project2Package.eINSTANCE.getSensor_SensorPos(),
-					INVALID_SENSOR_POS);
+		if (s.getPosEx() != null) {
+			s.setSensorPos(processExpression(s.getPosEx()));
+			if(s.getSensorPos() < min || s.getSensorPos() > max) {
+				error("the sensor position can only between " + min +" to " + max + " and now it is " + s.getSensorPos(),
+						s,
+						Project2Package.eINSTANCE.getSensor_PosEx(),
+						INVALID_SENSOR_POS);
+			}
 		}
 	}
 	
@@ -224,27 +241,33 @@ public class MyDslValidator extends AbstractMyDslValidator {
 	public void checkLightColor(LightAction la) {
 		int max = 32,
 			min = 0;
-		
-		if(la.getRed() < min || la.getRed() > max) {
-			error("the red value can only being between " + min +" to " + max,
-					la,
-					Project2Package.eINSTANCE.getLightAction_Red(),
-					INVALID_COLOR);
+		if (la.getRedEx() != null ) {
+			la.setRed(processExpression(la.getRedEx()));
+			if(la.getRed() < min || la.getRed() > max) {
+				error("the red value can only being between " + min +" to " + max+ " and now it is " +la.getRed(),
+						la,
+						Project2Package.eINSTANCE.getLightAction_RedEx(),
+						INVALID_COLOR);
+			}
 		}
-		if(la.getBlue() < min || la.getBlue() > max) {
-			error("the blue value can only being between " + min +" to " + max,
-					la,
-					Project2Package.eINSTANCE.getLightAction_Blue(),
-					INVALID_COLOR);
+		if (la.getBlueEx() != null) {
+			la.setBlue(processExpression(la.getBlueEx()));
+			if(la.getBlue() < min || la.getBlue() > max) {
+				error("the blue value can only being between " + min +" to " + max+ " and now it is " + la.getBlue(),
+						la,
+						Project2Package.eINSTANCE.getLightAction_BlueEx(),
+						INVALID_COLOR);
+			}
 		}
-		
-		if(la.getGreen() < min || la.getGreen() > max) {
-			error("the green value can only being between " + min +" to " + max,
-					la,
-					Project2Package.eINSTANCE.getLightAction_Green(),
-					INVALID_COLOR);
+		if (la.getGreenEx() != null) {
+			la.setGreen(processExpression(la.getGreenEx()));
+			if(la.getGreen() < min || la.getGreen() > max) {
+				error("the green value can only being between " + min +" to " + max+ " and now it is " + la.getGreen(),
+						la,
+						Project2Package.eINSTANCE.getLightAction_GreenEx(),
+						INVALID_COLOR);
+			}
 		}
-		
 	}
 	
 	public static final String INVALID_SOUND_NOTE = "the sound note cant assign this value";
@@ -258,14 +281,16 @@ public class MyDslValidator extends AbstractMyDslValidator {
 			min = 1;
 		List<Integer> li = new ArrayList<>();
 		for(MusicSetting m : sa.getMusicsettings()) {
+			m.setNote(processExpression(m.getNoteEx()));
 			if(m.getNote() < min || m.getNote() > max_note) {
-				error("the sound note can only being between " + min +" to " + max_note,
+				error("the sound note can only being between " + min +" to " + max_note+ " and now it is " + m.getNote(),
 					m,
 					Project2Package.eINSTANCE.getMusicSetting_Note(),
 					INVALID_SOUND_NOTE);
 			}
+			m.setPos(processExpression(m.getPosEx()));
 			if(m.getPos() < min || m.getPos() > max_pos) {
-				error("the sound position can only being between " + min +" to " + max_pos,
+				error("the sound position can only being between " + min +" to " + max_pos+ " and now it is " + m.getPos(),
 					m,
 					Project2Package.eINSTANCE.getMusicSetting_Pos(),
 					INVALID_SOUND_POS);
@@ -279,69 +304,57 @@ public class MyDslValidator extends AbstractMyDslValidator {
 				li.add(m.getPos());
 			}
 		}
-		
-		
 	}
 	
-	
-	public static final String INVALID_TYPE = "the type is invalid";
+	public static final String SAME_TAP = "the tap action is already defined";
 	
 	@Check
-	public void CheckType(Expression e) {
-		String[] tempArray = {"||", "&&", "==", "!="};
-		List<String> boolOpBinary = new ArrayList<>(Arrays.asList(tempArray));
-		String[] tempArrayInt = {"+", "-", "/", "*", ">", ">=", "<","<="};
-		List<String> intOpBinary = new ArrayList<>(Arrays.asList(tempArrayInt));
-		if(boolOpBinary.contains(e.getOperation())) {
-			ExpressionsType typeLeft  = checkAgainstNull(e.getLeft(), Project2Package.eINSTANCE.getExpression_Left());
-			ExpressionsType typeRight  = checkAgainstNull(e.getRight(), Project2Package.eINSTANCE.getExpression_Right());
-			if(e.getOperation().equals("==") || e.getOperation().equals("!=")) {
-				if (typeLeft != typeRight){
-					error("should has same type", Project2Package.eINSTANCE.getExpression_Left(), INVALID_TYPE);
-					error("should has same type", Project2Package.eINSTANCE.getExpression_Right(), INVALID_TYPE);
-				}
-			}else {
-				checkAgainst(typeLeft, ExpressionsTypeProvider.boolType,Project2Package.eINSTANCE.getExpression_Left());
-				checkAgainst(typeRight, ExpressionsTypeProvider.boolType,Project2Package.eINSTANCE.getExpression_Right());
-			}
-			
-		}else if(intOpBinary.contains(e.getOperation())) {
-			ExpressionsType typeLeft  = checkAgainstNull(e.getLeft(), Project2Package.eINSTANCE.getExpression_Left());
-			ExpressionsType typeRight  = checkAgainstNull(e.getRight(), Project2Package.eINSTANCE.getExpression_Right());
-			checkAgainst(typeLeft, ExpressionsTypeProvider.intType,Project2Package.eINSTANCE.getExpression_Left());
-			checkAgainst(typeRight, ExpressionsTypeProvider.intType,Project2Package.eINSTANCE.getExpression_Right());
-		}else if(e.getOperation().equals("!")) {
-			ExpressionsType typeLeft  = checkAgainstNull(e.getLeft(), Project2Package.eINSTANCE.getExpression_Left());
-			checkAgainst(typeLeft, ExpressionsTypeProvider.boolType,Project2Package.eINSTANCE.getExpression_Left());
-		}else if(e.getOperation().equals("if")) {
-			ExpressionsType typeLeft  = checkAgainstNull(e.getLeft(), Project2Package.eINSTANCE.getExpression_Left());
-			checkAgainst(typeLeft, ExpressionsTypeProvider.boolType,Project2Package.eINSTANCE.getExpression_Left());
-		}else if(e.getOperation().equals("then")) {
-			ExpressionsType typeLeft  = checkAgainstNull(e.getLeft(), Project2Package.eINSTANCE.getExpression_Left());
-			ExpressionsType typeRight  = ExpressionsTypeProvider.typeOf(e.getRight());
-			if(typeRight != null) {
-				if (typeLeft != typeRight){
-					error("the then should has same return type as else", Project2Package.eINSTANCE.getExpression_Left(), INVALID_TYPE);
-					error("the else should has same return type as then", Project2Package.eINSTANCE.getExpression_Right(), INVALID_TYPE);
-				}
+	public void checkTapDeclare(Tap t) {
+		RobotModel rModel = (RobotModel) t.eContainer();
+		for (Condition c : rModel.getConditions()) {
+			if (t != c && c.getClass().equals(t.getClass())) {
+				warning("the tap condition is already declared",
+						c,
+						Project2Package.eINSTANCE.getCondition_Conditionname(),
+						SAME_TAP);
 			}
 		}
 	}
 	
-	private ExpressionsType checkAgainstNull (Expression input, EReference ref) {
-		// get type of expression
-		ExpressionsType type = ExpressionsTypeProvider.typeOf(input);
-		// create error if expression has null type (error)
-		if (type == null)
-			error ("the type is null", ref);
-		return type;
+	public static final String SAME_SOUND = "the sound condition is already defined";
+	
+	@Check
+	public void checkSoundDeclare(Sound s) {
+		RobotModel rModel = (RobotModel) s.eContainer();
+		for (Condition c : rModel.getConditions()) {
+			if (s != c && c.getClass().equals(s.getClass())) {
+				warning("the sound condition is already declared",
+						c,
+						Project2Package.eINSTANCE.getCondition_Conditionname(),
+						SAME_SOUND);
+			}
+		}
 	}
 	
-	private void checkAgainst (ExpressionsType actualType, ExpressionsType expectedType, EReference ref) {
-		if (actualType != expectedType)
-			error("expected type " + expectedType +
-				  " but was " + actualType,
-				  ref
-				  );
+	
+	private int processExpression(Expression e) {
+		if (e.getValue() != null) {
+			return (int)e.getValue();
+		}
+		switch (e.getOperation()) {
+			case "+": {
+				return processExpression(e.getLeft()) + processExpression(e.getRight());
+			}
+			case "-":{
+				return processExpression(e.getLeft()) - processExpression(e.getRight());
+			}
+			case "*":{
+				return processExpression(e.getLeft()) * processExpression(e.getRight());
+			}
+			case "/":{
+				return processExpression(e.getLeft()) / processExpression(e.getRight());
+			}
+		}
+		return -1000;
 	}
 }

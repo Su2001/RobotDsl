@@ -39,6 +39,7 @@ public class MyDslQuickfixProvider extends DefaultQuickfixProvider {
 				});
 	}
 	
+	
 	@Fix(MyDslValidator.INVALID_SENSOR_POS)
 	public void fixSensorPos(final Issue issue, IssueResolutionAcceptor accpetor) {
 		accpetor.accept(issue, "Fix Position error by 1", "Fix Position error by 1", null,

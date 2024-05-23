@@ -9,7 +9,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import project2.Action;
 import project2.Button;
@@ -288,6 +287,16 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 	 * @generated
 	 */
 	@Override
+	public EAttribute getRobotModel_Init() {
+		return (EAttribute) robotModelEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getAction() {
 		return actionEClass;
 	}
@@ -400,6 +409,16 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 	@Override
 	public EAttribute getSensor_Distance() {
 		return (EAttribute) sensorEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getSensor_PosEx() {
+		return (EReference) sensorEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -568,6 +587,36 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 	 * @generated
 	 */
 	@Override
+	public EReference getLightAction_RedEx() {
+		return (EReference) lightActionEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getLightAction_BlueEx() {
+		return (EReference) lightActionEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getLightAction_GreenEx() {
+		return (EReference) lightActionEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getMusicSetting() {
 		return musicSettingEClass;
 	}
@@ -608,6 +657,26 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 	 * @generated
 	 */
 	@Override
+	public EReference getMusicSetting_NoteEx() {
+		return (EReference) musicSettingEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMusicSetting_PosEx() {
+		return (EReference) musicSettingEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getExpression() {
 		return expressionEClass;
 	}
@@ -640,16 +709,6 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 	@Override
 	public EReference getExpression_Right() {
 		return (EReference) expressionEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getExpression_Bool() {
-		return (EAttribute) expressionEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -737,6 +796,7 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 		createEReference(robotModelEClass, ROBOT_MODEL__ACTIONS);
 		createEReference(robotModelEClass, ROBOT_MODEL__CONDITIONS);
 		createEReference(robotModelEClass, ROBOT_MODEL__EXPRESSIONS);
+		createEAttribute(robotModelEClass, ROBOT_MODEL__INIT);
 
 		actionEClass = createEClass(ACTION);
 		createEAttribute(actionEClass, ACTION__ACTIONNAME);
@@ -754,6 +814,7 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 		sensorEClass = createEClass(SENSOR);
 		createEAttribute(sensorEClass, SENSOR__SENSOR_POS);
 		createEAttribute(sensorEClass, SENSOR__DISTANCE);
+		createEReference(sensorEClass, SENSOR__POS_EX);
 
 		soundEClass = createEClass(SOUND);
 
@@ -776,18 +837,22 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 		createEAttribute(lightActionEClass, LIGHT_ACTION__GREEN);
 		createEAttribute(lightActionEClass, LIGHT_ACTION__BLUE);
 		createEAttribute(lightActionEClass, LIGHT_ACTION__POS);
+		createEReference(lightActionEClass, LIGHT_ACTION__RED_EX);
+		createEReference(lightActionEClass, LIGHT_ACTION__BLUE_EX);
+		createEReference(lightActionEClass, LIGHT_ACTION__GREEN_EX);
 
 		musicSettingEClass = createEClass(MUSIC_SETTING);
 		createEAttribute(musicSettingEClass, MUSIC_SETTING__NOTE);
 		createEAttribute(musicSettingEClass, MUSIC_SETTING__DURATION);
 		createEAttribute(musicSettingEClass, MUSIC_SETTING__POS);
+		createEReference(musicSettingEClass, MUSIC_SETTING__NOTE_EX);
+		createEReference(musicSettingEClass, MUSIC_SETTING__POS_EX);
 
 		expressionEClass = createEClass(EXPRESSION);
 		createEAttribute(expressionEClass, EXPRESSION__OPERATION);
 		createEAttribute(expressionEClass, EXPRESSION__VALUE);
 		createEReference(expressionEClass, EXPRESSION__LEFT);
 		createEReference(expressionEClass, EXPRESSION__RIGHT);
-		createEAttribute(expressionEClass, EXPRESSION__BOOL);
 
 		// Create enums
 		buttonTypeEEnum = createEEnum(BUTTON_TYPE);
@@ -853,6 +918,8 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 		initEReference(getRobotModel_Expressions(), this.getExpression(), null, "expressions", null, 0, -1,
 				RobotModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRobotModel_Init(), ecorePackage.getEInt(), "init", null, 0, 1, RobotModel.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(actionEClass, Action.class, "Action", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAction_Actionname(), ecorePackage.getEString(), "actionname", null, 0, 1, Action.class,
@@ -881,6 +948,9 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSensor_Distance(), this.getDistance(), "distance", null, 0, 1, Sensor.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSensor_PosEx(), this.getExpression(), null, "posEx", null, 0, 1, Sensor.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
 		initEClass(soundEClass, Sound.class, "Sound", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -920,6 +990,15 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLightAction_Pos(), this.getLightPos(), "pos", null, 0, 1, LightAction.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLightAction_RedEx(), this.getExpression(), null, "redEx", null, 0, 1, LightAction.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLightAction_BlueEx(), this.getExpression(), null, "blueEx", null, 0, 1, LightAction.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLightAction_GreenEx(), this.getExpression(), null, "greenEx", null, 0, 1, LightAction.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(musicSettingEClass, MusicSetting.class, "MusicSetting", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -929,6 +1008,12 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMusicSetting_Pos(), ecorePackage.getEInt(), "pos", null, 0, 1, MusicSetting.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMusicSetting_NoteEx(), this.getExpression(), null, "noteEx", null, 0, 1, MusicSetting.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMusicSetting_PosEx(), this.getExpression(), null, "posEx", null, 0, 1, MusicSetting.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -943,8 +1028,6 @@ public class Project2PackageImpl extends EPackageImpl implements Project2Package
 		initEReference(getExpression_Right(), this.getExpression(), null, "right", null, 0, 1, Expression.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getExpression_Bool(), ecorePackage.getEString(), "bool", null, 0, 1, Expression.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(buttonTypeEEnum, ButtonType.class, "ButtonType");

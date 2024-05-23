@@ -34,6 +34,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//RobotModel/actions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//RobotModel/conditions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//RobotModel/expressions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//RobotModel/init"/>
     </genClasses>
     <genClasses ecoreClass="project2.ecore#//Action">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//Action/actionname"/>
@@ -51,6 +52,7 @@
     <genClasses ecoreClass="project2.ecore#//Sensor">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//Sensor/sensorPos"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//Sensor/distance"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//Sensor/posEx"/>
     </genClasses>
     <genClasses ecoreClass="project2.ecore#//Sound"/>
     <genClasses ecoreClass="project2.ecore#//Tap"/>
@@ -71,18 +73,22 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//LightAction/green"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//LightAction/blue"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//LightAction/pos"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//LightAction/redEx"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//LightAction/blueEx"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//LightAction/greenEx"/>
     </genClasses>
     <genClasses ecoreClass="project2.ecore#//MusicSetting">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//MusicSetting/note"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//MusicSetting/duration"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//MusicSetting/pos"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//MusicSetting/noteEx"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//MusicSetting/posEx"/>
     </genClasses>
     <genClasses ecoreClass="project2.ecore#//Expression">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//Expression/operation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//Expression/value"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//Expression/left"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference project2.ecore#//Expression/right"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute project2.ecore#//Expression/bool"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

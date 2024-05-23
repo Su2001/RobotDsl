@@ -8,12 +8,14 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import project2.LightAction;
+import project2.Project2Factory;
 import project2.Project2Package;
 
 /**
@@ -117,6 +119,38 @@ public class LightActionItemProvider extends ActionItemProvider {
 	}
 
 	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(Project2Package.Literals.LIGHT_ACTION__RED_EX);
+			childrenFeatures.add(Project2Package.Literals.LIGHT_ACTION__BLUE_EX);
+			childrenFeatures.add(Project2Package.Literals.LIGHT_ACTION__GREEN_EX);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
+	}
+
+	/**
 	 * This returns LightAction.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -168,6 +202,11 @@ public class LightActionItemProvider extends ActionItemProvider {
 		case Project2Package.LIGHT_ACTION__POS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
+		case Project2Package.LIGHT_ACTION__RED_EX:
+		case Project2Package.LIGHT_ACTION__BLUE_EX:
+		case Project2Package.LIGHT_ACTION__GREEN_EX:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -182,6 +221,37 @@ public class LightActionItemProvider extends ActionItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(Project2Package.Literals.LIGHT_ACTION__RED_EX,
+				Project2Factory.eINSTANCE.createExpression()));
+
+		newChildDescriptors.add(createChildParameter(Project2Package.Literals.LIGHT_ACTION__BLUE_EX,
+				Project2Factory.eINSTANCE.createExpression()));
+
+		newChildDescriptors.add(createChildParameter(Project2Package.Literals.LIGHT_ACTION__GREEN_EX,
+				Project2Factory.eINSTANCE.createExpression()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify = childFeature == Project2Package.Literals.LIGHT_ACTION__RED_EX
+				|| childFeature == Project2Package.Literals.LIGHT_ACTION__BLUE_EX
+				|| childFeature == Project2Package.Literals.LIGHT_ACTION__GREEN_EX;
+
+		if (qualify) {
+			return getString("_UI_CreateChild_text2",
+					new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

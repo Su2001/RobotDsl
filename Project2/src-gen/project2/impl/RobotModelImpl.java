@@ -4,6 +4,7 @@ package project2.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -11,6 +12,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -35,6 +37,7 @@ import project2.RobotModel;
  *   <li>{@link project2.impl.RobotModelImpl#getActions <em>Actions</em>}</li>
  *   <li>{@link project2.impl.RobotModelImpl#getConditions <em>Conditions</em>}</li>
  *   <li>{@link project2.impl.RobotModelImpl#getExpressions <em>Expressions</em>}</li>
+ *   <li>{@link project2.impl.RobotModelImpl#getInit <em>Init</em>}</li>
  * </ul>
  *
  * @generated
@@ -79,6 +82,26 @@ public class RobotModelImpl extends MinimalEObjectImpl.Container implements Robo
 	 * @ordered
 	 */
 	protected EList<Expression> expressions;
+
+	/**
+	 * The default value of the '{@link #getInit() <em>Init</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInit()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int INIT_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getInit() <em>Init</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInit()
+	 * @generated
+	 * @ordered
+	 */
+	protected int init = INIT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -159,6 +182,29 @@ public class RobotModelImpl extends MinimalEObjectImpl.Container implements Robo
 	 * @generated
 	 */
 	@Override
+	public int getInit() {
+		return init;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setInit(int newInit) {
+		int oldInit = init;
+		init = newInit;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Project2Package.ROBOT_MODEL__INIT, oldInit, init));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case Project2Package.ROBOT_MODEL__EVENTS:
@@ -189,6 +235,8 @@ public class RobotModelImpl extends MinimalEObjectImpl.Container implements Robo
 			return getConditions();
 		case Project2Package.ROBOT_MODEL__EXPRESSIONS:
 			return getExpressions();
+		case Project2Package.ROBOT_MODEL__INIT:
+			return getInit();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -218,6 +266,9 @@ public class RobotModelImpl extends MinimalEObjectImpl.Container implements Robo
 			getExpressions().clear();
 			getExpressions().addAll((Collection<? extends Expression>) newValue);
 			return;
+		case Project2Package.ROBOT_MODEL__INIT:
+			setInit((Integer) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -242,6 +293,9 @@ public class RobotModelImpl extends MinimalEObjectImpl.Container implements Robo
 		case Project2Package.ROBOT_MODEL__EXPRESSIONS:
 			getExpressions().clear();
 			return;
+		case Project2Package.ROBOT_MODEL__INIT:
+			setInit(INIT_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -262,8 +316,27 @@ public class RobotModelImpl extends MinimalEObjectImpl.Container implements Robo
 			return conditions != null && !conditions.isEmpty();
 		case Project2Package.ROBOT_MODEL__EXPRESSIONS:
 			return expressions != null && !expressions.isEmpty();
+		case Project2Package.ROBOT_MODEL__INIT:
+			return init != INIT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (init: ");
+		result.append(init);
+		result.append(')');
+		return result.toString();
 	}
 
 } //RobotModelImpl

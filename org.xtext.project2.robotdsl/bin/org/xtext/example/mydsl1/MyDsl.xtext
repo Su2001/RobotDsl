@@ -13,38 +13,7 @@ RobotModel returns RobotModel:
 ;
 
 Expression returns Expression:
-	Or | If
-;
-
-Or returns Expression:
-	And ({Expression.left=current} operation="||" right=And)*;
-	
-And returns Expression:
-	Equality ({Expression.left=current} operation="&&" right=Equality)*;
-	
-Equality returns Expression:
-	Comparison (
-		{Expression.left=current} operation=("=="|"!=")
-		right=Comparison)* ;
-
-Comparison returns Expression:
-	PlusOrMinus (
-		{Expression.left=current} operation=(">="|"<="|">"|"<")
-		right=PlusOrMinus)* ;
-
-If returns Expression:
-	{Expression}
-	operation='if' left=Expression right = Then 
-;
-
-Then returns Expression:
-	{Expression}
-	operation= 'then' left=Expression right = Else
-;
-
-Else returns Expression:
-	{Expression}
-	operation='else' left=Expression
+	PlusOrMinus 
 ;
 
 // left associative	
@@ -60,11 +29,10 @@ MultOrDiv returns Expression:
 
 Primary returns Expression:
 	'(' Expression ')' |
-	{Expression} operation="!" left=Primary |
 	Atomic;
 	
 Atomic returns Expression:
-	{Expression} (value=EInt | bool= ('TRUE' | 'FALSE'))
+	{Expression} (value=EInt)
 ;
 
 Event returns Event:
@@ -95,8 +63,8 @@ Sensor returns Sensor:
 	{Sensor}
 	'Sensor'
 	conditionname=EString
-	'sensorPos' sensorPos=EInt
-	'distance' distance=Distance
+	'sensorPos' posEx=Expression
+	'detectObstacle' distance=Distance
 ; 
 
 Tap returns Tap:
@@ -112,8 +80,8 @@ MotorAction returns MotorAction:
 	{MotorAction}
 	'MotorAction'
 	actionname=EString
-		('motorLeft' (motorLeft=EInt))?
-		('motorRight' (motorRight=EInt))?
+		('motorLeft' (left=Expression))?
+		('motorRight' (right=Expression))?
 ;
 
 SoundAction returns SoundAction:
@@ -128,14 +96,14 @@ LightAction returns LightAction:
 	'LightAction'
 	actionname=EString
 	'pos:' pos=LightPos
-	('red:' red=EInt)?
-	('green:' green=EInt)?
-	('blue:' blue=EInt)?
+	('red:' redEx=Expression)?
+	('green:' greenEx=Expression)?
+	('blue:' blueEx=Expression)?
 ;
 
 MusicSetting returns MusicSetting:
 	{MusicSetting}
-	'(' note=EInt ',' duration=Duration ',' pos=EInt')'
+	'(' noteEx=Expression ',' duration=Duration ',' posEx=Expression')'
 ;
 
 EInt returns ecore::EInt:
@@ -153,7 +121,7 @@ enum LightPos returns LightPos:
 ;
 
 enum Distance returns Distance:
-	FAR = 'FAR' | CLOSE = 'CLOSE'
+	FAR = 'OBSTACLE' | CLOSE = 'NOOBSTACLE'
 ;
 
 enum ButtonType returns ButtonType:

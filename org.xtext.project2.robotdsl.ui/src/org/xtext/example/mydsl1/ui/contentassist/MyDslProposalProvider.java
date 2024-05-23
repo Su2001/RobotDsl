@@ -92,7 +92,7 @@ public class MyDslProposalProvider extends AbstractMyDslProposalProvider {
 	}
 	
 	@Override
-	public void completeSensor_SensorPos(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+	public void completeSensor_PosEx(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		acceptor.accept(createCompletionProposal("1","sensor front most left", null, context));
 		acceptor.accept(createCompletionProposal("2","sensor front left", null, context));
 		acceptor.accept(createCompletionProposal("3","sensor front center", null, context));
@@ -111,7 +111,7 @@ public class MyDslProposalProvider extends AbstractMyDslProposalProvider {
 	}
 	
 	@Override
-	public void completeMusicSetting_Note(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+	public void completeMusicSetting_NoteEx(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		acceptor.accept(createCompletionProposal("1","note1", null, context));
 		acceptor.accept(createCompletionProposal("2","note2", null, context));
 		acceptor.accept(createCompletionProposal("3","note3", null, context));
@@ -127,7 +127,7 @@ public class MyDslProposalProvider extends AbstractMyDslProposalProvider {
 	}
 	
 	@Override
-	public void completeMusicSetting_Pos(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+	public void completeMusicSetting_PosEx(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		acceptor.accept(createCompletionProposal("1","1", null, context));
 		acceptor.accept(createCompletionProposal("2","2", null, context));
 		acceptor.accept(createCompletionProposal("3","3", null, context));

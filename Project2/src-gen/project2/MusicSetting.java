@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link project2.MusicSetting#getNote <em>Note</em>}</li>
  *   <li>{@link project2.MusicSetting#getDuration <em>Duration</em>}</li>
  *   <li>{@link project2.MusicSetting#getPos <em>Pos</em>}</li>
+ *   <li>{@link project2.MusicSetting#getNoteEx <em>Note Ex</em>}</li>
+ *   <li>{@link project2.MusicSetting#getPosEx <em>Pos Ex</em>}</li>
  * </ul>
  *
  * @see project2.Project2Package#getMusicSetting()
@@ -91,5 +93,49 @@ public interface MusicSetting extends EObject {
 	 * @generated
 	 */
 	void setPos(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Note Ex</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Note Ex</em>' containment reference.
+	 * @see #setNoteEx(Expression)
+	 * @see project2.Project2Package#getMusicSetting_NoteEx()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Expression getNoteEx();
+
+	/**
+	 * Sets the value of the '{@link project2.MusicSetting#getNoteEx <em>Note Ex</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Note Ex</em>' containment reference.
+	 * @see #getNoteEx()
+	 * @generated
+	 */
+	void setNoteEx(Expression value);
+
+	/**
+	 * Returns the value of the '<em><b>Pos Ex</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Pos Ex</em>' containment reference.
+	 * @see #setPosEx(Expression)
+	 * @see project2.Project2Package#getMusicSetting_PosEx()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Expression getPosEx();
+
+	/**
+	 * Sets the value of the '{@link project2.MusicSetting#getPosEx <em>Pos Ex</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Pos Ex</em>' containment reference.
+	 * @see #getPosEx()
+	 * @generated
+	 */
+	void setPosEx(Expression value);
 
 } // MusicSetting

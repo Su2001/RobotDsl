@@ -104,13 +104,22 @@ public interface Project2Package extends EPackage {
 	int ROBOT_MODEL__EXPRESSIONS = 3;
 
 	/**
+	 * The feature id for the '<em><b>Init</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROBOT_MODEL__INIT = 4;
+
+	/**
 	 * The number of structural features of the '<em>Robot Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROBOT_MODEL_FEATURE_COUNT = 4;
+	int ROBOT_MODEL_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Robot Model</em>' class.
@@ -371,13 +380,22 @@ public interface Project2Package extends EPackage {
 	int SENSOR__DISTANCE = CONDITION_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Pos Ex</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SENSOR__POS_EX = CONDITION_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Sensor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SENSOR_FEATURE_COUNT = CONDITION_FEATURE_COUNT + 2;
+	int SENSOR_FEATURE_COUNT = CONDITION_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Sensor</em>' class.
@@ -637,13 +655,40 @@ public interface Project2Package extends EPackage {
 	int LIGHT_ACTION__POS = ACTION_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Red Ex</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIGHT_ACTION__RED_EX = ACTION_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Blue Ex</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIGHT_ACTION__BLUE_EX = ACTION_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Green Ex</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIGHT_ACTION__GREEN_EX = ACTION_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Light Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIGHT_ACTION_FEATURE_COUNT = ACTION_FEATURE_COUNT + 4;
+	int LIGHT_ACTION_FEATURE_COUNT = ACTION_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of operations of the '<em>Light Action</em>' class.
@@ -692,13 +737,31 @@ public interface Project2Package extends EPackage {
 	int MUSIC_SETTING__POS = 2;
 
 	/**
+	 * The feature id for the '<em><b>Note Ex</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MUSIC_SETTING__NOTE_EX = 3;
+
+	/**
+	 * The feature id for the '<em><b>Pos Ex</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MUSIC_SETTING__POS_EX = 4;
+
+	/**
 	 * The number of structural features of the '<em>Music Setting</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MUSIC_SETTING_FEATURE_COUNT = 3;
+	int MUSIC_SETTING_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Music Setting</em>' class.
@@ -756,22 +819,13 @@ public interface Project2Package extends EPackage {
 	int EXPRESSION__RIGHT = 3;
 
 	/**
-	 * The feature id for the '<em><b>Bool</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPRESSION__BOOL = 4;
-
-	/**
 	 * The number of structural features of the '<em>Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXPRESSION_FEATURE_COUNT = 5;
+	int EXPRESSION_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Expression</em>' class.
@@ -875,6 +929,17 @@ public interface Project2Package extends EPackage {
 	 * @generated
 	 */
 	EReference getRobotModel_Expressions();
+
+	/**
+	 * Returns the meta object for the attribute '{@link project2.RobotModel#getInit <em>Init</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Init</em>'.
+	 * @see project2.RobotModel#getInit()
+	 * @see #getRobotModel()
+	 * @generated
+	 */
+	EAttribute getRobotModel_Init();
 
 	/**
 	 * Returns the meta object for class '{@link project2.Action <em>Action</em>}'.
@@ -1002,6 +1067,17 @@ public interface Project2Package extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSensor_Distance();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link project2.Sensor#getPosEx <em>Pos Ex</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Pos Ex</em>'.
+	 * @see project2.Sensor#getPosEx()
+	 * @see #getSensor()
+	 * @generated
+	 */
+	EReference getSensor_PosEx();
 
 	/**
 	 * Returns the meta object for class '{@link project2.Sound <em>Sound</em>}'.
@@ -1174,6 +1250,39 @@ public interface Project2Package extends EPackage {
 	EAttribute getLightAction_Pos();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link project2.LightAction#getRedEx <em>Red Ex</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Red Ex</em>'.
+	 * @see project2.LightAction#getRedEx()
+	 * @see #getLightAction()
+	 * @generated
+	 */
+	EReference getLightAction_RedEx();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link project2.LightAction#getBlueEx <em>Blue Ex</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Blue Ex</em>'.
+	 * @see project2.LightAction#getBlueEx()
+	 * @see #getLightAction()
+	 * @generated
+	 */
+	EReference getLightAction_BlueEx();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link project2.LightAction#getGreenEx <em>Green Ex</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Green Ex</em>'.
+	 * @see project2.LightAction#getGreenEx()
+	 * @see #getLightAction()
+	 * @generated
+	 */
+	EReference getLightAction_GreenEx();
+
+	/**
 	 * Returns the meta object for class '{@link project2.MusicSetting <em>Music Setting</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1217,6 +1326,28 @@ public interface Project2Package extends EPackage {
 	EAttribute getMusicSetting_Pos();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link project2.MusicSetting#getNoteEx <em>Note Ex</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Note Ex</em>'.
+	 * @see project2.MusicSetting#getNoteEx()
+	 * @see #getMusicSetting()
+	 * @generated
+	 */
+	EReference getMusicSetting_NoteEx();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link project2.MusicSetting#getPosEx <em>Pos Ex</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Pos Ex</em>'.
+	 * @see project2.MusicSetting#getPosEx()
+	 * @see #getMusicSetting()
+	 * @generated
+	 */
+	EReference getMusicSetting_PosEx();
+
+	/**
 	 * Returns the meta object for class '{@link project2.Expression <em>Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1258,17 +1389,6 @@ public interface Project2Package extends EPackage {
 	 * @generated
 	 */
 	EReference getExpression_Right();
-
-	/**
-	 * Returns the meta object for the attribute '{@link project2.Expression#getBool <em>Bool</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Bool</em>'.
-	 * @see project2.Expression#getBool()
-	 * @see #getExpression()
-	 * @generated
-	 */
-	EAttribute getExpression_Bool();
 
 	/**
 	 * Returns the meta object for the attribute '{@link project2.Expression#getValue <em>Value</em>}'.
@@ -1387,6 +1507,14 @@ public interface Project2Package extends EPackage {
 		EReference ROBOT_MODEL__EXPRESSIONS = eINSTANCE.getRobotModel_Expressions();
 
 		/**
+		 * The meta object literal for the '<em><b>Init</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ROBOT_MODEL__INIT = eINSTANCE.getRobotModel_Init();
+
+		/**
 		 * The meta object literal for the '{@link project2.impl.ActionImpl <em>Action</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1491,6 +1619,14 @@ public interface Project2Package extends EPackage {
 		 * @generated
 		 */
 		EAttribute SENSOR__DISTANCE = eINSTANCE.getSensor_Distance();
+
+		/**
+		 * The meta object literal for the '<em><b>Pos Ex</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SENSOR__POS_EX = eINSTANCE.getSensor_PosEx();
 
 		/**
 		 * The meta object literal for the '{@link project2.impl.SoundImpl <em>Sound</em>}' class.
@@ -1633,6 +1769,30 @@ public interface Project2Package extends EPackage {
 		EAttribute LIGHT_ACTION__POS = eINSTANCE.getLightAction_Pos();
 
 		/**
+		 * The meta object literal for the '<em><b>Red Ex</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LIGHT_ACTION__RED_EX = eINSTANCE.getLightAction_RedEx();
+
+		/**
+		 * The meta object literal for the '<em><b>Blue Ex</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LIGHT_ACTION__BLUE_EX = eINSTANCE.getLightAction_BlueEx();
+
+		/**
+		 * The meta object literal for the '<em><b>Green Ex</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LIGHT_ACTION__GREEN_EX = eINSTANCE.getLightAction_GreenEx();
+
+		/**
 		 * The meta object literal for the '{@link project2.impl.MusicSettingImpl <em>Music Setting</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1667,6 +1827,22 @@ public interface Project2Package extends EPackage {
 		EAttribute MUSIC_SETTING__POS = eINSTANCE.getMusicSetting_Pos();
 
 		/**
+		 * The meta object literal for the '<em><b>Note Ex</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MUSIC_SETTING__NOTE_EX = eINSTANCE.getMusicSetting_NoteEx();
+
+		/**
+		 * The meta object literal for the '<em><b>Pos Ex</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MUSIC_SETTING__POS_EX = eINSTANCE.getMusicSetting_PosEx();
+
+		/**
 		 * The meta object literal for the '{@link project2.impl.ExpressionImpl <em>Expression</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1699,14 +1875,6 @@ public interface Project2Package extends EPackage {
 		 * @generated
 		 */
 		EReference EXPRESSION__RIGHT = eINSTANCE.getExpression_Right();
-
-		/**
-		 * The meta object literal for the '<em><b>Bool</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute EXPRESSION__BOOL = eINSTANCE.getExpression_Bool();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.

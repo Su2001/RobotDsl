@@ -56,10 +56,6 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     '('*
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) bool='FALSE'
-	 *     (rule start) (ambiguity) bool='TRUE'
-	 *     (rule start) (ambiguity) operation='!'
-	 *     (rule start) (ambiguity) operation='if'
 	 *     (rule start) (ambiguity) value=EInt
 	 *     (rule start) (ambiguity) {Expression.left=}
 	 
@@ -75,7 +71,6 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     '('+
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) operation='if'
 	 *     (rule start) (ambiguity) {Expression.left=}
 	 
 	 * </pre>
