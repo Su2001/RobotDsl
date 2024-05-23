@@ -609,7 +609,7 @@ ruleEvent returns [EObject current=null]
 					)
 				)
 			)*
-		)?
+		)
 		(
 			otherlv_7='actions:'
 			{
@@ -653,7 +653,7 @@ ruleEvent returns [EObject current=null]
 					)
 				)
 			)*
-		)?
+		)
 	)
 ;
 
@@ -806,16 +806,12 @@ ruleButton returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_3='button'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getButtonAccess().getButtonKeyword_3());
-		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getButtonAccess().getButtonButtonTypeEnumRuleCall_4_0());
+					newCompositeNode(grammarAccess.getButtonAccess().getButtonButtonTypeEnumRuleCall_3_0());
 				}
-				lv_button_4_0=ruleButtonType
+				lv_button_3_0=ruleButtonType
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getButtonRule());
@@ -823,7 +819,7 @@ ruleButton returns [EObject current=null]
 					set(
 						$current,
 						"button",
-						lv_button_4_0,
+						lv_button_3_0,
 						"org.xtext.example.mydsl1.MyDsl.ButtonType");
 					afterParserOrEnumRuleCall();
 				}
@@ -878,9 +874,9 @@ ruleSensor returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_3='sensorPos'
+		otherlv_3='sensorPosition'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getSensorAccess().getSensorPosKeyword_3());
+			newLeafNode(otherlv_3, grammarAccess.getSensorAccess().getSensorPositionKeyword_3());
 		}
 		(
 			(
@@ -1215,7 +1211,7 @@ ruleSoundAction returns [EObject current=null]
 					)
 				)
 			)*
-		)?
+		)
 	)
 ;
 
@@ -1265,9 +1261,9 @@ ruleLightAction returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_3='pos:'
+		otherlv_3='position:'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getLightActionAccess().getPosKeyword_3());
+			newLeafNode(otherlv_3, grammarAccess.getLightActionAccess().getPositionKeyword_3());
 		}
 		(
 			(

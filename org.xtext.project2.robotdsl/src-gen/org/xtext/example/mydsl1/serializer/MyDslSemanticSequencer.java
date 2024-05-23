@@ -154,7 +154,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getButtonAccess().getConditionnameEStringParserRuleCall_2_0(), semanticObject.getConditionname());
-		feeder.accept(grammarAccess.getButtonAccess().getButtonButtonTypeEnumRuleCall_4_0(), semanticObject.getButton());
+		feeder.accept(grammarAccess.getButtonAccess().getButtonButtonTypeEnumRuleCall_3_0(), semanticObject.getButton());
 		feeder.finish();
 	}
 	
@@ -165,7 +165,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Event returns Event
 	 *
 	 * Constraint:
-	 *     (name=EString (conditions+=[Condition|EString] conditions+=[Condition|EString]*)? (actions+=[Action|EString] actions+=[Action|EString]*)?)
+	 *     (name=EString conditions+=[Condition|EString] conditions+=[Condition|EString]* actions+=[Action|EString] actions+=[Action|EString]*)
 	 * </pre>
 	 */
 	protected void sequence_Event(ISerializationContext context, Event semanticObject) {
@@ -277,7 +277,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     SoundAction returns SoundAction
 	 *
 	 * Constraint:
-	 *     (actionname=EString (musicsettings+=MusicSetting musicsettings+=MusicSetting*)?)
+	 *     (actionname=EString musicsettings+=MusicSetting musicsettings+=MusicSetting*)
 	 * </pre>
 	 */
 	protected void sequence_SoundAction(ISerializationContext context, SoundAction semanticObject) {

@@ -48,7 +48,7 @@ public class MyDslQuickfixProvider extends DefaultQuickfixProvider {
 					@Override
 					public void apply(EObject element, IModificationContext context) throws Exception {
 						Sensor sensor = (Sensor) element;
-						sensor.setSensorPos(1);
+						sensor.getPosEx().setValue(1);
 					}
 				});
 		accpetor.accept(issue, "Fix Position error by 2", "Fix Position error by 2", null,
@@ -57,7 +57,7 @@ public class MyDslQuickfixProvider extends DefaultQuickfixProvider {
 					@Override
 					public void apply(EObject element, IModificationContext context) throws Exception {
 						Sensor sensor = (Sensor) element;
-						sensor.setSensorPos(2);
+						sensor.getPosEx().setValue(2);
 					}
 				});
 		accpetor.accept(issue, "Fix Position error by 3", "Fix Position error by 3", null,
@@ -66,7 +66,7 @@ public class MyDslQuickfixProvider extends DefaultQuickfixProvider {
 					@Override
 					public void apply(EObject element, IModificationContext context) throws Exception {
 						Sensor sensor = (Sensor) element;
-						sensor.setSensorPos(3);
+						sensor.getPosEx().setValue(3);
 					}
 				});
 		accpetor.accept(issue, "Fix Position error by 4", "Fix Position error by 4", null,
@@ -75,7 +75,7 @@ public class MyDslQuickfixProvider extends DefaultQuickfixProvider {
 					@Override
 					public void apply(EObject element, IModificationContext context) throws Exception {
 						Sensor sensor = (Sensor) element;
-						sensor.setSensorPos(4);
+						sensor.getPosEx().setValue(4);
 					}
 				});
 		accpetor.accept(issue, "Fix Position error by 5", "Fix Position error by 5", null,
@@ -84,7 +84,7 @@ public class MyDslQuickfixProvider extends DefaultQuickfixProvider {
 					@Override
 					public void apply(EObject element, IModificationContext context) throws Exception {
 						Sensor sensor = (Sensor) element;
-						sensor.setSensorPos(5);
+						sensor.getPosEx().setValue(5);
 					}
 				});
 		accpetor.accept(issue, "Fix Position error by 6", "Fix Position error by 6", null,
@@ -93,7 +93,7 @@ public class MyDslQuickfixProvider extends DefaultQuickfixProvider {
 					@Override
 					public void apply(EObject element, IModificationContext context) throws Exception {
 						Sensor sensor = (Sensor) element;
-						sensor.setSensorPos(6);
+						sensor.getPosEx().setValue(6);
 					}
 				});
 		accpetor.accept(issue, "Fix Position error by 7", "Fix Position error by 7", null,
@@ -102,7 +102,7 @@ public class MyDslQuickfixProvider extends DefaultQuickfixProvider {
 					@Override
 					public void apply(EObject element, IModificationContext context) throws Exception {
 						Sensor sensor = (Sensor) element;
-						sensor.setSensorPos(7);
+						sensor.getPosEx().setValue(7);
 					}
 				});
 		accpetor.accept(issue, "Fix Position error by 8", "Fix Position error by 8", null,
@@ -111,7 +111,7 @@ public class MyDslQuickfixProvider extends DefaultQuickfixProvider {
 					@Override
 					public void apply(EObject element, IModificationContext context) throws Exception {
 						Sensor sensor = (Sensor) element;
-						sensor.setSensorPos(8);
+						sensor.getPosEx().setValue(8);
 					}
 				});
 		accpetor.accept(issue, "Fix Position error by 9", "Fix Position error by 9", null,
@@ -120,7 +120,7 @@ public class MyDslQuickfixProvider extends DefaultQuickfixProvider {
 					@Override
 					public void apply(EObject element, IModificationContext context) throws Exception {
 						Sensor sensor = (Sensor) element;
-						sensor.setSensorPos(9);
+						sensor.getPosEx().setValue(9);
 					}
 				});
 	}

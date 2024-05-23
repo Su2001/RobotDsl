@@ -39,8 +39,8 @@ Event returns Event:
 	{Event}
 	'Event'
 	name=EString
-		('conditions:' conditions+=[Condition|EString] ('and' conditions+=[Condition|EString])* )?
-		('actions:'  actions+=[Action|EString] ( "," actions+=[Action|EString])*  )?
+		('conditions:' conditions+=[Condition|EString] ('and' conditions+=[Condition|EString])* )
+		('actions:'  actions+=[Action|EString] ( "," actions+=[Action|EString])*  )
 	;
 	
 Condition returns Condition:
@@ -56,14 +56,14 @@ Button returns Button:
 	{Button}
 	'Button'
 	conditionname=EString
-		'button' button=ButtonType
+	button=ButtonType
 ;
 
 Sensor returns Sensor:
 	{Sensor}
 	'Sensor'
 	conditionname=EString
-	'sensorPos' posEx=Expression
+	'sensorPosition' posEx=Expression
 	'detectObstacle' distance=Distance
 ; 
 
@@ -88,14 +88,14 @@ SoundAction returns SoundAction:
 	{SoundAction}
 	'SoundAction'
 	actionname=EString
-	('set:' musicsettings+=MusicSetting (',' musicsettings+=MusicSetting)*)?
+	('set:' musicsettings+=MusicSetting (',' musicsettings+=MusicSetting)*)
 ;
 	
 LightAction returns LightAction:
 	{LightAction}
 	'LightAction'
 	actionname=EString
-	'pos:' pos=LightPos
+	'position:' pos=LightPos
 	('red:' redEx=Expression)?
 	('green:' greenEx=Expression)?
 	('blue:' blueEx=Expression)?

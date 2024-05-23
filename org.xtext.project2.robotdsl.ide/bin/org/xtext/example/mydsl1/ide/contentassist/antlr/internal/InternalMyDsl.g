@@ -1783,7 +1783,7 @@ rule__Event__Group__3__Impl
 :
 (
 	{ before(grammarAccess.getEventAccess().getGroup_3()); }
-	(rule__Event__Group_3__0)?
+	(rule__Event__Group_3__0)
 	{ after(grammarAccess.getEventAccess().getGroup_3()); }
 )
 ;
@@ -1809,7 +1809,7 @@ rule__Event__Group__4__Impl
 :
 (
 	{ before(grammarAccess.getEventAccess().getGroup_4()); }
-	(rule__Event__Group_4__0)?
+	(rule__Event__Group_4__0)
 	{ after(grammarAccess.getEventAccess().getGroup_4()); }
 )
 ;
@@ -2256,7 +2256,6 @@ rule__Button__Group__3
 	}
 :
 	rule__Button__Group__3__Impl
-	rule__Button__Group__4
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -2268,35 +2267,9 @@ rule__Button__Group__3__Impl
 	}
 :
 (
-	{ before(grammarAccess.getButtonAccess().getButtonKeyword_3()); }
-	'button'
-	{ after(grammarAccess.getButtonAccess().getButtonKeyword_3()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Button__Group__4
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__Button__Group__4__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__Button__Group__4__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getButtonAccess().getButtonAssignment_4()); }
-	(rule__Button__ButtonAssignment_4)
-	{ after(grammarAccess.getButtonAccess().getButtonAssignment_4()); }
+	{ before(grammarAccess.getButtonAccess().getButtonAssignment_3()); }
+	(rule__Button__ButtonAssignment_3)
+	{ after(grammarAccess.getButtonAccess().getButtonAssignment_3()); }
 )
 ;
 finally {
@@ -2403,9 +2376,9 @@ rule__Sensor__Group__3__Impl
 	}
 :
 (
-	{ before(grammarAccess.getSensorAccess().getSensorPosKeyword_3()); }
-	'sensorPos'
-	{ after(grammarAccess.getSensorAccess().getSensorPosKeyword_3()); }
+	{ before(grammarAccess.getSensorAccess().getSensorPositionKeyword_3()); }
+	'sensorPosition'
+	{ after(grammarAccess.getSensorAccess().getSensorPositionKeyword_3()); }
 )
 ;
 finally {
@@ -2916,7 +2889,7 @@ rule__SoundAction__Group__3__Impl
 :
 (
 	{ before(grammarAccess.getSoundActionAccess().getGroup_3()); }
-	(rule__SoundAction__Group_3__0)?
+	(rule__SoundAction__Group_3__0)
 	{ after(grammarAccess.getSoundActionAccess().getGroup_3()); }
 )
 ;
@@ -3159,9 +3132,9 @@ rule__LightAction__Group__3__Impl
 	}
 :
 (
-	{ before(grammarAccess.getLightActionAccess().getPosKeyword_3()); }
-	'pos:'
-	{ after(grammarAccess.getLightActionAccess().getPosKeyword_3()); }
+	{ before(grammarAccess.getLightActionAccess().getPositionKeyword_3()); }
+	'position:'
+	{ after(grammarAccess.getLightActionAccess().getPositionKeyword_3()); }
 )
 ;
 finally {
@@ -3994,15 +3967,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Button__ButtonAssignment_4
+rule__Button__ButtonAssignment_3
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getButtonAccess().getButtonButtonTypeEnumRuleCall_4_0()); }
+		{ before(grammarAccess.getButtonAccess().getButtonButtonTypeEnumRuleCall_3_0()); }
 		ruleButtonType
-		{ after(grammarAccess.getButtonAccess().getButtonButtonTypeEnumRuleCall_4_0()); }
+		{ after(grammarAccess.getButtonAccess().getButtonButtonTypeEnumRuleCall_3_0()); }
 	)
 ;
 finally {

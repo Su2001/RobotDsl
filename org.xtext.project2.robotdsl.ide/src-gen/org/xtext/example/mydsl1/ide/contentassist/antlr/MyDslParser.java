@@ -93,7 +93,7 @@ public class MyDslParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getEventAccess().getActionsAssignment_4_2_1(), "rule__Event__ActionsAssignment_4_2_1");
 			builder.put(grammarAccess.getSoundAccess().getConditionnameAssignment_2(), "rule__Sound__ConditionnameAssignment_2");
 			builder.put(grammarAccess.getButtonAccess().getConditionnameAssignment_2(), "rule__Button__ConditionnameAssignment_2");
-			builder.put(grammarAccess.getButtonAccess().getButtonAssignment_4(), "rule__Button__ButtonAssignment_4");
+			builder.put(grammarAccess.getButtonAccess().getButtonAssignment_3(), "rule__Button__ButtonAssignment_3");
 			builder.put(grammarAccess.getSensorAccess().getConditionnameAssignment_2(), "rule__Sensor__ConditionnameAssignment_2");
 			builder.put(grammarAccess.getSensorAccess().getPosExAssignment_4(), "rule__Sensor__PosExAssignment_4");
 			builder.put(grammarAccess.getSensorAccess().getDistanceAssignment_6(), "rule__Sensor__DistanceAssignment_6");

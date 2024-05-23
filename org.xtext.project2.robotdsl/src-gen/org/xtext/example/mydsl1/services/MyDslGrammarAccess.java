@@ -356,16 +356,16 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//    {Event}
 		//    'Event'
 		//    name=EString
-		//        ('conditions:' conditions+=[Condition|EString] ('and' conditions+=[Condition|EString])* )?
-		//        ('actions:'  actions+=[Action|EString] ( "," actions+=[Action|EString])*  )?
+		//        ('conditions:' conditions+=[Condition|EString] ('and' conditions+=[Condition|EString])* )
+		//        ('actions:'  actions+=[Action|EString] ( "," actions+=[Action|EString])*  )
 		//    ;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{Event}
 		//'Event'
 		//name=EString
-		//    ('conditions:' conditions+=[Condition|EString] ('and' conditions+=[Condition|EString])* )?
-		//    ('actions:'  actions+=[Action|EString] ( "," actions+=[Action|EString])*  )?
+		//    ('conditions:' conditions+=[Condition|EString] ('and' conditions+=[Condition|EString])* )
+		//    ('actions:'  actions+=[Action|EString] ( "," actions+=[Action|EString])*  )
 		public Group getGroup() { return cGroup; }
 		
 		//{Event}
@@ -380,7 +380,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//EString
 		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
 		
-		//('conditions:' conditions+=[Condition|EString] ('and' conditions+=[Condition|EString])* )?
+		//('conditions:' conditions+=[Condition|EString] ('and' conditions+=[Condition|EString])* )
 		public Group getGroup_3() { return cGroup_3; }
 		
 		//'conditions:'
@@ -410,7 +410,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//EString
 		public RuleCall getConditionsConditionEStringParserRuleCall_3_2_1_0_1() { return cConditionsConditionEStringParserRuleCall_3_2_1_0_1; }
 		
-		//('actions:'  actions+=[Action|EString] ( "," actions+=[Action|EString])*  )?
+		//('actions:'  actions+=[Action|EString] ( "," actions+=[Action|EString])*  )
 		public Group getGroup_4() { return cGroup_4; }
 		
 		//'actions:'
@@ -506,22 +506,21 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Keyword cButtonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cConditionnameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cConditionnameEStringParserRuleCall_2_0 = (RuleCall)cConditionnameAssignment_2.eContents().get(0);
-		private final Keyword cButtonKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cButtonAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cButtonButtonTypeEnumRuleCall_4_0 = (RuleCall)cButtonAssignment_4.eContents().get(0);
+		private final Assignment cButtonAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cButtonButtonTypeEnumRuleCall_3_0 = (RuleCall)cButtonAssignment_3.eContents().get(0);
 		
 		//Button returns Button:
 		//    {Button}
 		//    'Button'
 		//    conditionname=EString
-		//        'button' button=ButtonType
+		//    button=ButtonType
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{Button}
 		//'Button'
 		//conditionname=EString
-		//    'button' button=ButtonType
+		//button=ButtonType
 		public Group getGroup() { return cGroup; }
 		
 		//{Button}
@@ -536,14 +535,11 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//EString
 		public RuleCall getConditionnameEStringParserRuleCall_2_0() { return cConditionnameEStringParserRuleCall_2_0; }
 		
-		//'button'
-		public Keyword getButtonKeyword_3() { return cButtonKeyword_3; }
-		
 		//button=ButtonType
-		public Assignment getButtonAssignment_4() { return cButtonAssignment_4; }
+		public Assignment getButtonAssignment_3() { return cButtonAssignment_3; }
 		
 		//ButtonType
-		public RuleCall getButtonButtonTypeEnumRuleCall_4_0() { return cButtonButtonTypeEnumRuleCall_4_0; }
+		public RuleCall getButtonButtonTypeEnumRuleCall_3_0() { return cButtonButtonTypeEnumRuleCall_3_0; }
 	}
 	public class SensorElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl1.MyDsl.Sensor");
@@ -552,7 +548,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Keyword cSensorKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cConditionnameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cConditionnameEStringParserRuleCall_2_0 = (RuleCall)cConditionnameAssignment_2.eContents().get(0);
-		private final Keyword cSensorPosKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cSensorPositionKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cPosExAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cPosExExpressionParserRuleCall_4_0 = (RuleCall)cPosExAssignment_4.eContents().get(0);
 		private final Keyword cDetectObstacleKeyword_5 = (Keyword)cGroup.eContents().get(5);
@@ -563,7 +559,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//    {Sensor}
 		//    'Sensor'
 		//    conditionname=EString
-		//    'sensorPos' posEx=Expression
+		//    'sensorPosition' posEx=Expression
 		//    'detectObstacle' distance=Distance
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -571,7 +567,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//{Sensor}
 		//'Sensor'
 		//conditionname=EString
-		//'sensorPos' posEx=Expression
+		//'sensorPosition' posEx=Expression
 		//'detectObstacle' distance=Distance
 		public Group getGroup() { return cGroup; }
 		
@@ -587,8 +583,8 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//EString
 		public RuleCall getConditionnameEStringParserRuleCall_2_0() { return cConditionnameEStringParserRuleCall_2_0; }
 		
-		//'sensorPos'
-		public Keyword getSensorPosKeyword_3() { return cSensorPosKeyword_3; }
+		//'sensorPosition'
+		public Keyword getSensorPositionKeyword_3() { return cSensorPositionKeyword_3; }
 		
 		//posEx=Expression
 		public Assignment getPosExAssignment_4() { return cPosExAssignment_4; }
@@ -748,14 +744,14 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//    {SoundAction}
 		//    'SoundAction'
 		//    actionname=EString
-		//    ('set:' musicsettings+=MusicSetting (',' musicsettings+=MusicSetting)*)?
+		//    ('set:' musicsettings+=MusicSetting (',' musicsettings+=MusicSetting)*)
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{SoundAction}
 		//'SoundAction'
 		//actionname=EString
-		//('set:' musicsettings+=MusicSetting (',' musicsettings+=MusicSetting)*)?
+		//('set:' musicsettings+=MusicSetting (',' musicsettings+=MusicSetting)*)
 		public Group getGroup() { return cGroup; }
 		
 		//{SoundAction}
@@ -770,7 +766,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//EString
 		public RuleCall getActionnameEStringParserRuleCall_2_0() { return cActionnameEStringParserRuleCall_2_0; }
 		
-		//('set:' musicsettings+=MusicSetting (',' musicsettings+=MusicSetting)*)?
+		//('set:' musicsettings+=MusicSetting (',' musicsettings+=MusicSetting)*)
 		public Group getGroup_3() { return cGroup_3; }
 		
 		//'set:'
@@ -801,7 +797,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Keyword cLightActionKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cActionnameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cActionnameEStringParserRuleCall_2_0 = (RuleCall)cActionnameAssignment_2.eContents().get(0);
-		private final Keyword cPosKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cPositionKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cPosAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cPosLightPosEnumRuleCall_4_0 = (RuleCall)cPosAssignment_4.eContents().get(0);
 		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
@@ -821,7 +817,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//    {LightAction}
 		//    'LightAction'
 		//    actionname=EString
-		//    'pos:' pos=LightPos
+		//    'position:' pos=LightPos
 		//    ('red:' redEx=Expression)?
 		//    ('green:' greenEx=Expression)?
 		//    ('blue:' blueEx=Expression)?
@@ -831,7 +827,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//{LightAction}
 		//'LightAction'
 		//actionname=EString
-		//'pos:' pos=LightPos
+		//'position:' pos=LightPos
 		//('red:' redEx=Expression)?
 		//('green:' greenEx=Expression)?
 		//('blue:' blueEx=Expression)?
@@ -849,8 +845,8 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//EString
 		public RuleCall getActionnameEStringParserRuleCall_2_0() { return cActionnameEStringParserRuleCall_2_0; }
 		
-		//'pos:'
-		public Keyword getPosKeyword_3() { return cPosKeyword_3; }
+		//'position:'
+		public Keyword getPositionKeyword_3() { return cPositionKeyword_3; }
 		
 		//pos=LightPos
 		public Assignment getPosAssignment_4() { return cPosAssignment_4; }
@@ -1297,8 +1293,8 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//    {Event}
 	//    'Event'
 	//    name=EString
-	//        ('conditions:' conditions+=[Condition|EString] ('and' conditions+=[Condition|EString])* )?
-	//        ('actions:'  actions+=[Action|EString] ( "," actions+=[Action|EString])*  )?
+	//        ('conditions:' conditions+=[Condition|EString] ('and' conditions+=[Condition|EString])* )
+	//        ('actions:'  actions+=[Action|EString] ( "," actions+=[Action|EString])*  )
 	//    ;
 	public EventElements getEventAccess() {
 		return pEvent;
@@ -1335,7 +1331,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//    {Button}
 	//    'Button'
 	//    conditionname=EString
-	//        'button' button=ButtonType
+	//    button=ButtonType
 	//;
 	public ButtonElements getButtonAccess() {
 		return pButton;
@@ -1349,7 +1345,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//    {Sensor}
 	//    'Sensor'
 	//    conditionname=EString
-	//    'sensorPos' posEx=Expression
+	//    'sensorPosition' posEx=Expression
 	//    'detectObstacle' distance=Distance
 	//;
 	public SensorElements getSensorAccess() {
@@ -1402,7 +1398,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//    {SoundAction}
 	//    'SoundAction'
 	//    actionname=EString
-	//    ('set:' musicsettings+=MusicSetting (',' musicsettings+=MusicSetting)*)?
+	//    ('set:' musicsettings+=MusicSetting (',' musicsettings+=MusicSetting)*)
 	//;
 	public SoundActionElements getSoundActionAccess() {
 		return pSoundAction;
@@ -1416,7 +1412,7 @@ public class MyDslGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	//    {LightAction}
 	//    'LightAction'
 	//    actionname=EString
-	//    'pos:' pos=LightPos
+	//    'position:' pos=LightPos
 	//    ('red:' redEx=Expression)?
 	//    ('green:' greenEx=Expression)?
 	//    ('blue:' blueEx=Expression)?
