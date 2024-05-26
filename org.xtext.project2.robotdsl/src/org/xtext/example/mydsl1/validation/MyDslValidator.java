@@ -149,7 +149,7 @@ public class MyDslValidator extends AbstractMyDslValidator {
 		for (Condition c : r.getConditions()) {
 			if (e != c && c instanceof Button) {
 				if (((Button)c).getButton() == e.getButton()) {
-					error("already defined the button type",
+					warning("already defined the button type",
 							e,
 							Project2Package.eINSTANCE.getButton_Button(),
 							SAME_BUTTON_TYPE);

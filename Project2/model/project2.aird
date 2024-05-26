@@ -17,7 +17,7 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="project2.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_PeUBQBXvEe-HlPifrOWPPA" name="project2 class diagram" repPath="#_Pd5KgBXvEe-HlPifrOWPPA" changeId="1716467131604">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_PeUBQBXvEe-HlPifrOWPPA" name="project2 class diagram" repPath="#_Pd5KgBXvEe-HlPifrOWPPA" changeId="1716468207405">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="project2.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -2260,7 +2260,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_QBPIKhXvEe-HlPifrOWPPA"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_QBPIJRXvEe-HlPifrOWPPA" fontName="Microsoft YaHei UI" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QBPIJhXvEe-HlPifrOWPPA" x="1645" y="483"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QBPIJhXvEe-HlPifrOWPPA" x="1414" y="686"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_QBPIKxXvEe-HlPifrOWPPA" type="2003" element="_QAorMBXvEe-HlPifrOWPPA">
           <children xmi:type="notation:Node" xmi:id="_QBPvMBXvEe-HlPifrOWPPA" type="5007"/>
@@ -2853,17 +2853,17 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_eD-5EBh_Ee-v5dwkfC88ww" type="4001" element="_eD4LdRh_Ee-v5dwkfC88ww" source="_QBPIJBXvEe-HlPifrOWPPA" target="_8mRkABaNEe-QkoaUb7Sz0Q">
           <children xmi:type="notation:Node" xmi:id="_eD-5FBh_Ee-v5dwkfC88ww" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eD-5FRh_Ee-v5dwkfC88ww" y="-10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eD-5FRh_Ee-v5dwkfC88ww" x="-57" y="-10"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_eD-5Fhh_Ee-v5dwkfC88ww" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eD-5Fxh_Ee-v5dwkfC88ww" y="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eD-5Fxh_Ee-v5dwkfC88ww" x="-12" y="23"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_eD-5GBh_Ee-v5dwkfC88ww" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eD-5GRh_Ee-v5dwkfC88ww" y="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eD-5GRh_Ee-v5dwkfC88ww" x="-65" y="10"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_eD-5ERh_Ee-v5dwkfC88ww" routing="Rectilinear"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_eD-5Ehh_Ee-v5dwkfC88ww" fontColor="7490599" fontName="Microsoft YaHei UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_eD-5Exh_Ee-v5dwkfC88ww" points="[0, 0, 657, -252]$[0, 252, 657, 0]$[-657, 252, 0, 0]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_eD-5Exh_Ee-v5dwkfC88ww" points="[0, 0, 426, -49]$[0, 49, 426, 0]$[-426, 49, 0, 0]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eD-5Ghh_Ee-v5dwkfC88ww" id="(0.40329218106995884,1.0)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eD-5Gxh_Ee-v5dwkfC88ww" id="(1.0,0.7361963190184049)"/>
         </edges>
@@ -2974,6 +2974,9 @@
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_QAndEhXvEe-HlPifrOWPPA" name="Sensor" tooltipText="" outgoingEdges="_QBHzahXvEe-HlPifrOWPPA _eD4LdRh_Ee-v5dwkfC88ww" width="12" height="10">
       <target xmi:type="ecore:EClass" href="project2.ecore#//Sensor"/>
       <semanticElements xmi:type="ecore:EClass" href="project2.ecore#//Sensor"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_qeyDcxbrEe-f3rEUd5RNQA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
       </ownedStyle>
