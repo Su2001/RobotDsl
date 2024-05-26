@@ -12,6 +12,7 @@ Require-Bundle: org.xtext.project2.robotdsl,
  org.eclipse.xtext.xbase.testing,
  org.eclipse.xtext.xbase.lib;bundle-version="2.34.0"
 Import-Package: org.junit.jupiter.api;version="[5.1.0,6.0.0)",
- org.junit.jupiter.api.extension;version="[5.1.0,6.0.0)"
+ org.junit.jupiter.api.extension;version="[5.1.0,6.0.0)",
+ org.xtext.example.mydsl.tests
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.xtext.example.mydsl1.tests;x-internal=true

@@ -3,6 +3,11 @@
  */
 package org.xtext.example.mydsl1;
 
+import org.eclipse.emf.ecore.EPackage;
+
+import com.google.inject.Injector;
+
+import project2.Project2Package;
 
 /**
  * Initialization support for running Xtext languages without Equinox extension registry.
@@ -11,5 +16,12 @@ public class MyDslStandaloneSetup extends MyDslStandaloneSetupGenerated {
 
 	public static void doSetup() {
 		new MyDslStandaloneSetup().createInjectorAndDoEMFRegistration();
+	}
+	
+	public void register(Injector injector) {
+		if (!EPackage.Registry.INSTANCE.containsKey("project2")) {
+			EPackage.Registry.INSTANCE.put("project2", Project2Package.eINSTANCE);
+		}
+		super.register(injector);
 	}
 }
